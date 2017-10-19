@@ -16,7 +16,7 @@ export default class UiTPasAdvantageSearchContainer extends UiTPasSearchContaine
         return (
             <SearchkitProvider searchkit={this.state.searchkit.getSearchKit()}>
                 <div>
-                    <SearchBox queryFields={["jobtitle", "profile", "functiondescription", "offer"]}/>
+                    <SearchBox queryFields={["title"]}/>
                     <RefinementListFilter id="functionTypes"
                                           title="Functie"
                                           field="functiontype"

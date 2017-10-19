@@ -11,25 +11,27 @@ const block = require('bem-cn');
 
 export default class UiTPasHitsGrid extends React.Component {
     render(){
-        const { hits, mod, className} = this.props;
+        const { hits, mod} = this.props;
         const bemBlocks = {
             container: block(mod),
             item: block(`${mod}-hit`)
         };
+        let rowId = 0;
         let hitsChunks = this.chunkifyArray(hits, ceil(hits.length / 3), false);
         /*style={{width: '100%', boxSizing: 'border-box', padding: 8}}*/
         return (
             <Grid className="uitpassearch-hits-grid" fluid={true}>
                 {map(hitsChunks, (chunk) => {
-                    return this.makeGridRow(chunk, bemBlocks);
+                    rowId++;
+                    return this.makeGridRow(chunk, bemBlocks, rowId);
                 })}
             </Grid>
         );
     }
 
-    makeGridRow(hits, bemBlocks){
+    makeGridRow(hits, bemBlocks, rowId){
         return (
-            <Row>
+            <Row key={rowId}>
                 {map(hits, (hit, index) => {
                     return (<UiTPasAdvantageItem key={hit._id} bemBlocks={bemBlocks} result={hit} index={index}/>);
                 })}

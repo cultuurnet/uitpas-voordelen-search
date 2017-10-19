@@ -38,7 +38,7 @@ export default class UiTPasAdvantageItem extends SearchkitComponent {
                     </p>
                     <div className="uitpassearch-grid__hit-shop">
                         {map(shops, (shop) => {
-                            return (<Label>{shop.name}</Label>);
+                            return (<Label key={shop.actorId}>{shop.name}</Label>);
                         })}
                     </div>
                     <div className="uitpassearch-grid__hit-points">
@@ -52,18 +52,4 @@ export default class UiTPasAdvantageItem extends SearchkitComponent {
     makePointsLabel(points){
         return (points === 0 ? 'gratis' : points + ' punt' + (points === 1 ? '' : 'en'))
     }
-
-/*<div className="col-sm-6 col-md-4">
-                    <div className={this.props.bemBlocks.item().mix(this.props.bemBlocks.container("item")) + ' thumbnail'}>
-                        <img src={thumbUrl} alt={title} className={this.props.bemBlocks.item().mix(this.props.bemBlocks.container("item"))}/>
-                        <div className="caption">
-                            <h3>{title}</h3>
-                            <p>{get(this.props.result, '_source.description1', '')}</p>
-                            <p>
-                                <Button bsStyle="primary">Button</Button>&nbsp;
-                                <Button bsStyle="default">Button</Button>
-                            </p>
-                        </div>
-                    </div>
-                </div>*/
 }
