@@ -39,6 +39,15 @@ export default class UiTPasHitsGrid extends React.Component {
         );
     }
 
+    /**
+     * Splits an array a into "equal" chunks (based on whether the length of the array a is dividable
+     * by the number n, if the number is not exactly dividable by n the last chunk will contain the
+     * modulo.
+     * @param a             the input array
+     * @param n             the maximum length of the chunks
+     * @param balanced      when this flag is set to true, the chunks will try to be more balanced. so, some chunks will contain one less item.
+     * @returns array
+     */
     chunkifyArray(a, n, balanced) {
 
         if (n < 2)

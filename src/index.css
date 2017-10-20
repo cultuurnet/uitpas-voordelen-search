@@ -6,7 +6,7 @@ body {
   font-family: sans-serif;
 }
 
-.uitpassearch-hits-grid {
+.uitpassearch-hits-grid, .uitpassearch-searchbox {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }

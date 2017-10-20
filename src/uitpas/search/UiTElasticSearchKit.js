@@ -3,7 +3,10 @@ import {
 } from "searchkit";
 
 export default class UiTElasticSearchKit {
-    searchkit:SearchkitManager;
+
+    constructor(){
+        this.searchkit = null;
+    }
 
     getSearchKit() {
         if(!this.searchkit){
@@ -15,5 +18,9 @@ export default class UiTElasticSearchKit {
     static createSearchkit(){
         let es_url = "http://acc.uitid.be:9200/promotions/";
         return new SearchkitManager(es_url);
+    }
+
+    getDefaultSearchFields(){
+        return ["balies.name", "balies.cityName", "balies.cityZip"];
     }
 }

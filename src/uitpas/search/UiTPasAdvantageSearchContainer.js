@@ -3,30 +3,37 @@ import {
     SearchkitProvider,
     SearchBox,
     RefinementListFilter,
-    SelectedFilters,
-    PageSizeSelector,
-    Select
+    Layout,
+    TopBar,
+    Select,
+    LayoutResults,
 } from "searchkit";
 import UiTPasSearchHits from './UiTPasSearchHits';
 import UiTPasSearchContainer from './UiTPasSearchContainer';
+import UiTPasSearchFilters from './UiTPasSearchFilters';
+import './UiTPasAdvantageSearchContainer.css';
 
 
 export default class UiTPasAdvantageSearchContainer extends UiTPasSearchContainer {
     render() {
         return (
             <SearchkitProvider searchkit={this.state.searchkit.getSearchKit()}>
-                <div>
-                    <SearchBox queryFields={["title"]}/>
-                    <RefinementListFilter id="functionTypes"
-                                          title="Functie"
-                                          field="functiontype"
-                                          operator="AND"/>
-                    <SelectedFilters/>
-                    <div className="sk-action-bar__info">
-                        <PageSizeSelector options={[9,12,18,24]} listComponent={Select}/>
-                    </div>
-                    <UiTPasSearchHits/>
-                </div>
+                <Layout>
+                    <TopBar>
+                        <RefinementListFilter id="typesFilter"
+                                              title="Type"
+                                              field="type"
+                                              operator="AND"
+                                              orderKey="_term"
+                                              listComponent={Select}/>
+                        <SearchBox queryFields={this.state.searchkit.getDefaultSearchFields()}
+                                   placeholder={'Aanbieder of gemeente'}/>
+                    </TopBar>
+                    <LayoutResults>
+                        <UiTPasSearchFilters showCardSystemFilter={true} showTypeFilter={true}/>
+                        <UiTPasSearchHits/>
+                    </LayoutResults>
+                </Layout>
             </SearchkitProvider>
         );
     }

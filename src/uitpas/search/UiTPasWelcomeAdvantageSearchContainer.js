@@ -12,8 +12,8 @@ export default class UiTPasWelcomeAdvantageSearchContainer extends UiTPasSearchC
         return (
             <SearchkitProvider searchkit={this.state.searchkit.getSearchKit()}>
                 <div>
-                    <SearchBox queryFields={["jobtitle", "profile", "functiondescription", "offer"]}/>
-                    <UiTPasSearchHits/>
+                    <SearchBox queryFields={this.state.searchkit.getDefaultSearchFields()}/>
+                    <UiTPasSearchHits searchfields={this.state.searchkit.getDefaultSearchFields()}/>
                 </div>
             </SearchkitProvider>
         );
