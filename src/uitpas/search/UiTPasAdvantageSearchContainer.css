@@ -16,3 +16,8 @@
     flex-basis: 100%;
     margin-left: 1rem;
 }
+
+.sk-layout__top-bar {
+    position: relative;
+    z-index: auto;
+}
