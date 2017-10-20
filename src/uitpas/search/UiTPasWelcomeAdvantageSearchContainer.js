@@ -1,20 +1,24 @@
 import * as React from "react";
 import {
     SearchkitProvider,
-    SearchBox,
+    Layout,
+    LayoutResults,
 } from "searchkit";
 import UiTPasSearchContainer from './UiTPasSearchContainer';
 import UiTPasSearchHits from './UiTPasSearchHits';
+import UiTPasSearchFilters from './UiTPasSearchFilters';
 
 
 export default class UiTPasWelcomeAdvantageSearchContainer extends UiTPasSearchContainer {
     render() {
         return (
             <SearchkitProvider searchkit={this.state.searchkit.getSearchKit()}>
-                <div>
-                    <SearchBox queryFields={this.state.searchkit.getDefaultSearchFields()}/>
-                    <UiTPasSearchHits searchfields={this.state.searchkit.getDefaultSearchFields()}/>
-                </div>
+                <Layout>
+                    <LayoutResults>
+                        <UiTPasSearchFilters showCardSystemFilter={true} showTypeFilter={false}/>
+                        <UiTPasSearchHits/>
+                    </LayoutResults>
+                </Layout>
             </SearchkitProvider>
         );
     }

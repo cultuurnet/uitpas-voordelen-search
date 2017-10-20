@@ -1,5 +1,6 @@
 import {
     SearchkitManager,
+    TermQuery,
 } from "searchkit";
 
 export default class UiTElasticSearchKit {
@@ -11,8 +12,18 @@ export default class UiTElasticSearchKit {
     getSearchKit() {
         if(!this.searchkit){
             this.searchkit = UiTElasticSearchKit.createSearchkit();
+            this.initSearchkit();
         }
         return this.searchkit;
+    }
+
+    initSearchkit(){
+        //only allow active advantages
+        this.searchkit.addDefaultQuery(
+            (query) => query.addQuery(
+                TermQuery("status.keyword", "ACTIVE")
+            )
+        );
     }
 
     static createSearchkit(){

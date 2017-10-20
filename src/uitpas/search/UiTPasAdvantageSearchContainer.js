@@ -30,8 +30,10 @@ export default class UiTPasAdvantageSearchContainer extends UiTPasSearchContaine
                                    placeholder={'Aanbieder of gemeente'}/>
                     </TopBar>
                     <LayoutResults>
-                        <UiTPasSearchFilters showCardSystemFilter={true} showTypeFilter={true}/>
-                        <UiTPasSearchHits/>
+                        <UiTPasSearchFilters showCardSystemFilter={true}
+                                             showTypeFilter={true}
+                                             showExtraOptionFilter={true}/>
+                        <UiTPasSearchHits searchfields={this.state.searchkit.getDefaultSearchFields()}/>
                     </LayoutResults>
                 </Layout>
             </SearchkitProvider>
