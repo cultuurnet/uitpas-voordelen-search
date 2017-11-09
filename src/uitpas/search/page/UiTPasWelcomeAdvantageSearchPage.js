@@ -4,12 +4,12 @@ import {
     Layout,
     LayoutResults,
 } from "searchkit";
-import UiTPasSearchContainer from './UiTPasSearchContainer';
-import UiTPasSearchHits from './UiTPasSearchHits';
-import UiTPasSearchFilters from './UiTPasSearchFilters';
+import UiTPasSearchPage from './UiTPasSearchPage';
+import UiTPasSearchHits from '../hits/UiTPasSearchHits';
+import UiTPasSearchFilters from '../bar/UiTPasSearchFilters';
 
 
-export default class UiTPasWelcomeAdvantageSearchContainer extends UiTPasSearchContainer {
+export default class UiTPasWelcomeAdvantageSearchPage extends UiTPasSearchPage {
     render() {
         return (
             <SearchkitProvider searchkit={this.state.searchkit.getSearchKit()}>

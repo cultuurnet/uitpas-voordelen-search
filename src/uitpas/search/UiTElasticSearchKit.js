@@ -34,4 +34,8 @@ export default class UiTElasticSearchKit {
     getDefaultSearchFields(){
         return ["balies.name", "balies.cityName", "balies.cityZip"];
     }
+
+    getDefaultSuggestField(){
+        return "balies.name";
+    }
 }

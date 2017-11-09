@@ -7,6 +7,7 @@ import {
     Grid,
     Row
 } from 'react-bootstrap';
+
 const block = require('bem-cn');
 
 export default class UiTPasHitsGrid extends React.Component {

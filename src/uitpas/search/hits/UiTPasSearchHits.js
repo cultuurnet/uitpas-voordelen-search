@@ -10,10 +10,14 @@ import {
     ActionBarRow,
     SelectedFilters,
     ResetFilters,
+    SortingSelector,
+    PageSizeSelector,
+    Select,
 } from "searchkit";
 import UiTPasInitialLoader from './UiTPasInitialLoader';
 import UiTPasAdvantageItem from './UiTPasAdvantageItem';
 import UiTPasHitsGrid from "./UiTPasHitsGrid";
+import './UiTPasSearchHits.css';
 
 export default class UiTPasSearchHits extends SearchkitComponent{
     noHitsTranslation = {
@@ -38,23 +42,41 @@ export default class UiTPasSearchHits extends SearchkitComponent{
             <div>
                 <ActionBar>
                     <ActionBarRow>
-                        <HitsStats translations={this.hitsStatsTranslation}/>
-                    </ActionBarRow>
-                    <ActionBarRow>
                         <SelectedFilters/>
                         <ResetFilters translations={this.resetFiltersTranslations}/>
                     </ActionBarRow>
+                    <ActionBarRow>
+                        <HitsStats translations={this.hitsStatsTranslation}/>
+                        <div>
+                            <span>Sorteer op</span>
+                            <SortingSelector
+                                options={[
+                                    {label:"Meest recent", field:"creationDate", order:"desc", key: "mostRecent", defaultOption:true},
+                                    {label:"Meest omgeruild", field:"unitsTaken", order:"desc", key:"mostBartered"},
+                                    {label:"Puntenaantal laag - hoog", field:"points", order:"desc", key:"pointsHighLow"},
+                                    {label:"Puntenaantal hoog - laag", field:"points", order:"asc", key:"pointsLowHigh"}
+                                ]}/>
+                        </div>
+                    </ActionBarRow>
                 </ActionBar>
                 <div className="uitpas-hits">
-                    <Hits hitsPerPage={9}
+                    <Hits hitsPerPage={12}
                           itemComponent={UiTPasAdvantageItem}
                           listComponent={UiTPasHitsGrid}/>
                     <NoHits translations={this.noHitsTranslation}
-                            suggestionsField={this.props.searchfields}/>
+                            suggestionsField={this.props.suggestField}/>
                     <InitialLoader component={UiTPasInitialLoader}/>
-                    <Pagination showNumbers={true}
-                                translations={this.paginationTranslation}/>
                 </div>
+                <ActionBar>
+                    <ActionBarRow>
+                        <span className="sort-lbl">Resultaten per pagina</span>
+                        <PageSizeSelector options={[12,30,60]} listComponent={Select}/>
+                    </ActionBarRow>
+                    <ActionBarRow>
+                        <Pagination showNumbers={true}
+                                    translations={this.paginationTranslation}/>
+                    </ActionBarRow>
+                </ActionBar>
             </div>
         );
     }

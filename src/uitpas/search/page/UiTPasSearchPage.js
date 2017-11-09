@@ -2,7 +2,7 @@ import * as React from "react";
 import {
     SearchkitComponent,
 } from "searchkit";
-import UiTElasticSearchKit from './UiTElasticSearchKit';
+import UiTElasticSearchKit from '../UiTElasticSearchKit';
 
 export default class UiTPasSearchContainer extends SearchkitComponent{
     constructor(props){

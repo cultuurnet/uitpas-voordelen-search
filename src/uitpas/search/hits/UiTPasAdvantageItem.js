@@ -10,7 +10,13 @@ import {
     Label,
     Col
 } from 'react-bootstrap';
+import {
+    Link
+} from 'react-router-dom';
 import Truncate from 'react-truncate';
+import {
+    UiTPasThumbnail
+} from '../component/UiTImage';
 
 export default class UiTPasAdvantageItem extends SearchkitComponent {
 
@@ -27,10 +33,13 @@ export default class UiTPasAdvantageItem extends SearchkitComponent {
         thumbUrl = (isUndefined(thumbUrl) ? this.defaultThumb : thumbUrl);
         let points = get(this.props.result, '_source.points', 0);
         let shops = get(this.props.result, '_source.balies', []);
+        let detailPage = '/voordeel/' + get(this.props.result, '_source.id', 0);
         return (
             <Col xs={12} sm={6} md={4} className={this.props.bemBlocks.item().mix(this.props.bemBlocks.container("item"))}>
-                <Thumbnail src={thumbUrl} alt={title}>
-                    <h3>{title}</h3>
+                <UiTPasThumbnail src={thumbUrl} alt={title} maxWidth={200} maxHeight={200}>
+                    <Link to={detailPage}>
+                        <h3>{title}</h3>
+                    </Link>
                     <p>
                         <Truncate lines={3} ellipsis={'…'}>
                             {get(this.props.result, '_source.description1', '')}
@@ -44,7 +53,7 @@ export default class UiTPasAdvantageItem extends SearchkitComponent {
                     <div className="uitpassearch-grid__hit-points">
                         <Label bsStyle="primary">{this.makePointsLabel(points)}</Label>
                     </div>
-                </Thumbnail>
+                </UiTPasThumbnail>
             </Col>
         );
     }

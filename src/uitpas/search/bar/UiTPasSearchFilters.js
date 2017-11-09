@@ -12,9 +12,8 @@ import {
     TermQuery,
     RangeQuery,
 } from 'searchkit';
-import './UiTPasSearchFilters.css';
 import PropTypes from 'prop-types';
-import UiTPasSearchConfig from './UiTPasSearchConfig';
+import UiTPasSearchConfig from '../UiTPasSearchConfig';
 
 export default class UiTPasSearchFilters extends React.Component {
     rangeFilterTranslation = {

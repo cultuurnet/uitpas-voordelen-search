@@ -11,10 +11,10 @@ body {
   box-sizing: border-box;
 }
 
-.uitpassearch-hits-grid .thumbnail img {
+/*.uitpassearch-hits-grid .thumbnail img {
   min-height: 15rem;
   height: 15rem;
-}
+}*/
 
 .uitpassearch-grid__hit-shop span {
   margin-right: 5px;

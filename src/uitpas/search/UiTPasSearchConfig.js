@@ -2,7 +2,7 @@
 
 export default class UiTPasSearchConfig {
     static config = {
-        lastChanceWeeks: 100,
+        lastChanceWeeks: 1,
     };
 
     static buildConfig(){
