@@ -5,6 +5,7 @@ import {Col, Label} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import Truncate from 'react-truncate';
 import {UiTPasThumbnail} from '../component/UiTImage';
+import {LastChanceLabel} from "../component/LastChanceLabel";
 
 export default class UiTPasAdvantageItem extends SearchkitComponent {
 
@@ -22,9 +23,11 @@ export default class UiTPasAdvantageItem extends SearchkitComponent {
         let points = get(this.props.result, '_source.points', 0);
         let counters = get(this.props.result, '_source.balies', []);
         let detailPage = '/voordeel/' + get(this.props.result, '_source.id', 0);
+        let cashingPeriodEnd = get(this.props.result, '_source.cashingPeriodEnd', null);
         return (
             <Col xs={12} sm={6} md={4} className={this.props.bemBlocks.item().mix(this.props.bemBlocks.container("item"))}>
                 <UiTPasThumbnail src={thumbUrl} alt={title} maxWidth={200} maxHeight={200}>
+                    <LastChanceLabel endDate={cashingPeriodEnd}/>
                     <Link to={detailPage}>
                         <h3>{title}</h3>
                     </Link>
