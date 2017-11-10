@@ -24,7 +24,9 @@ export default class UiTPasSearchHits extends SearchkitComponent{
         "NoHits.NoResultsFound": "Er werden geen UiTPas-voordelen gevonden voor '{query}'.",
         "NoHits.DidYouMean": "Bedoelde je '{suggestion}'?",
         "NoHits.SearchWithoutFilters": "Zoek op '{query}' zonder filters.",
-        "NoHits.NoResultsFoundDidYouMean": "Er werden geen UiTPas-voordelen gevonden voor '{query}'. Bedoelde je '{suggestion}'?"
+        "NoHits.NoResultsFoundDidYouMean": "Er werden geen UiTPas-voordelen gevonden voor '{query}'. Bedoelde je '{suggestion}'?",
+        "NoHits.Error":"Oeps! Er is wat misgelopen bij het ophalen van de UiTPas voordelen. Probeer het later nog eens.",
+        "NoHits.ResetSearch":"Herinitialiseer de zoekopdracht",
     };
     hitsStatsTranslation = {
         "hitstats.results_found": "{hitCount} voordelen gevonden"

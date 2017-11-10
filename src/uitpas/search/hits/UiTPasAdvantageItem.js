@@ -1,22 +1,10 @@
 import * as React from "react";
-import {
-    SearchkitComponent
-} from "searchkit";
-import {
-    get, first, isArray, isUndefined, map
-} from "lodash";
-import {
-    Thumbnail,
-    Label,
-    Col
-} from 'react-bootstrap';
-import {
-    Link
-} from 'react-router-dom';
+import {SearchkitComponent} from "searchkit";
+import {first, get, isArray, isUndefined, map} from "lodash";
+import {Col, Label} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 import Truncate from 'react-truncate';
-import {
-    UiTPasThumbnail
-} from '../component/UiTImage';
+import {UiTPasThumbnail} from '../component/UiTImage';
 
 export default class UiTPasAdvantageItem extends SearchkitComponent {
 
@@ -32,7 +20,7 @@ export default class UiTPasAdvantageItem extends SearchkitComponent {
         thumbUrl = (isArray(thumbUrl) ? (isArray(first(thumbUrl)) ? first(first(thumbUrl)) : first(thumbUrl)): thumbUrl);
         thumbUrl = (isUndefined(thumbUrl) ? this.defaultThumb : thumbUrl);
         let points = get(this.props.result, '_source.points', 0);
-        let shops = get(this.props.result, '_source.balies', []);
+        let counters = get(this.props.result, '_source.balies', []);
         let detailPage = '/voordeel/' + get(this.props.result, '_source.id', 0);
         return (
             <Col xs={12} sm={6} md={4} className={this.props.bemBlocks.item().mix(this.props.bemBlocks.container("item"))}>
@@ -45,9 +33,9 @@ export default class UiTPasAdvantageItem extends SearchkitComponent {
                             {get(this.props.result, '_source.description1', '')}
                         </Truncate>
                     </p>
-                    <div className="uitpassearch-grid__hit-shop">
-                        {map(shops, (shop) => {
-                            return (<Label key={shop.actorId}>{shop.name}</Label>);
+                    <div className="uitpassearch-grid__hit-counter">
+                        {map(counters, (counter) => {
+                            return (<Label key={counter.actorId}>{counter.name}</Label>);
                         })}
                     </div>
                     <div className="uitpassearch-grid__hit-points">

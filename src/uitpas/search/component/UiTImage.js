@@ -37,7 +37,8 @@ export class UiTImage extends React.Component {
 
     render(){
         return (
-            <img src={UiTImage.getUiTImageUrl(this.props.src, this.props.maxHeight, this.props.maxWidth, this.props.height, this.props.width, this.props.crop)}/>
+            <img src={UiTImage.getUiTImageUrl(this.props.src, this.props.maxHeight, this.props.maxWidth, this.props.height, this.props.width, this.props.crop)}
+                 alt={this.props.alt}/>
         );
     }
 }
@@ -45,9 +46,23 @@ export class UiTImage extends React.Component {
 export class UiTPasThumbnail extends Thumbnail {
     render(){
         return (
-            <Thumbnail {...this.props} src={UiTImage.getUiTImageUrl(this.props.src, this.props.maxHeight, this.props.maxWidth, this.props.height, this.props.width, this.props.crop)}>
+            <Thumbnail src={UiTImage.getUiTImageUrl(this.props.src, this.props.maxHeight, this.props.maxWidth, this.props.height, this.props.width, this.props.crop)}
+                       alt={this.props.alt}
+                       href={this.props.href}
+                       onError={this.props.onError}
+                       onLoad={this.props.onLoad}>
                 {this.props.children}
             </Thumbnail>
         );
     }
 }
+
+//append extra propTypes to thumbnail propTypes:
+let thumbnailPropTypes = Thumbnail.propTypes;
+thumbnailPropTypes.maxHeight = PropTypes.number;
+thumbnailPropTypes.maxWidth = PropTypes.number;
+thumbnailPropTypes.height = PropTypes.number;
+thumbnailPropTypes.width = PropTypes.number;
+thumbnailPropTypes.crop = PropTypes.bool;
+
+UiTPasThumbnail.propTypes = thumbnailPropTypes;

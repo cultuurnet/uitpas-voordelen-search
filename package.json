@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "lodash": "^4.17.4",
+    "moment": "^2.19.1",
     "prop-types": "^15.6.0",
     "react": "^15.0.0",
     "react-bootstrap": "^0.31.3",

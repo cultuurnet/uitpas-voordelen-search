@@ -1,25 +1,19 @@
 import * as React from "react";
-import { map, debounce, min, get } from 'lodash';
-import {
-    SearchkitComponent,
-} from "searchkit"
+import {get, map} from 'lodash';
+import {SearchkitComponent,} from "searchkit"
 import {AdvantageAccessor} from "./AdvantageAccessor";
-import {
-    Grid,
-    Row,
-    Col,
-    Label,
-} from 'react-bootstrap';
+import {Col, Grid, Label, Row,} from 'react-bootstrap';
 import './UiTPasAdvantageDetail.css';
-import {
-    UiTImage
-} from "../component/UiTImage";
+import {UiTImage} from "../component/UiTImage";
+import {UiTPasCounter} from "./UiTPasCounter";
+import {LastChanceLabel} from '../component/LastChanceLabel';
+import moment from 'moment';
 
 export default class UiTPasAdvantageDetail extends SearchkitComponent {
     advantage;
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
     }
 
     defineAccessor(){
@@ -59,13 +53,17 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
                 <Row>
                     <Col md={6} sm={12}>
                         <h1>{this.advantage.title}</h1>
-                        {this.renderBalies()}
+                        {this.renderCounters()}
                         {this.renderDescription()}
                         {this.renderMoreInfo()}
                         {this.renderPracticalInfo()}
+                        {this.renderAvailability()}
+                        {this.renderApplicableCards()}
+                        {this.renderOwningCardSystem()}
                     </Col>
                     <Col md={6} sm={12}>
                         {this.renderPoints()}
+                        {<LastChanceLabel endDate={this.advantage.cashingPeriodEnd}/>}
                         {this.renderImage()}
                     </Col>
                 </Row>
@@ -81,14 +79,14 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
         );
     }
 
-    renderBalies(){
+    renderCounters(){
         if(this.advantage.balies && this.advantage.balies.length > 0) {
             return (
                 <dl>
                     <dt>Omruilen bij:</dt>
-                    <dd>{map(this.advantage.balies, (shop, index) => {
+                    <dd>{map(this.advantage.balies, (counter, index) => {
                         return (<span
-                            key={shop.actorId}>{shop.name}{index < this.advantage.balies.length - 1 ? ',\u00A0' : ''}</span>);
+                            key={counter.actorId}>{counter.name}{index < this.advantage.balies.length - 1 ? ',\u00A0' : ''}</span>);
                     })}
                     </dd>
                 </dl>
@@ -126,13 +124,11 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
         if(this.advantage.balies && this.advantage.balies.length > 0){
             return (
                 <dl>
-                    <dt>Praktische info</dt>
-                    {map(this.advantage.balies, function(shop){
+                    <dt>Praktische info:</dt>
+                    {map(this.advantage.balies, function(counter){
                         return (
-                            <dd>
-                                <div className="uitpassearch-detail-address">
-                                    <p>TODO: {shop.actorId}</p>
-                                </div>
+                            <dd key={counter.actorId}>
+                                <UiTPasCounter counterId={counter.actorId}/>
                             </dd>
                         );
                     })}
@@ -152,10 +148,82 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
     }
 
     renderImage(){
-        if(this.advantage.pictures && this.advantage.pictures.length > 0){
+        if(this.advantage.pictures && this.advantage.pictures.length > 0 && this.advantage.pictures[0].length > 0 ){
             return (
-                <UiTImage src={this.advantage.pictures[0]} maxWidth={500} maxHeight={500}/>
+                <UiTImage src={this.advantage.pictures[0][0]}
+                          maxWidth={500}
+                          maxHeight={500}
+                          alt={this.advantage.title}/>
             );
         }
     }
+
+    renderAvailability(){
+        let availability = "Dit voordeel is niet meer voorrading. ";
+        if(this.advantage.maxAvailableUnits && this.advantage.maxAvailableUnits > 0) {
+            availability = this.advantage.maxAvailableUnits + ' beschikbaar';
+            if(this.advantage.cashingPeriodBegin){
+                availability += ' vanaf ' + this.formatDate(this.advantage.cashingPeriodBegin);
+            }
+            if(this.advantage.cashingPeriodEnd){
+                availability += ' tot ' + this.formatDate(this.advantage.cashingPeriodEnd);
+            }
+            availability += '. ';
+            if(this.advantage.periodConstraint && this.advantage.periodConstraint.type){
+                availability += ' Maximaal ' + this.advantage.periodConstraint.volume + ' per ' + this.renderPeriodConstraintType(this.advantage.periodConstraint.type) + '.';
+            }
+        }
+        return (
+            <dl>
+                <dt>Beschikbaarheid:</dt>
+                <dd>{availability}</dd>
+            </dl>
+        );
+    }
+
+    formatDate(date){
+        return moment(date).format('D/M/YYYY');
+    }
+
+    renderPeriodConstraintType(type){
+        switch(type){
+            case 'ABSOLUTE':
+                return 'persoon';
+            case 'DAY':
+                return 'dag';
+            case 'WEEK':
+                return 'week';
+            case 'QUARTER':
+                return 'kwartaal';
+            case 'YEAR':
+                return 'jaar';
+            default:
+                return '';
+        }
+    }
+
+    renderApplicableCards(){
+        let applicableCards = '';
+        if(this.advantage.allCardSystems){
+            applicableCards = 'Dit voordeel is beschikbaar voor pashouders van alle UiTPAS-regio\'s.';
+        }
+        else if(this.advantage.applicableCardSystems && this.advantage.applicableCardSystems.length > 0){
+            let cardSystems = this.advantage.applicableCardSystems.map((system) => {
+                return system.name;
+            });
+            applicableCards = 'Dit voordeel is beschikbaar voor pashouders van: ' + cardSystems.join(', ') + '.';
+        }
+        return (
+            <p>{applicableCards}</p>
+        );
+    }
+
+    renderOwningCardSystem(){
+        if(this.advantage.owningCardSystem){
+            return (
+                <p>Dit voordeel wordt aangeboden door {this.advantage.owningCardSystem.name}.</p>
+            );
+        }
+    }
+
 }
