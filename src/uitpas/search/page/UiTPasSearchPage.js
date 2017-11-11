@@ -1,9 +1,9 @@
 import {
-    SearchkitComponent,
-} from "searchkit";
+    Component,
+} from "react";
 import UiTElasticSearchKit from '../UiTElasticSearchKit';
 
-export default class UiTPasSearchContainer extends SearchkitComponent{
+export default class UiTPasSearchPage extends Component{
     constructor(props){
         super(props);
         this.state = {

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {intersperse} from "../helper/UiTPasArrayUtils";
+import './UiTPasCounter.css';
 
 export class UiTPasCounter extends Component {
     static propTypes = {
@@ -25,8 +27,7 @@ export class UiTPasCounter extends Component {
                     if(data && data.name) {
                         let counterElem = (
                             <div className="uitpassearch-detail-counter">
-                                <div
-                                    className="uitpassearch-detail-counter-name">{data.name}</div>
+                                <div className="uitpassearch-detail-counter-name">{data.name}</div>
                                 {this.renderCounterAddresses(data)}
                                 {this.renderCounterContactInfo(data)}
                             </div>
@@ -64,38 +65,43 @@ export class UiTPasCounter extends Component {
         let key = 0;
         if(counter.contactPoint){
             if(counter.contactPoint.phone && counter.contactPoint.phone.length > 0){
-                let phones = counter.contactPoint.phone.map((phone) => {
-                    key ++;
-                    return (
-                        <div key={key}>
-                            Tel.: <a href="tel:{phone}">{phone}</a>
-                        </div>);
+                key ++;
+                let phones = counter.contactPoint.phone.map((phone, i) => {
+                    return ( <a href="tel:{phone}" key={i}>{phone}</a> );
                 });
-                contactInfo = contactInfo.concat(phones);
+                contactInfo.push(
+                    <div key={key}>
+                        Tel.: {intersperse(phones, ', ')}
+                    </div>
+                );
             }
             if(counter.contactPoint.email && counter.contactPoint.email.length > 0){
-                let emails = counter.contactPoint.email.map((email) => {
-                    key++;
-                    return (
-                        <div key={key}>
-                            E-mail: <a href="mailto:{email}">{email}</a>
-                        </div>);
+                key++;
+                let emails = counter.contactPoint.email.map((email, i) => {
+                    return ( <a href="mailto:{email}" key={i}>{email}</a> );
                 });
-                contactInfo = contactInfo.concat(emails);
+                contactInfo.push(
+                    <div key={key}>
+                        E-mail: {intersperse(emails, ', ')}
+                    </div>
+                );
             }
             if(counter.contactPoint.url && counter.contactPoint.url.length > 0){
-                let urls = counter.contactPoint.url.map((url) => {
-                    key++;
-                    return (
-                        <div key={key}>
-                            Link: <a href="{url}">{url}</a>
-                        </div>);
+                key++;
+                let urls = counter.contactPoint.url.map((url, i) => {
+                    return ( <a href={url} key={i}>{url}</a> );
                 });
-                contactInfo = contactInfo.concat(urls);
+                contactInfo.push(
+                    <div key={key}>
+                        Link: {intersperse(urls, ', ')}
+                    </div>
+                );
             }
         }
         return contactInfo;
     }
+
+
 
     getUiTCounterUrl(){
         if(this.props.counterId){
@@ -105,7 +111,7 @@ export class UiTPasCounter extends Component {
 
     render(){
         return (
-            <div className="uitpassearch-detail-counter">
+            <div className="uitpassearch-detail-counters">
                 {this.state.counter}
             </div>
         );

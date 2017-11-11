@@ -8,13 +8,10 @@ import {UiTImage} from "../component/UiTImage";
 import {UiTPasCounter} from "./UiTPasCounter";
 import {LastChanceLabel} from '../component/LastChanceLabel';
 import moment from 'moment';
+import UiTPasRelatedItems from './UiTPasRelatedItems';
 
 export default class UiTPasAdvantageDetail extends SearchkitComponent {
     advantage;
-
-    constructor(props){
-        super(props);
-    }
 
     defineAccessor(){
         return new AdvantageAccessor();
@@ -58,14 +55,16 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
                         {this.renderMoreInfo()}
                         {this.renderPracticalInfo()}
                         {this.renderAvailability()}
-                        {this.renderApplicableCards()}
-                        {this.renderOwningCardSystem()}
                     </Col>
                     <Col md={6} sm={12}>
                         {this.renderPoints()}
-                        {<LastChanceLabel endDate={this.advantage.cashingPeriodEnd}/>}
+                        <LastChanceLabel endDate={this.advantage.cashingPeriodEnd}/>
                         {this.renderImage()}
                     </Col>
+                </Row>
+                <hr/>
+                <Row>
+                    <UiTPasRelatedItems counters={this.advantage.balies} advantage={this.advantage.id}/>
                 </Row>
             </Grid>
         );
@@ -177,6 +176,8 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
             <dl>
                 <dt>Beschikbaarheid:</dt>
                 <dd>{availability}</dd>
+                {this.renderApplicableCards()}
+                {this.renderOwningCardSystem()}
             </dl>
         );
     }
@@ -203,7 +204,7 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
     }
 
     renderApplicableCards(){
-        let applicableCards = '';
+        let applicableCards = null;
         if(this.advantage.allCardSystems){
             applicableCards = 'Dit voordeel is beschikbaar voor pashouders van alle UiTPAS-regio\'s.';
         }
@@ -213,17 +214,21 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
             });
             applicableCards = 'Dit voordeel is beschikbaar voor pashouders van: ' + cardSystems.join(', ') + '.';
         }
-        return (
-            <p>{applicableCards}</p>
-        );
+        if(applicableCards) {
+            return (
+                <dd>{applicableCards}</dd>
+            );
+        }
+        else return null;
     }
 
     renderOwningCardSystem(){
         if(this.advantage.owningCardSystem){
             return (
-                <p>Dit voordeel wordt aangeboden door {this.advantage.owningCardSystem.name}.</p>
+                <dd>Dit voordeel wordt aangeboden door {this.advantage.owningCardSystem.name}.</dd>
             );
         }
+        else return null;
     }
 
 }
