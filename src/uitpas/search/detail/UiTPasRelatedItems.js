@@ -15,6 +15,7 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
 
     items;
     counterIds = [];
+    counterNames = [];
 
     defineAccessor(){
         return new RelatedItemsAccessor();
@@ -48,14 +49,15 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
     render(){
         if(this.props.counters){
             if(this.props.counters.length > 0) {
-                let counterNames = this.props.counters.map((system) => {
+                this.counterNames = this.props.counters.map((system) => {
                     return system.name;
                 });
                 this.initAccessor();
                 this.initItems();
                 return (
                     <div className="uitpassearch-detail-relateditems">
-                        <h2>Andere voordelen in {joinNicely(counterNames, ', ', ' of ')}:</h2>
+                        <h2>Andere voordelen in {joinNicely(this.counterNames, ', ', ' of ')}:</h2>
+                        {this.renderMoreRelatedItemsLink()}
                         {this.renderRelatedItems()}
                     </div>
                 );
@@ -67,12 +69,10 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
     renderRelatedItems(){
         if(this.items){
             if(this.items.length > 0){
-                let bemBlocks = this.bemBlocks;
                 return (
                     <div>
-                        {this.items.map((item) => {
-                            return (<UiTPasAdvantageItem result={item} bemBlocks={bemBlocks}/>);
-                            //return (<p>{item._source.title}</p>)
+                        {this.items.map((item, i) => {
+                            return (<UiTPasAdvantageItem result={item} key={i}/>);
                         })}
                     </div>
                 );
@@ -82,5 +82,20 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
             }
         }
         return null;
+    }
+
+    renderMoreRelatedItemsLink(){
+        if(this.items) {
+            let urlParams = this.counterNames.map((name, i) => {
+                return 'countersFilter[' + i + ']=' + encodeURIComponent(name);
+            });
+            let url = '/voordelen?' + urlParams.join('&');
+            return (
+                <div>
+                    <a href={url}>Alle voordelen
+                        in {joinNicely(this.counterNames, ', ', ' of ')} &raquo;</a>
+                </div>
+            );
+        }
     }
 }

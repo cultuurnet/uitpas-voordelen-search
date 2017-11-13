@@ -73,6 +73,28 @@ export default class UiTPasSearchFilters extends React.Component {
         }
     }
 
+    /**
+     * NOTE: This filter is added to be able to easily filter on counters for the link related items block
+     * on the detail page. By adding this filter we have created an API to filter on counters on the
+     * search pages.
+     */
+    renderHiddenCounterFilter(){
+        if(this.props.renderCounterFilter){
+            //do not show this filter to the user.
+            let hideFilterStyle = {
+                display: 'none',
+            };
+            return (
+                <div style={hideFilterStyle}>
+                    <RefinementListFilter field="balies.name.keyword"
+                                          id="countersFilter"
+                                          title="Balies"
+                                          operator="OR"/>
+                </div>
+            );
+        }
+    }
+
     render(){
         return (
             <div className="uitpassearch-row">
@@ -81,6 +103,7 @@ export default class UiTPasSearchFilters extends React.Component {
                     {this.renderTypeFilter()}
                     {this.renderExtraOptionFilter()}
                     {this.renderCardSystemFilter()}
+                    {this.renderHiddenCounterFilter()}
                 </Row>
                 <hr/>
             </div>
@@ -92,4 +115,5 @@ UiTPasSearchFilters.propTypes = {
     showTypeFilter: PropTypes.bool,
     showCardSystemFilter: PropTypes.bool,
     showExtraOptionFilter: PropTypes.bool,
+    renderCounterFilter: PropTypes.bool,
 };

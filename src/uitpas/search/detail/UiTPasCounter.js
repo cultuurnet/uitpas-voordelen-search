@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {intersperse} from "../helper/UiTPasArrayUtils";
 import './UiTPasCounter.css';
+import UiTPasSearchConfig from "../UiTPasSearchConfig";
 
 export class UiTPasCounter extends Component {
     static propTypes = {
@@ -19,8 +20,11 @@ export class UiTPasCounter extends Component {
         let url = this.getUiTCounterUrl();
         if(url) {
             fetch(url)
-                .then(results => {
-                    return results.json();
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error('Fetching counter: ' + response.statusText);
+                    }
+                    return response.json();
                 })
                 .then(data => {
                     console.log(data);
@@ -34,6 +38,9 @@ export class UiTPasCounter extends Component {
                         );
                         this.setState({counter: counterElem})
                     }
+                })
+                .catch(function(err) {
+                    console.log('Fetch Error :-S', err);
                 });
         }
     }
@@ -105,7 +112,7 @@ export class UiTPasCounter extends Component {
 
     getUiTCounterUrl(){
         if(this.props.counterId){
-            return 'https://io-acc.uitdatabank.be/organizers/' + this.props.counterId;
+            return UiTPasSearchConfig.get('uitDatabankUrlPrefix') + '/organizers/' + this.props.counterId;
         }
     }
 
