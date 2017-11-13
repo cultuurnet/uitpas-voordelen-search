@@ -17,7 +17,6 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
 
     resetAdvantage(){
         if(this.advantage){
-            //comparing with != because one of the fields can be a string and the other is an int
             if(this.props.advantageId != this.advantage.id){
                 this.advantage = null;
             }

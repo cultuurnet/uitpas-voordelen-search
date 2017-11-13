@@ -39,9 +39,12 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
                 let hits = get(results, 'hits.hits', null);
                 //check if it is not the detail advantage...
                 //this is returned first before the new query is executed.
-                if(hits.length > 0 && hits[0]._source.id !== this.props.advantage){
+                if(hits.length > 0 && parseInt(hits[0]._source.id) !== this.props.advantage){
                     this.items = hits;
                 }
+            }
+            else{
+                this.items = [];
             }
         }
     }
@@ -78,14 +81,14 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
                 );
             }
             else{
-                return (<div>Er zijn geen andere voordelen bij deze balies...</div>);
+                return (<div>Er zijn geen andere voordelen bij deze {(this.counterNames && this.counterNames.length > 1 ? 'balies' : 'balie')}...</div>);
             }
         }
         return null;
     }
 
     renderMoreRelatedItemsLink(){
-        if(this.items) {
+        if(this.items && this.items.length > 0) {
             let urlParams = this.counterNames.map((name, i) => {
                 return 'countersFilter[' + i + ']=' + encodeURIComponent(name);
             });
