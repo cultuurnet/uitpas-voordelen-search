@@ -1,6 +1,7 @@
 import {
     SearchkitManager,
     TermQuery,
+    RangeQuery,
 } from "searchkit";
 
 export default class UiTElasticSearchKit {
@@ -32,7 +33,7 @@ export default class UiTElasticSearchKit {
     }
 
     getDefaultSearchFields(){
-        return ["balies.name", "balies.cityName", "balies.cityZip"];
+        return ["balies.name", "balies.cityName", "balies.cityZip", "title"];
     }
 
     getDefaultSuggestField(){
