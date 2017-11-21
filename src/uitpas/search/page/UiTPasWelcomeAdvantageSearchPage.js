@@ -11,7 +11,9 @@ import WelcomeAdvantageSearchHits from "../welcome/WelcomeAdvantageSearchHits";
 
 
 export default class UiTPasWelcomeAdvantageSearchPage extends UiTPasSearchPage {
+
     render() {
+        
         return (
             <SearchkitProvider searchkit={this.state.searchkit.getSearchKit()}>
                 <Layout>

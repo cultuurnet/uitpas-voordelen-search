@@ -10,12 +10,12 @@ export default class UiTPasSearchConfig {
         OAuthConsumerSecret: 'e626845f1e95db4330a2a8803d83edf5',
     };
 
-    static buildConfig(){
+    static buildConfig() {
         //TODO from url args or on page JSON
 
     }
 
-    static get(field){
+    static get(field) {
         return UiTPasSearchConfig.config[field];
     }
 }

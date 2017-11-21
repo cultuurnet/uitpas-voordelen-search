@@ -9,7 +9,9 @@ import UiTPasAdvantageDetail from '../detail/UiTPasAdvantageDetail';
 
 
 export default class UiTPasDetailPage extends UiTPasSearchPage {
+    
     render() {
+
         return (
             <SearchkitProvider searchkit={this.state.searchkit.getSearchKit()}>
                 <Layout>

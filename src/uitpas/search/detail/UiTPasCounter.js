@@ -5,30 +5,41 @@ import './UiTPasCounter.css';
 import UiTPasSearchConfig from "../UiTPasSearchConfig";
 
 export class UiTPasCounter extends Component {
+
     static propTypes = {
         counterId: PropTypes.string.isRequired,
     };
 
-    constructor(){
+    constructor() {
+
         super();
+
         this.state = {
             counter: null
         };
     }
 
-    componentWillMount(){
+    componentWillMount() {
+
         let url = this.getUiTCounterUrl();
-        if(url) {
+
+        if (url) {
+
             fetch(url)
                 .then(response => {
+
                     if (!response.ok) {
                         throw Error('Fetching counter: ' + response.statusText);
                     }
+
                     return response.json();
                 })
                 .then(data => {
+
                     console.log(data);
-                    if(data && data.name) {
+
+                    if (data && data.name) {
+
                         let counterElem = (
                             <div className="uitpassearch-detail-counter">
                                 <div className="uitpassearch-detail-counter-name">{data.name}</div>
@@ -36,6 +47,7 @@ export class UiTPasCounter extends Component {
                                 {this.renderCounterContactInfo(data)}
                             </div>
                         );
+
                         this.setState({counter: counterElem})
                     }
                 })
@@ -45,20 +57,25 @@ export class UiTPasCounter extends Component {
         }
     }
 
-    renderCounterAddresses(counter){
+    renderCounterAddresses(counter) {
+
         let addressElems = [];
-        if(counter.address){
+
+        if (counter.address) {
             addressElems.push(this.renderCounterAddress(counter.address));
         }
-        if(counter.addresses && counter.addresses.length > 0){
+
+        if (counter.addresses && counter.addresses.length > 0) {
             addressElems = addressElems.concat(counter.addresses.map((address) => {
                 return this.renderCounterAddress(address);
             }));
         }
+
         return addressElems;
     }
 
-    renderCounterAddress(address){
+    renderCounterAddress(address) {
+
         return (
             <address className="uitpassearch-detail-counter-address" key={address.streetAddress + address.postalCode + address.addressLocality}>
                 {address.streetAddress}<br/>
@@ -67,37 +84,51 @@ export class UiTPasCounter extends Component {
         );
     }
 
-    renderCounterContactInfo(counter){
+    renderCounterContactInfo(counter) {
+
         let contactInfo = [];
         let key = 0;
-        if(counter.contactPoint){
-            if(counter.contactPoint.phone && counter.contactPoint.phone.length > 0){
-                key ++;
+
+        if (counter.contactPoint) {
+
+            if (counter.contactPoint.phone && counter.contactPoint.phone.length > 0) {
+
+                key++;
+
                 let phones = counter.contactPoint.phone.map((phone, i) => {
                     return ( <a href="tel:{phone}" key={i}>{phone}</a> );
                 });
+
                 contactInfo.push(
                     <div key={key}>
                         Tel.: {intersperse(phones, ', ')}
                     </div>
                 );
             }
-            if(counter.contactPoint.email && counter.contactPoint.email.length > 0){
+
+            if (counter.contactPoint.email && counter.contactPoint.email.length > 0) {
+
                 key++;
+
                 let emails = counter.contactPoint.email.map((email, i) => {
                     return ( <a href="mailto:{email}" key={i}>{email}</a> );
                 });
+
                 contactInfo.push(
                     <div key={key}>
                         E-mail: {intersperse(emails, ', ')}
                     </div>
                 );
             }
-            if(counter.contactPoint.url && counter.contactPoint.url.length > 0){
+
+            if (counter.contactPoint.url && counter.contactPoint.url.length > 0) {
+
                 key++;
+
                 let urls = counter.contactPoint.url.map((url, i) => {
                     return ( <a href={url} key={i}>{url}</a> );
                 });
+
                 contactInfo.push(
                     <div key={key}>
                         Link: {intersperse(urls, ', ')}
@@ -105,18 +136,21 @@ export class UiTPasCounter extends Component {
                 );
             }
         }
+
         return contactInfo;
     }
 
 
 
-    getUiTCounterUrl(){
-        if(this.props.counterId){
+    getUiTCounterUrl() {
+
+        if (this.props.counterId) {
             return UiTPasSearchConfig.get('uitDatabankUrlPrefix') + '/organizers/' + this.props.counterId;
         }
     }
 
-    render(){
+    render() {
+        
         return (
             <div className="uitpassearch-detail-counters">
                 {this.state.counter}

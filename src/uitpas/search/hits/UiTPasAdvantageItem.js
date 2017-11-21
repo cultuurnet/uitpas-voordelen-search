@@ -9,21 +9,25 @@ import {LastChanceLabel} from "../component/LastChanceLabel";
 
 export default class UiTPasAdvantageItem extends SearchkitComponent {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.defaultThumb = '/img/default-thumb.png';
     }
 
     render() {
+
         let title = get(this.props.result, '_source.title', 'UiTPas Voordeel');
         let thumbUrl = get(this.props.result, '_source.pictures', this.defaultThumb);
+
         //_source.pictures can be double array:
-        thumbUrl = (isArray(thumbUrl) ? (isArray(first(thumbUrl)) ? first(first(thumbUrl)) : first(thumbUrl)): thumbUrl);
+        thumbUrl = (isArray(thumbUrl) ? (isArray(first(thumbUrl)) ? first(first(thumbUrl)) : first(thumbUrl)) : thumbUrl);
         thumbUrl = (isUndefined(thumbUrl) ? this.defaultThumb : thumbUrl);
+
         let points = get(this.props.result, '_source.points', 0);
         let counters = get(this.props.result, '_source.balies', []);
         let detailPage = '/voordeel/' + get(this.props.result, '_source.id', 0);
         let cashingPeriodEnd = get(this.props.result, '_source.cashingPeriodEnd', null);
+
         return (
             <Col xs={12} sm={6} md={4} className="uitpassearch-hits-item">
                 <UiTPasThumbnail src={thumbUrl} alt={title} maxWidth={200} maxHeight={200}>
@@ -49,7 +53,7 @@ export default class UiTPasAdvantageItem extends SearchkitComponent {
         );
     }
 
-    makePointsLabel(points){
+    makePointsLabel(points) {
         return (points === 0 ? 'gratis' : points + ' punt' + (points === 1 ? '' : 'en'))
     }
 }

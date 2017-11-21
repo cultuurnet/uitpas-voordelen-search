@@ -3,23 +3,30 @@ import UiTPasSearchConfig from "../UiTPasSearchConfig";
 
 export default class WelcomeAdvantageSearchHits extends React.Component {
 
-    componentWillMount(){
+    componentWillMount() {
+
         let url = this.getWelcomeAdvantagesUrl();
         let urlHeaders = this.getWelcomeAdvantagesUrlHeaders(UiTPasSearchConfig.get('uitIdAPIUrlPrefix'));
+
         console.log(urlHeaders);
-        if(url) {
+
+        if (url) {
+
             fetch(url, {
                     method: 'get',
                     mode: 'no-cors',
                     headers: urlHeaders,
                 })
                 .then(response => {
+
                     if (!response.ok) {
                         throw Error('Fetching uitpas welcome advantages: ' + response.statusText);
                     }
+
                     return response.json();
                 })
                 .then(data => {
+
                     console.log(data);
                     /*if(data && data.name) {
                         let counterElem = (
@@ -38,11 +45,12 @@ export default class WelcomeAdvantageSearchHits extends React.Component {
         }
     }
 
-    getWelcomeAdvantagesUrl(url){
+    getWelcomeAdvantagesUrl(url) {
         return UiTPasSearchConfig.get('uitIdAPIUrlPrefix') + '/uitid/rest/uitpas/promotion/welcomeAdvantages';
     }
 
-    getWelcomeAdvantagesUrlHeaders(baseUrl){
+    getWelcomeAdvantagesUrlHeaders(baseUrl) {
+
         let timestamp = Math.ceil((new Date()).getTime() / 1000);
         let consumerKey = UiTPasSearchConfig.get('OAuthConsumerKey');
         let nonce = btoa(consumerKey + ':' + timestamp);
@@ -59,6 +67,7 @@ export default class WelcomeAdvantageSearchHits extends React.Component {
             '",oauth_nonce="' + nonce +
             '",oauth_version="1.0"' +
             ',oauth_signature="' + signature + '"';
+
         return {
             'Authorization': oauthHeader,
         };
@@ -75,7 +84,9 @@ export default class WelcomeAdvantageSearchHits extends React.Component {
     };
 
     oAuthSignature(base_string, signing_key) {
+
         let signature = this.hmac_sha1(base_string, signing_key);
+
         return this.percentEncode(signature);
     };
 
@@ -86,22 +97,28 @@ export default class WelcomeAdvantageSearchHits extends React.Component {
     };
 
     hmac_sha1(string, secret) {
+
         let jsSHA = require("jssha");
         let shaObj = new jsSHA("SHA-1", "TEXT");
+
         shaObj.setHMACKey(secret, "TEXT");
         shaObj.update(string);
+
         let hmac = shaObj.getHMAC("B64");
+
         return hmac;
     };
 
     mergeObjs(obj1, obj2) {
+
         for (let attr in obj2) {
             obj1[attr] = obj2[attr];
         }
+
         return obj1;
     };
 
-    genSortedParamStr(params, key, token, timestamp, nonce)  {
+    genSortedParamStr(params, key, token, timestamp, nonce) {
         // Merge oauth params & request params to single object
         let paramObj = this.mergeObjs(
             {
@@ -117,16 +134,19 @@ export default class WelcomeAdvantageSearchHits extends React.Component {
         // Sort alphabetically
         let paramObjKeys = Object.keys(paramObj);
         let len = paramObjKeys.length;
+
         paramObjKeys.sort();
         // Interpolate to string with format as key1=val1&key2=val2&...
         let paramStr = paramObjKeys[0] + '=' + paramObj[paramObjKeys[0]];
+
         for (let i = 1; i < len; i++) {
             paramStr += '&' + paramObjKeys[i] + '=' + this.percentEncode(decodeURIComponent(paramObj[paramObjKeys[i]]));
         }
+
         return paramStr;
     };
 
-    render(){
+    render() {
         return (<p>Grid comes here</p>);
     }
 }

@@ -11,14 +11,18 @@ import {
 const block = require('bem-cn');
 
 export default class UiTPasHitsGrid extends React.Component {
-    render(){
+
+    render() {
+
         const { hits, mod} = this.props;
         const bemBlocks = {
             container: block(mod),
             item: block(`${mod}-hit`)
         };
+
         let rowId = 0;
         let hitsChunks = this.chunkifyArray(hits, ceil(hits.length / 3), false);
+
         /*style={{width: '100%', boxSizing: 'border-box', padding: 8}}*/
         return (
             <Grid className="uitpassearch-hits-grid" fluid={true}>
@@ -30,7 +34,8 @@ export default class UiTPasHitsGrid extends React.Component {
         );
     }
 
-    makeGridRow(hits, bemBlocks, rowId){
+    makeGridRow(hits, bemBlocks, rowId) {
+
         return (
             <Row key={rowId}>
                 {map(hits, (hit, index) => {
@@ -51,8 +56,9 @@ export default class UiTPasHitsGrid extends React.Component {
      */
     chunkifyArray(a, n, balanced) {
 
-        if (n < 2)
+        if (n < 2) {
             return [a];
+        }
 
         var len = a.length,
             out = [],
@@ -60,30 +66,32 @@ export default class UiTPasHitsGrid extends React.Component {
             size;
 
         if (len % n === 0) {
+
             size = Math.floor(len / n);
+
             while (i < len) {
                 out.push(a.slice(i, i += size));
             }
-        }
+        } else if (balanced) {
 
-        else if (balanced) {
             while (i < len) {
                 size = Math.ceil((len - i) / n--);
                 out.push(a.slice(i, i += size));
             }
-        }
-
-        else {
+        } else {
 
             n--;
             size = Math.floor(len / n);
-            if (len % size === 0)
+
+            if (len % size === 0) {
                 size--;
+            }
+
             while (i < size * n) {
                 out.push(a.slice(i, i += size));
             }
-            out.push(a.slice(size * n));
 
+            out.push(a.slice(size * n));
         }
 
         return out;

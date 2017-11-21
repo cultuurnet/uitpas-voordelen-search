@@ -16,12 +16,15 @@ import PropTypes from 'prop-types';
 import UiTPasSearchConfig from '../UiTPasSearchConfig';
 
 export default class UiTPasSearchFilters extends React.Component {
+
     rangeFilterTranslation = {
         "range.submit": "filter",
     };
 
-    renderTypeFilter(){
-        if(this.props.showTypeFilter){
+    renderTypeFilter() {
+
+        if (this.props.showTypeFilter) {
+
             return (
                 <Col sm={12} md={3}>
                     <DynamicRangeFilter field="points"
@@ -30,12 +33,15 @@ export default class UiTPasSearchFilters extends React.Component {
                                         translations={this.rangeFilterTranslation}
                                         containerComponent={<Panel collapsable={true} defaultCollapsed={true} className="uitpassearch-filters-pnl-type"/>}
                                         rangeComponent={RangeSliderInput}/>
-                </Col>);
+                </Col>
+            );
         }
     }
 
-    renderCardSystemFilter(){
-        if(this.props.showCardSystemFilter){
+    renderCardSystemFilter() {
+
+        if (this.props.showCardSystemFilter) {
+
             return (
                 <Col sm={12} md={3}>
                     <RefinementListFilter field="applicableCardSystems.name.keyword"
@@ -43,12 +49,13 @@ export default class UiTPasSearchFilters extends React.Component {
                                           title="Voordeel aangeboden door"
                                           operator="OR"
                                           containerComponent={<Panel collapsable={true} defaultCollapsed={true} className="uitpassearch-filters-pnl-cardsystem"/>}/>
-                </Col>);
+                </Col>
+            );
         }
     }
 
-    renderExtraOptionFilter(){
-        if(this.props.showExtraOptionFilter){
+    renderExtraOptionFilter() {
+        if (this.props.showExtraOptionFilter) {
             return (
                 <Col sm={12} md={3}>
                     <Panel title="Extra opties"
@@ -78,12 +85,14 @@ export default class UiTPasSearchFilters extends React.Component {
      * on the detail page. By adding this filter we have created an API to filter on counters on the
      * search pages.
      */
-    renderHiddenCounterFilter(){
-        if(this.props.renderCounterFilter){
+    renderHiddenCounterFilter() {
+
+        if (this.props.renderCounterFilter) {
             //do not show this filter to the user.
             let hideFilterStyle = {
                 display: 'none',
             };
+
             return (
                 <div style={hideFilterStyle}>
                     <RefinementListFilter field="balies.name.keyword"
@@ -95,7 +104,8 @@ export default class UiTPasSearchFilters extends React.Component {
         }
     }
 
-    render(){
+    render() {
+        
         return (
             <div className="uitpassearch-row">
                 <p className="lead">Verfijn je resultaat</p>

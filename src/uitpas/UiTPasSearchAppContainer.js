@@ -13,6 +13,7 @@ import UiTPasDetailPage from "./search/page/UiTPasDetailPage";
 class UiTPasSearchAppContainer extends Component {
 
     render() {
+        
         return (
             <div className="App">
                 <Nav bsStyle="tabs">

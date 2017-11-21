@@ -1,41 +1,44 @@
 import {
     SearchkitManager,
     TermQuery,
-} from "searchkit";
+} from 'searchkit';
 
 export default class UiTElasticSearchKit {
 
-    constructor(){
+    constructor() {
         this.searchkit = null;
     }
 
     getSearchKit() {
-        if(!this.searchkit){
+
+        if (!this.searchkit){
             this.searchkit = UiTElasticSearchKit.createSearchkit();
             this.initSearchkit();
         }
         return this.searchkit;
     }
 
-    initSearchkit(){
+    initSearchkit() {
         //only allow active advantages
         this.searchkit.addDefaultQuery(
             (query) => query.addQuery(
-                TermQuery("status.keyword", "ACTIVE")
+                TermQuery('status.keyword', 'ACTIVE')
             )
         );
     }
 
-    static createSearchkit(){
-        let es_url = "http://acc.uitid.be:9200/promotions/";
+    static createSearchkit() {
+
+        let es_url = 'http://acc.uitid.be:9200/promotions/';
+
         return new SearchkitManager(es_url);
     }
 
     getDefaultSearchFields(){
-        return ["balies.name", "balies.cityName", "balies.cityZip"];
+        return ['balies.name', 'balies.cityName', 'balies.cityZip'];
     }
 
     getDefaultSuggestField(){
-        return "balies.name";
+        return 'balies.name';
     }
 }

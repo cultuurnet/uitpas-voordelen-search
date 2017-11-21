@@ -19,7 +19,8 @@ import UiTPasAdvantageItem from './UiTPasAdvantageItem';
 import UiTPasHitsGrid from "./UiTPasHitsGrid";
 import './UiTPasSearchHits.css';
 
-export default class UiTPasSearchHits extends SearchkitComponent{
+export default class UiTPasSearchHits extends SearchkitComponent {
+
     noHitsTranslation = {
         "NoHits.NoResultsFound": "Er werden geen UiTPas-voordelen gevonden voor '{query}'.",
         "NoHits.DidYouMean": "Bedoelde je '{suggestion}'?",
@@ -28,18 +29,22 @@ export default class UiTPasSearchHits extends SearchkitComponent{
         "NoHits.Error":"Oeps! Er is wat misgelopen bij het ophalen van de UiTPas voordelen. Probeer het later nog eens.",
         "NoHits.ResetSearch":"Herinitialiseer de zoekopdracht",
     };
+
     hitsStatsTranslation = {
         "hitstats.results_found": "{hitCount} voordelen gevonden"
     };
+
     paginationTranslation = {
         "pagination.previous": "Vorige",
         "pagination.next": "Volgende",
     };
+
     resetFiltersTranslations = {
         "reset.clear_all": "Verwijder alle filters",
     };
 
-    render(){
+    render() {
+
         return (
             <div>
                 <ActionBar>
@@ -53,10 +58,10 @@ export default class UiTPasSearchHits extends SearchkitComponent{
                             <span>Sorteer op</span>
                             <SortingSelector
                                 options={[
-                                    {label:"Meest recent", field:"creationDate", order:"desc", key: "mostRecent", defaultOption:true},
-                                    {label:"Meest omgeruild", field:"unitsTaken", order:"desc", key:"mostBartered"},
-                                    {label:"Puntenaantal laag - hoog", field:"points", order:"desc", key:"pointsHighLow"},
-                                    {label:"Puntenaantal hoog - laag", field:"points", order:"asc", key:"pointsLowHigh"}
+                                    { label: 'Meest recent', field: 'creationDate', order: 'desc', key: 'mostRecent', defaultOption: true },
+                                    { label: 'Meest omgeruild', field: 'unitsTaken', order: 'desc', key: 'mostBartered' },
+                                    { label: 'Puntenaantal laag - hoog', field: 'points', order: 'desc', key: 'pointsHighLow' },
+                                    { label: 'Puntenaantal hoog - laag', field: 'points', order: 'asc', key: 'pointsLowHigh' }
                                 ]}/>
                         </div>
                     </ActionBarRow>

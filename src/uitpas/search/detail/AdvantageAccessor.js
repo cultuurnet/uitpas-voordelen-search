@@ -5,18 +5,19 @@ import {
 } from "searchkit"
 
 
-export class AdvantageAccessor extends Accessor{
+export class AdvantageAccessor extends Accessor {
+
     advantageId = 0;
 
-    setAdvantageId(id){
+    setAdvantageId(id) {
         this.advantageId = id;
     }
 
-    getAdvantageId(){
+    getAdvantageId() {
         return this.advantageId;
     }
 
-    buildOwnQuery(query){
+    buildOwnQuery(query) {
         return query.addQuery(TermQuery('id', this.getAdvantageId())).setSize(1);
     }
 }

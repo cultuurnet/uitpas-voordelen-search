@@ -15,27 +15,34 @@ export class UiTImage extends React.Component {
         crop: PropTypes.bool,
     };
 
-    static getUiTImageUrl(src, maxHeight, maxWidth, height, width, crop=false){
+    static getUiTImageUrl(src, maxHeight, maxWidth, height, width, crop=false) {
+
         let urlParams = [];
-        if(maxHeight) {
+
+        if (maxHeight) {
             urlParams.push('maxheight=' + maxHeight);
         }
-        if(maxWidth){
+
+        if (maxWidth) {
             urlParams.push('maxwidth=' + maxWidth);
         }
-        if(height) {
+
+        if (height) {
             urlParams.push('height=' + maxHeight);
         }
-        if(width){
+
+        if (width) {
             urlParams.push('width=' + maxWidth);
         }
-        if(crop){
+
+        if (crop) {
             urlParams.push('crop=' + crop);
         }
+
         return src + '?' + urlParams.join('&');
     }
 
-    render(){
+    render() {
         return (
             <img src={UiTImage.getUiTImageUrl(this.props.src, this.props.maxHeight, this.props.maxWidth, this.props.height, this.props.width, this.props.crop)}
                  alt={this.props.alt}/>
@@ -44,7 +51,7 @@ export class UiTImage extends React.Component {
 }
 
 export class UiTPasThumbnail extends Thumbnail {
-    render(){
+    render() {
         return (
             <Thumbnail src={UiTImage.getUiTImageUrl(this.props.src, this.props.maxHeight, this.props.maxWidth, this.props.height, this.props.width, this.props.crop)}
                        alt={this.props.alt}

@@ -12,7 +12,9 @@ import UiTPasSearchBar from "../bar/UiTPasSearchBar";
 
 
 export default class UiTPasAdvantageSearchPage extends UiTPasSearchPage {
+
     render() {
+        
         return (
             <SearchkitProvider searchkit={this.state.searchkit.getSearchKit()}>
                 <Layout>

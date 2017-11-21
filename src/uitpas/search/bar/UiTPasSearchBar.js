@@ -7,7 +7,9 @@ import {
 } from "searchkit";
 
 export default class UiTPasSearchBar extends React.Component {
+
     render() {
+      
         return (
             <TopBar>
                 <RefinementListFilter id="typesFilter"
