@@ -3,7 +3,9 @@
 export default class UiTPasSearchConfig {
 
     static config = {
-        lastChanceWeeks: 1,
+        lastChanceWeeks: 1000,
+        showActiveAdvantages: true,
+        showPublishedAdvantages: false,
         uitDatabankUrlPrefix: 'https://io-acc.uitdatabank.be',
         uitIdAPIUrlPrefix: 'https://acc.uitid.be',
         OAuthConsumerKey: '1fc6b3fcde6e612ede360715045713f3',

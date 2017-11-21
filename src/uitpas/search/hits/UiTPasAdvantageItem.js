@@ -3,9 +3,12 @@ import {SearchkitComponent} from "searchkit";
 import {first, get, isArray, isUndefined, map} from "lodash";
 import {Col, Label} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import Truncate from 'react-truncate';
 import {UiTPasThumbnail} from '../component/UiTImage';
 import {LastChanceLabel} from "../component/LastChanceLabel";
+import {joinNicely} from "../helper/UiTPasArrayUtils";
+import './UiTPasAdvantageItem.css';
+
+let HtmlToReactParser = require('html-to-react').Parser;
 
 export default class UiTPasAdvantageItem extends SearchkitComponent {
 
@@ -35,18 +38,11 @@ export default class UiTPasAdvantageItem extends SearchkitComponent {
                     <Link to={detailPage}>
                         <h3>{title}</h3>
                     </Link>
-                    <p>
-                        <Truncate lines={3} ellipsis={'…'}>
-                            {get(this.props.result, '_source.description1', '')}
-                        </Truncate>
-                    </p>
                     <div className="uitpassearch-grid__hit-counter">
-                        {map(counters, (counter) => {
-                            return (<Label key={counter.actorId}>{counter.name}</Label>);
-                        })}
+                        {this.renderCounters(counters)}
                     </div>
                     <div className="uitpassearch-grid__hit-points">
-                        <Label bsStyle="primary">{this.makePointsLabel(points)}</Label>
+                        <h3><Label bsStyle="primary">{this.makePointsLabel(points)}</Label></h3>
                     </div>
                 </UiTPasThumbnail>
             </Col>
@@ -55,5 +51,17 @@ export default class UiTPasAdvantageItem extends SearchkitComponent {
 
     makePointsLabel(points) {
         return (points === 0 ? 'gratis' : points + ' punt' + (points === 1 ? '' : 'en'))
+    }
+
+    renderCounters(counters) {
+
+        let counterComps = map(counters, (counter) => {
+            return '<span>' + counter.name + ' te ' + counter.cityName + '</span>';
+        });
+
+        let countersHtml = joinNicely(counterComps, ', ', ' en ');
+        let parser = new HtmlToReactParser();
+        
+        return parser.parse(countersHtml);
     }
 }

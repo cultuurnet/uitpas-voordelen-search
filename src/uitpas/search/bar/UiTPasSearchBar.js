@@ -19,7 +19,7 @@ export default class UiTPasSearchBar extends React.Component {
                                       orderKey="_term"
                                       listComponent={Select}/>
                 <SearchBox queryFields={this.props.searchFields}
-                           placeholder={'bv. CC De Werf'}/>
+                           placeholder={'Naam voordeel, organisator of gemeente'}/>
             </TopBar>
         );
     }
