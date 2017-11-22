@@ -2,7 +2,6 @@ import * as React from 'react';
 import { get } from 'lodash';
 import { SearchkitComponent } from 'searchkit'
 import { AdvantageAccessor } from './AdvantageAccessor';
-// import './UiTPasAdvantageDetail.css';
 import UiTPasRelatedItems from './UiTPasRelatedItems';
 import UiTPasAdvantageDescription from './UiTPasAdvantageDescription';
 

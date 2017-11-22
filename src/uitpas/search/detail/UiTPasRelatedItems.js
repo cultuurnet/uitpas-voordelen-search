@@ -48,7 +48,7 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
 
                 //check if it is not the detail advantage...
                 //this is returned first before the new query is executed.
-                if (hits.length > 0 && parseInt(hits[0]._source.id) !== this.props.advantage){
+                if (hits.length > 0 && parseInt(hits[0]._source.id, 10) !== this.props.advantage){
                     this.items = hits;
                 }
             } else {

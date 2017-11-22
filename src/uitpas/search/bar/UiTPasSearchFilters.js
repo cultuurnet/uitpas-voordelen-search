@@ -3,7 +3,6 @@ import {
     DynamicRangeFilter,
     Panel,
     RefinementListFilter,
-    RangeSliderInput,
     RangeInput,
     CheckboxFilter,
     TermQuery,

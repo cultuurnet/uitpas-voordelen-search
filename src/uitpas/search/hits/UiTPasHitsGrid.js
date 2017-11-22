@@ -1,12 +1,8 @@
 import * as React from "react";
 import {
-    ceil, map
+    map
 } from "lodash";
 import UiTPasAdvantageItem from './UiTPasAdvantageItem';
-import {
-    Grid,
-    Row
-} from 'react-bootstrap';
 
 const block = require('bem-cn');
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { get, map } from 'lodash';
+import { map } from 'lodash';
 import moment from 'moment';
 import { Label } from 'react-bootstrap';
 
