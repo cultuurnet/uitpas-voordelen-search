@@ -1,9 +1,5 @@
 import * as React from "react";
 import {
-    Col,
-    Row,
-} from 'react-bootstrap';
-import {
     DynamicRangeFilter,
     Panel,
     RefinementListFilter,
@@ -26,14 +22,14 @@ export default class UiTPasSearchFilters extends React.Component {
         if (this.props.showTypeFilter) {
 
             return (
-                <Col sm={12} md={3}>
+                <div className="sk-grid__12 sk-grid--bp-med__3">
                     <DynamicRangeFilter field="points"
                                         id="pointsFilter"
                                         title="Puntenaantal"
                                         translations={this.rangeFilterTranslation}
                                         containerComponent={<Panel collapsable={true} defaultCollapsed={true} className="uitpassearch-filters-pnl-type"/>}
                                         rangeComponent={RangeSliderInput}/>
-                </Col>
+                </div>
             );
         }
     }
@@ -43,13 +39,13 @@ export default class UiTPasSearchFilters extends React.Component {
         if (this.props.showCardSystemFilter) {
 
             return (
-                <Col sm={12} md={3}>
+                <div className="sk-grid__12 sk-grid--bp-med__3">
                     <RefinementListFilter field="applicableCardSystems.name.keyword"
                                           id="cardSystemsFilter"
                                           title="Voordeel aangeboden door"
                                           operator="OR"
                                           containerComponent={<Panel collapsable={true} defaultCollapsed={true} className="uitpassearch-filters-pnl-cardsystem"/>}/>
-                </Col>
+                </div>
             );
         }
     }
@@ -57,7 +53,7 @@ export default class UiTPasSearchFilters extends React.Component {
     renderExtraOptionFilter() {
         if (this.props.showExtraOptionFilter) {
             return (
-                <Col sm={12} md={3}>
+                <div className="sk-grid__12 sk-grid--bp-med__3">
                     <Panel title="Extra opties"
                            collapsable={true}
                            defaultCollapsed={true}
@@ -75,7 +71,7 @@ export default class UiTPasSearchFilters extends React.Component {
                                             "gte": "now/d"
                                         })} />
                     </Panel>
-                </Col>
+                </div>
             );
         }
     }
@@ -107,14 +103,14 @@ export default class UiTPasSearchFilters extends React.Component {
     render() {
         
         return (
-            <div className="uitpassearch-row">
+            <div>
                 <p className="lead">Verfijn je resultaat</p>
-                <Row className="uitpassearch-options-filters uitpassearch-row">
+                <div className="sk-grid">
                     {this.renderTypeFilter()}
                     {this.renderExtraOptionFilter()}
                     {this.renderCardSystemFilter()}
                     {this.renderHiddenCounterFilter()}
-                </Row>
+                </div>
                 <hr/>
             </div>
         );

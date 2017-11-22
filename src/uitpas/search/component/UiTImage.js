@@ -1,9 +1,5 @@
 import * as React from "react";
 import PropTypes from 'prop-types';
-import {
-    Thumbnail
-} from 'react-bootstrap';
-
 
 export class UiTImage extends React.Component {
     static propTypes = {
@@ -28,11 +24,11 @@ export class UiTImage extends React.Component {
         }
 
         if (height) {
-            urlParams.push('height=' + maxHeight);
+            urlParams.push('height=' + height);
         }
 
         if (width) {
-            urlParams.push('width=' + maxWidth);
+            urlParams.push('width=' + width);
         }
 
         if (crop) {
@@ -49,27 +45,3 @@ export class UiTImage extends React.Component {
         );
     }
 }
-
-export class UiTPasThumbnail extends Thumbnail {
-    render() {
-        return (
-            <Thumbnail src={UiTImage.getUiTImageUrl(this.props.src, this.props.maxHeight, this.props.maxWidth, this.props.height, this.props.width, this.props.crop)}
-                       alt={this.props.alt}
-                       href={this.props.href}
-                       onError={this.props.onError}
-                       onLoad={this.props.onLoad}>
-                {this.props.children}
-            </Thumbnail>
-        );
-    }
-}
-
-//append extra propTypes to thumbnail propTypes:
-let thumbnailPropTypes = Thumbnail.propTypes;
-thumbnailPropTypes.maxHeight = PropTypes.number;
-thumbnailPropTypes.maxWidth = PropTypes.number;
-thumbnailPropTypes.height = PropTypes.number;
-thumbnailPropTypes.width = PropTypes.number;
-thumbnailPropTypes.crop = PropTypes.bool;
-
-UiTPasThumbnail.propTypes = thumbnailPropTypes;

@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "html-to-react": "1.2.12",
     "jssha": "^2.3.1",
     "lodash": "^4.17.4",
     "moment": "^2.19.1",
+    "node-sass-chokidar": "^0.0.3",
     "prop-types": "^15.6.0",
     "react": "^15.0.0",
     "react-bootstrap": "^0.31.3",
@@ -14,13 +16,14 @@
     "react-router-bootstrap": "^0.24.4",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
-    "html-to-react": "1.2.12",
     "searchkit": "^2.2.1-0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
   }
 }

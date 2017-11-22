@@ -90,7 +90,7 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
             if (this.items.length > 0) {
 
                 return (
-                    <div>
+                    <div className="sk-grid sk-grid--bp-sml-2-col sk-grid--bp-med-3-col">
                         {this.items.map((item, i) => {
                             return (<UiTPasAdvantageItem result={item} key={i}/>);
                         })}

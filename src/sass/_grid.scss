@@ -1,0 +1,164 @@
+// Grid system
+
+// Centered container element
+@mixin container-fluid($gutter: $grid-gutter-width) {
+  @include cf();
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: ($gutter / 2);
+  padding-right: ($gutter / 2);
+}
+
+// Creates a wrapper for a series of columns
+@mixin make-row($gutter: $grid-gutter-width) {
+  margin-left:  ($gutter / -2);
+  margin-right: ($gutter / -2);
+  margin-top: -$grid-rhythm;
+}
+
+// Creates a single column
+@mixin make-column($index, $columns: $grid-column-count, $gutter: $grid-gutter-width) {
+  width: round(percentage($index / $columns)*1000)/1000;
+}
+@mixin make-repeating-column($index, $columns: $grid-column-count) {
+  width: round(percentage(10 / $index)*1000)/10000;
+  > * {
+    flex: 1 0 auto;
+  }
+}
+
+@mixin make-column-legacy($columns) {
+  &:nth-child(#{$columns}n+#{($columns+1)}) {
+    clear: left;
+  }
+}
+
+@mixin make-column-push($index, $columns: $grid-column-count) {
+  margin-left: round(percentage($index / $columns)*1000)/1000;
+}
+
+// Get column with in px
+@function get-column-outer-width($index) {
+  $divider: $grid-column-count / $index;
+  @return (($grid-container-width / $divider));
+}
+
+@function get-column-inner-width($index) {
+  $divider: $grid-column-count / $index;
+  @return (($grid-container-width / $divider) - $grid-gutter-width);
+}
+
+// RWD Breakpoints
+@mixin breakpoint($point, $query: min-width) {
+  @if $query == max-width {
+    @media ($query: $point - 1)  {
+      @content;
+    }
+  } @else  {
+    @media ($query: $point)  {
+      @content;
+    }
+  }
+}
+
+// Grid
+// ----
+//
+// columns          - The total amount of columns
+// gutter           - The amount of space between two columns
+// container-*      - The total width of the container for large / medium / small
+$grid-gutter-width: 20px !default;
+$grid-column-count: 12 !default;
+$grid-container-width: 1200px !default;
+
+$grids: (2, 3, 4) !default;
+$grid-columns: (3, 4, 6, 8, 9) !default;
+$grid-columns-push: () !default;
+$grid-rhythm: 20px !default;
+
+$breakpoints: (
+  xxs: 320px,
+  xsm: 440px,
+  sml: 660px,
+  med: 820px,
+  lrg: 980px,
+  xlr: 1200px
+);
+
+.sk-grid {
+  @include make-row;
+  display: flex;
+  flex-wrap: wrap;
+  > * {
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    min-height: 1px;
+    width: 100%;
+    margin-top: $grid-rhythm;
+    padding-left: ($grid-gutter-width / 2);
+    padding-right: ($grid-gutter-width / 2);
+  }
+}
+
+.sk-grid__0 {
+  display: none;
+}
+.sk-grid__12 {
+  display: block;
+}
+
+//== Standard repeating grid
+//-------------
+//
+// Creates all the breakpoint grid classes
+// Examples: .grid--2-col
+@each $bp, $px in $breakpoints {
+  .sk-grid {
+    @each $column in $grids {
+      &--#{$column}-col {
+        > .sk-grid__item {
+          @include make-repeating-column($column);
+        }
+      }
+    }
+  }
+}
+
+// Creates all the grid item classes
+// Examples: .grid__6
+@each $column in $grid-columns {
+  .sk-grid__#{$column} {
+    @include make-column($column);
+  }
+}
+
+// Creates all the breakpoint grid classes
+// Examples: .grid--bp-med-2-col, .grid--bp-sml-1-col
+@each $bp, $px in $breakpoints {
+  @include breakpoint($px, min-width) {
+    .sk-grid--bp-#{$bp} {
+      @each $column in $grids {
+        &-#{$column}-col {
+          > .sk-grid__item {
+            @include make-repeating-column($column);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Creates all the breakpoint grid ITEM classes
+// Example: .grid--bp-med__8
+@each $bp, $px in $breakpoints {
+  @include breakpoint($px, 'min-width') {
+    .sk-grid--bp-#{$bp} {
+      @each $column in $grid-columns {
+        &__#{$column} {
+          @include make-column($column);
+        }
+      }
+    }
+  }
+}

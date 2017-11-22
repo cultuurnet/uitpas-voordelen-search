@@ -1,7 +1,8 @@
 import * as React from "react";
 import PropTypes from 'prop-types';
 import UiTPasSearchConfig from '../UiTPasSearchConfig';
-import {Label} from 'react-bootstrap';
+
+// bovenop foto's
 
 export class LastChanceLabel extends React.Component {
 
@@ -27,12 +28,12 @@ export class LastChanceLabel extends React.Component {
             if (this.isDeprecated()) {
 
                 return (
-                    <Label bsStyle="primary">Te laat...</Label>
+                    <div className="sk-card__banner">Te laat...</div>
                 );
             } else if (this.isLastChance()) {
 
                 return (
-                    <Label bsStyle="primary">Laatste kans!</Label>
+                    <div className="sk-card__banner">Laatste kans!</div>
                 );
             }
         }

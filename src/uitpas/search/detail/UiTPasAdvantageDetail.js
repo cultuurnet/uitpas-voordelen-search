@@ -1,11 +1,10 @@
-import * as React from "react";
-import {get, map} from 'lodash';
-import {SearchkitComponent,} from "searchkit"
-import {AdvantageAccessor} from "./AdvantageAccessor";
-import {Col, Grid, Label, Row,} from 'react-bootstrap';
-import './UiTPasAdvantageDetail.css';
+import * as React from 'react';
+import { get } from 'lodash';
+import { SearchkitComponent } from 'searchkit'
+import { AdvantageAccessor } from './AdvantageAccessor';
+// import './UiTPasAdvantageDetail.css';
 import UiTPasRelatedItems from './UiTPasRelatedItems';
-import UiTPasAdvantageDescription from "./UiTPasAdvantageDescription";
+import UiTPasAdvantageDescription from './UiTPasAdvantageDescription';
 
 export default class UiTPasAdvantageDetail extends SearchkitComponent {
 
@@ -34,7 +33,7 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
         if (!this.advantage) {
 
             let now = +new Date();
-            let newSearch = now - this.lastSearchMs <= 2000;
+            // let newSearch = now - this.lastSearchMs <= 2000;
 
             this.lastSearchMs = now;
             this.searchkit.search();
@@ -65,13 +64,13 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
     renderAdvantage() {
 
         return (
-            <Grid>
+            <div>
                 <UiTPasAdvantageDescription advantage={this.advantage}/>
                 <hr/>
-                <Row>
+                <div className="sk-grid sk-grid--bp-sml-2-col sk-grid--bp-med-3-col">
                     <UiTPasRelatedItems counters={this.advantage.balies} advantage={this.advantage.id}/>
-                </Row>
-            </Grid>
+                </div>
+            </div>
         );
     }
 

@@ -1,0 +1,68 @@
+.sk-card {
+  display: block;
+  color: inherit;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  &__img {
+    overflow: hidden;
+    position: relative;
+    img {
+      transition: filter 0.2s;
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+
+  &__banner {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    background: $sk-primary-theme-color;
+    color: white;
+    z-index: 1;
+    padding: 0.25em 0.5em;
+  }
+
+  &__title {
+    margin-top: 0;
+    font-size: 1.5em;
+    transition: color 0.2s;
+  }
+
+  &__text {
+    color: $sk-gray-50;
+  }
+
+  &__label {
+    display: inline-block;
+    background: $sk-gray-25;
+    color: $sk-text-color;
+    padding: 0.5em 1em;
+  }
+
+  &__main {
+    padding: 20px;
+  }
+}
+
+
+a.sk-card,
+.sk-card--link {
+  color: inherit;
+  &:visited {
+    color: inherit;
+  }
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    color: inherit;
+    .sk-card__title {
+      color: $sk-primary-theme-color;
+    }
+    .sk-card__img img {
+      filter: grayscale(100%);
+    }
+  }
+}

@@ -1,32 +1,36 @@
-import * as React from "react";
-import {get, map} from 'lodash';
-import {Col, Grid, Label, Row,} from 'react-bootstrap';
-import './UiTPasAdvantageDetail.css';
-import {UiTImage} from "../component/UiTImage";
-import {UiTPasCounter} from "./UiTPasCounter";
-import {LastChanceLabel} from '../component/LastChanceLabel';
+import * as React from 'react';
+import { get, map } from 'lodash';
 import moment from 'moment';
+import { Label } from 'react-bootstrap';
+
+import { UiTImage } from "../component/UiTImage";
+import { UiTPasCounter } from "./UiTPasCounter";
+import { LastChanceLabel } from '../component/LastChanceLabel';
+
+
+import './UiTPasAdvantageDetail.css';
 
 export default class UiTPasAdvantageDescription extends React.Component {
 
     render() {
 
         return (
-            <Row>
-                <Col md={6} sm={12}>
+            <div className="sk-grid">
+                <div className="sk-grid__12 sk-grid--bp-med__6">
                     <h1>{this.props.advantage.title}</h1>
                     {this.renderCounters()}
                     {this.renderDescription()}
                     {this.renderMoreInfo()}
                     {this.renderPracticalInfo()}
                     {this.renderAvailability()}
-                </Col>
-                <Col md={6} sm={12}>
+                </div>
+                <div className="sk-grid__12 sk-grid--bp-med__6">
                     {this.renderPoints()}
                     <LastChanceLabel endDate={this.props.advantage.cashingPeriodEnd}/>
                     {this.renderImage()}
-                </Col>
-            </Row>);
+                </div>
+            </div>
+        );
     }
 
     renderCounters() {
