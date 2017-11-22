@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
     Thumbnail
 } from 'react-bootstrap';
+import UitPasSearchConfig from '../UiTPasSearchConfig';
 
 
 export class UiTImage extends React.Component {
@@ -16,23 +17,29 @@ export class UiTImage extends React.Component {
     };
 
     static getUiTImageUrl(src, maxHeight, maxWidth, height, width, crop=false){
-        let urlParams = [];
-        if(maxHeight) {
-            urlParams.push('maxheight=' + maxHeight);
+        if(src){
+            let urlParams = [];
+            if(maxHeight) {
+                urlParams.push('maxheight=' + maxHeight);
+            }
+            if(maxWidth){
+                urlParams.push('maxwidth=' + maxWidth);
+            }
+            if(height) {
+                urlParams.push('height=' + maxHeight);
+            }
+            if(width){
+                urlParams.push('width=' + maxWidth);
+            }
+            if(crop){
+                urlParams.push('crop=' + crop);
+            }
+            return src + '?' + urlParams.join('&');
         }
-        if(maxWidth){
-            urlParams.push('maxwidth=' + maxWidth);
+        else{
+            //there is no thumbnail url, set default placeholder
+            return UitPasSearchConfig.get('defaultThumbUrl');
         }
-        if(height) {
-            urlParams.push('height=' + maxHeight);
-        }
-        if(width){
-            urlParams.push('width=' + maxWidth);
-        }
-        if(crop){
-            urlParams.push('crop=' + crop);
-        }
-        return src + '?' + urlParams.join('&');
     }
 
     render(){
