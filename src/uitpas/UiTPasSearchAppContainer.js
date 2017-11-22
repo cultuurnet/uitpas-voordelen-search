@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom';
 
 import UiTPasAdvantageSearchPage from './search/page/UiTPasAdvantageSearchPage';
@@ -14,16 +14,16 @@ class UiTPasSearchAppContainer extends Component {
         return (
             <div className="App">
                 <div className="sk-tabs">
-                    <Link to="/voordelen" activeClassName="active" className="sk-tabs-option" onlyActiveOnIndex>
+                    <NavLink to="/voordelen" activeClassName="<active></active>" className="sk-tabs-option">
                         <div>Voordelen</div>
-                    </Link>
-                    <Link to="/welkomstvoordelen" activeClassName="active" className="sk-tabs-option" onlyActiveOnIndex>
+                    </NavLink>
+                    <NavLink to="/welkomstvoordelen" activeClassName="<active></active>" className="sk-tabs-option">
                         <div>Welkomstvoordelen</div>
-                    </Link>
+                    </NavLink>
                 </div>
                 <Switch>
-                    <Route exact path="/voordelen" component={UiTPasAdvantageSearchPage}/>
-                    <Route exact path="/welkomstvoordelen" component={UiTPasWelcomeAdvantageSearchPage}/>
+                    <Route exact name="voordelen" path="/voordelen" component={UiTPasAdvantageSearchPage}/>
+                    <Route exact name="welkomstvoordelen" path="/welkomstvoordelen" component={UiTPasWelcomeAdvantageSearchPage}/>
                     <Route path="/voordeel/:id" component={UiTPasDetailPage}/>
                     <Route component={UiTPasAdvantageSearchPage}/>
                 </Switch>

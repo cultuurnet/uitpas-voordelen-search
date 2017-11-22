@@ -3,7 +3,6 @@ import {
     DynamicRangeFilter,
     Panel,
     RefinementListFilter,
-    RangeSliderInput,
     RangeInput,
     CheckboxFilter,
     TermQuery,
@@ -73,16 +72,19 @@ export default class UiTPasSearchFilters extends React.Component {
                            className="uitpassearch-filters-pnl-extraoptions">
                         <CheckboxFilter id="childrenFilter"
                                         label="Speciaal voor kinderen"
-                                        filter={TermQuery("forKids", true)} />
+                                        title=""
+                                        filter={TermQuery("forKids", true)}/>
                         <CheckboxFilter id="sportFilter"
                                         label="Sportactiviteiten"
-                                        filter={TermQuery("sport", true)} />
+                                        title=""
+                                        filter={TermQuery("sport", true)}/>
                         <CheckboxFilter id="lastChance"
                                         label="Laatste kans"
+                                        title=""
                                         filter={RangeQuery("cashingPeriodEnd", {
                                             "lt": "now+" + UiTPasSearchConfig.get('lastChanceWeeks') + "w/d",
                                             "gte": "now/d"
-                                        })} />
+                                        })}/>
                     </Panel>
                 </div>
             );

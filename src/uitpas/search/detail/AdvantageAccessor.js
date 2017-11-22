@@ -1,7 +1,6 @@
 import {
     Accessor,
-    TermQuery,
-    ImmutableQuery,
+    TermQuery
 } from "searchkit"
 
 

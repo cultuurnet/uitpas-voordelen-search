@@ -5,7 +5,6 @@ import {
     LayoutResults,
 } from "searchkit";
 import UiTPasSearchPage from './UiTPasSearchPage';
-import UiTPasSearchHits from '../hits/UiTPasSearchHits';
 import UiTPasSearchFilters from '../bar/UiTPasSearchFilters';
 import WelcomeAdvantageSearchHits from "../welcome/WelcomeAdvantageSearchHits";
 

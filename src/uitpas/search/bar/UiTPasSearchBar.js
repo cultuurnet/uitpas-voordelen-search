@@ -1,9 +1,7 @@
 import * as React from "react";
 import {
     TopBar,
-    RefinementListFilter,
-    SearchBox,
-    Select,
+    SearchBox
 } from "searchkit";
 
 export default class UiTPasSearchBar extends React.Component {
