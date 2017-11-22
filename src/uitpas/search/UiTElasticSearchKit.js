@@ -23,18 +23,22 @@ export default class UiTElasticSearchKit {
 
 
     initSearchkit() {
+
         let defaultQueries = [];
-        if(UiTPasSearchConfig.get('showActiveAdvantages')){
+
+        if (UiTPasSearchConfig.get('showActiveAdvantages')) {
             //only allow active advantages
             defaultQueries.push(TermQuery('status.keyword', 'ACTIVE'));
         }
-        if(UiTPasSearchConfig.get('showPublishedAdvantages')){
+
+        if (UiTPasSearchConfig.get('showPublishedAdvantages')) {
             //only allow published advantages
             defaultQueries.push(RangeQuery('publicationPeriodEnd', {
                 'gte': 'now'
             }));
         }
-        if(defaultQueries.length > 0) {
+        if (defaultQueries.length > 0) {
+
             this.searchkit.addDefaultQuery(
                 (query) => query.addQuery(
                     BoolMust(defaultQueries)
@@ -50,11 +54,11 @@ export default class UiTElasticSearchKit {
         return new SearchkitManager(es_url);
     }
 
-    getDefaultSearchFields(){
+    getDefaultSearchFields() {
         return ['balies.name', 'balies.cityName', 'balies.cityZip', 'title'];
     }
 
-    getDefaultSuggestField(){
+    getDefaultSuggestField() {
         return 'balies.name';
     }
 }

@@ -12,8 +12,9 @@ export class UiTImage extends React.Component {
         crop: PropTypes.bool,
     };
 
-    static getUiTImageUrl(src, maxHeight, maxWidth, height, width, crop=false){
-        if(src){
+    static getUiTImageUrl(src, maxHeight, maxWidth, height, width, crop=false) {
+
+        if (src) {
 
             let urlParams = [];
 
@@ -38,8 +39,8 @@ export class UiTImage extends React.Component {
             }
 
             return src + '?' + urlParams.join('&');
-        }
-        else{
+            
+        } else {
             //there is no thumbnail url, set default placeholder
             return UitPasSearchConfig.get('defaultThumbUrl');
         }
