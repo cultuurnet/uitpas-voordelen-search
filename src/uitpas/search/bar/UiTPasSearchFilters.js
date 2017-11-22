@@ -8,6 +8,7 @@ import {
     Panel,
     RefinementListFilter,
     RangeSliderInput,
+    RangeInput,
     CheckboxFilter,
     TermQuery,
     RangeQuery,
@@ -20,17 +21,32 @@ export default class UiTPasSearchFilters extends React.Component {
         "range.submit": "filter",
     };
 
-    renderTypeFilter(){
-        if(this.props.showTypeFilter){
+    renderPointsFilter(){
+        if(this.props.showPointFilter){
             return (
                 <Col sm={12} md={3}>
                     <DynamicRangeFilter field="points"
                                         id="pointsFilter"
                                         title="Puntenaantal"
-                                        translations={this.rangeFilterTranslation}
-                                        containerComponent={<Panel collapsable={true} defaultCollapsed={true} className="uitpassearch-filters-pnl-type"/>}
-                                        rangeComponent={RangeSliderInput}/>
+                                        containerComponent={<Panel collapsable={true} defaultCollapsed={true} className="uitpassearch-filters-pnl-point"/>}
+                                        rangeComponent={<RangeInput translations={this.rangeFilterTranslation}
+                                                                    translate={(lbl) => this.rangeFilterTranslation[lbl]}/>}/>
                 </Col>);
+            //Remark: the translation function of the range component is overridden because the searchkit library contains a bug.
+        }
+    }
+
+    renderTypeFilter(){
+        if(this.props.showTypeFilter){
+            return (
+                <Col sm={12} md={3}>
+                    <RefinementListFilter id="typesFilter"
+                                          title="Type"
+                                          field="type"
+                                          operator="OR"
+                                          containerComponent={<Panel collapsable={true} defaultCollapsed={true} className="uitpassearch-filters-pnl-cardsystem"/>}/>
+                </Col>
+            );
         }
     }
 
@@ -100,6 +116,7 @@ export default class UiTPasSearchFilters extends React.Component {
             <div className="uitpassearch-row">
                 <p className="lead">Verfijn je resultaat</p>
                 <Row className="uitpassearch-options-filters uitpassearch-row">
+                    {this.renderPointsFilter()}
                     {this.renderTypeFilter()}
                     {this.renderExtraOptionFilter()}
                     {this.renderCardSystemFilter()}
@@ -112,6 +129,7 @@ export default class UiTPasSearchFilters extends React.Component {
 }
 
 UiTPasSearchFilters.propTypes = {
+    showPointFilter: PropTypes.bool,
     showTypeFilter: PropTypes.bool,
     showCardSystemFilter: PropTypes.bool,
     showExtraOptionFilter: PropTypes.bool,
