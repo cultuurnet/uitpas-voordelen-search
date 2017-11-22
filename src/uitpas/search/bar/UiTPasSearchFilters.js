@@ -63,13 +63,15 @@ export default class UiTPasSearchFilters extends React.Component {
     }
 
     renderExtraOptionFilter() {
+
         if (this.props.showExtraOptionFilter) {
+
             return (
                 <div className="sk-grid__12 sk-grid--bp-med__3">
                     <Panel title="Extra opties"
                            collapsable={true}
                            defaultCollapsed={true}
-                           className="uitpassearch-filters-pnl-extraoptions">
+                           className="sk-panel--spaced">
                         <CheckboxFilter id="childrenFilter"
                                         label="Speciaal voor kinderen"
                                         title=""

@@ -5,7 +5,7 @@ import UitPasSearchConfig from '../UiTPasSearchConfig';
 export class UiTImage extends React.Component {
 
     static propTypes = {
-        src: PropTypes.string.isRequired,
+        src: PropTypes.string,
         maxHeight: PropTypes.number,
         maxWidth: PropTypes.number,
         height: PropTypes.number,

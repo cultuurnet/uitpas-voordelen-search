@@ -14,10 +14,10 @@ class UiTPasSearchAppContainer extends Component {
         return (
             <div className="App">
                 <div className="sk-tabs">
-                    <NavLink to="/voordelen" activeClassName="<active></active>" className="sk-tabs-option">
+                    <NavLink to="/voordelen" activeClassName="active" className="sk-tabs-option">
                         <div>Voordelen</div>
                     </NavLink>
-                    <NavLink to="/welkomstvoordelen" activeClassName="<active></active>" className="sk-tabs-option">
+                    <NavLink to="/welkomstvoordelen" activeClassName="active" className="sk-tabs-option">
                         <div>Welkomstvoordelen</div>
                     </NavLink>
                 </div>

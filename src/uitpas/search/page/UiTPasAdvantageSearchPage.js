@@ -16,7 +16,7 @@ export default class UiTPasAdvantageSearchPage extends UiTPasSearchPage {
     render() {
         
         return (
-            <SearchkitProvider searchkit={this.state.searchkit.getSearchKit()}>
+            <SearchkitProvider searchkit={this.state.searchkit.getDefaultSearchkit()}>
                 <Layout>
                     <UiTPasSearchBar searchFields={this.state.searchkit.getDefaultSearchFields()}/>
                     <LayoutResults>

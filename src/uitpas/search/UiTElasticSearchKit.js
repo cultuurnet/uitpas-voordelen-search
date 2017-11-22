@@ -6,24 +6,38 @@ import {
 } from "searchkit";
 import UiTPasSearchConfig from './UiTPasSearchConfig';
 
+/**
+ * This searchkit container class manages two types of searchit managers:
+ * - one for regular advantages
+ * - one for welcome advantages
+ */
 export default class UiTElasticSearchKit {
+    ADVANTAGE_TYPE = 'pointspromotion';
+    WELCOME_ADVANTAGE_TYPE = 'welcomeadvantage';
 
     constructor() {
         this.searchkit = null;
+        this.welcomeSearchkit = null;
     }
 
-    getSearchKit() {
-
+    getDefaultSearchkit() {
         if (!this.searchkit){
             this.searchkit = UiTElasticSearchKit.createSearchkit();
-            this.initSearchkit();
+            this.initSearchkit(this.searchkit);
         }
         return this.searchkit;
     }
 
+    getWelcomeSearchkit(){
+        if (!this.welcomeSearchkit){
+            this.welcomeSearchkit = UiTElasticSearchKit.createSearchkit();
+            this.initSearchkit(this.welcomeSearchkit, true);
+        }
+        return this.welcomeSearchkit;
+    }
 
-    initSearchkit() {
 
+    initSearchkit(searchkit, isWelcome=false) {
         let defaultQueries = [];
 
         if (UiTPasSearchConfig.get('showActiveAdvantages')) {
@@ -37,9 +51,10 @@ export default class UiTElasticSearchKit {
                 'gte': 'now'
             }));
         }
+        defaultQueries.push(TermQuery('doctype', (isWelcome ? this.WELCOME_ADVANTAGE_TYPE : this.ADVANTAGE_TYPE)));
         if (defaultQueries.length > 0) {
 
-            this.searchkit.addDefaultQuery(
+            searchkit.addDefaultQuery(
                 (query) => query.addQuery(
                     BoolMust(defaultQueries)
                 )
@@ -48,7 +63,6 @@ export default class UiTElasticSearchKit {
     }
 
     static createSearchkit() {
-
         let es_url = 'http://acc.uitid.be:9200/promotions/';
 
         return new SearchkitManager(es_url);

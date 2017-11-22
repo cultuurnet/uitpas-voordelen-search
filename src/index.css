@@ -1443,6 +1443,8 @@ body {
   border: 1px solid transparent;
   border-radius: 0;
   font-weight: 600; }
+  .sk-tabs-option, .sk-tabs-option:hover, .sk-tabs-option:focus {
+    text-decoration: none; }
   .sk-tabs-option.active {
     color: #444;
     border-left-color: #d8d8d8;
@@ -1453,6 +1455,9 @@ body {
 .sk-layout__top-bar {
   background-color: #f8f8f8;
   box-shadow: none; }
+
+.sk-search-box {
+  margin-left: 0; }
 
 .sk-search-box input.sk-search-box__text,
 .sk-search-box input.sk-search-box__text::placeholder {
@@ -1490,3 +1495,6 @@ body {
   padding: 0.25em 0.5em;
   background: #f3453f;
   color: white; }
+
+.sk-panel--spaced .sk-panel + .sk-panel {
+  margin-top: 20px; }

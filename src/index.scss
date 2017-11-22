@@ -79,6 +79,11 @@ body {
   border: 1px solid transparent;
   border-radius: 0;
   font-weight: 600;
+  &,
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
   &.active {
     color: $sk-text-color;
     border-left-color: $sk-gray-25;
@@ -91,6 +96,10 @@ body {
 .sk-layout__top-bar {
     background-color: $sk-gray-0;
     box-shadow: none;
+}
+
+.sk-search-box {
+  margin-left: 0;
 }
 
 .sk-search-box input.sk-search-box__text,
@@ -140,4 +149,10 @@ body {
   padding: 0.25em 0.5em;
   background: $sk-primary-theme-color;
   color: white;
+}
+
+.sk-panel--spaced {
+  .sk-panel + .sk-panel {
+    margin-top: 20px;
+  }
 }

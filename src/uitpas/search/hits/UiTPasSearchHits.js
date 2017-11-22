@@ -17,6 +17,7 @@ import {
 import UiTPasInitialLoader from './UiTPasInitialLoader';
 import UiTPasAdvantageItem from './UiTPasAdvantageItem';
 import UiTPasHitsGrid from "./UiTPasHitsGrid";
+import UiTPasFilterItem from './UiTPasFilterItem';
 import './UiTPasSearchHits.css';
 
 export default class UiTPasSearchHits extends SearchkitComponent {
@@ -49,7 +50,7 @@ export default class UiTPasSearchHits extends SearchkitComponent {
             <div>
                 <ActionBar>
                     <ActionBarRow>
-                        <SelectedFilters/>
+                        <SelectedFilters itemComponent={UiTPasFilterItem}/>
                         <ResetFilters translations={this.resetFiltersTranslations}/>
                     </ActionBarRow>
                     <ActionBarRow>

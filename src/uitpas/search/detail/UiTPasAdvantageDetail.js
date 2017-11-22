@@ -2,7 +2,6 @@ import * as React from 'react';
 import { get } from 'lodash';
 import { SearchkitComponent } from 'searchkit'
 import { AdvantageAccessor } from './AdvantageAccessor';
-// import './UiTPasAdvantageDetail.css';
 import UiTPasRelatedItems from './UiTPasRelatedItems';
 import UiTPasAdvantageDescription from './UiTPasAdvantageDescription';
 
@@ -18,6 +17,7 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
     resetAdvantage() {
 
         if (this.advantage) {
+            
             if (this.props.advantageId != this.advantage.id) {
                 this.advantage = null;
             }
