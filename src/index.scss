@@ -99,6 +99,7 @@ body {
 }
 
 .sk-select {
+  max-height: none;
   select {
     font-weight: 400;
   }
@@ -107,15 +108,36 @@ body {
   }
 }
 
+.sk-layout__results {
+  box-shadow: none;
+}
+
 .sk-action-bar {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 20px;
-  &:first-child {
-    margin-top: 0;
+  margin: 0;
+  padding: 20px 0;
+}
+
+.sk-hits-stats__info {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.sk-pagination-navigation.is-numbered {
+  width: auto;
+  .sk-toggle-option {
+    border: none;
+    flex: 0 0 30px;
+    &:first-child,
+    &:last-child {
+      margin: 0 10px;
+      flex: 1 0 auto;
+    }
   }
 }
 
-.sk-layout__results {
-  box-shadow: none;
+.sk-label {
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  background: $sk-primary-theme-color;
+  color: white;
 }

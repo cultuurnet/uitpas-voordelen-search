@@ -7,7 +7,7 @@
     overflow: hidden;
     position: relative;
     img {
-      transition: filter 0.2s;
+      transition: transform 0.2s;
       display: block;
       max-width: 100%;
       height: auto;
@@ -19,10 +19,7 @@
     position: absolute;
     top: 20px;
     left: 0;
-    background: $sk-primary-theme-color;
-    color: white;
     z-index: 1;
-    padding: 0.25em 0.5em;
   }
 
   &__title {
@@ -62,7 +59,7 @@ a.sk-card,
       color: $sk-primary-theme-color;
     }
     .sk-card__img img {
-      filter: grayscale(100%);
+      transform: scale(1.05);
     }
   }
 }

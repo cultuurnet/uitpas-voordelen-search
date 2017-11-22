@@ -31,9 +31,9 @@ export default class UiTPasAdvantageItem extends SearchkitComponent {
 
         return (
             <div className="sk-grid__item">
-                <Link to={detailPage} className="sk-card sk-card--advantage sk-card--link">
+                <Link to={detailPage} className="sk-card sk-card--link">
                     <div className="sk-card__img">
-                        <LastChanceLabel endDate={cashingPeriodEnd}/>
+                        <LastChanceLabel endDate={cashingPeriodEnd} className="sk-card__banner"/>
                         <UiTImage src={thumbUrl} alt={title} width={480} height={360}/>
                     </div>
                     <div className="sk-card__main">

@@ -28,12 +28,12 @@ export class LastChanceLabel extends React.Component {
             if (this.isDeprecated()) {
 
                 return (
-                    <div className="sk-card__banner">Te laat...</div>
+                    <div className={'sk-label ' + this.props.className}>Te laat...</div>
                 );
             } else if (this.isLastChance()) {
 
                 return (
-                    <div className="sk-card__banner">Laatste kans!</div>
+                    <div className={'sk-label ' + this.props.className}>Laatste kans!</div>
                 );
             }
         }
