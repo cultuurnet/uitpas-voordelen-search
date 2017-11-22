@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import UitPasSearchConfig from '../UiTPasSearchConfig';
 
 export class UiTImage extends React.Component {
+
     static propTypes = {
         src: PropTypes.string.isRequired,
         maxHeight: PropTypes.number,
@@ -12,38 +13,35 @@ export class UiTImage extends React.Component {
         crop: PropTypes.bool,
     };
 
+    static defaultProps = {
+        src: UitPasSearchConfig.get('defaultThumbUrl')
+    };
+
     static getUiTImageUrl(src, maxHeight, maxWidth, height, width, crop=false) {
 
-        if (src) {
+        let urlParams = [];
 
-            let urlParams = [];
-
-            if (maxHeight) {
-                urlParams.push('maxheight=' + maxHeight);
-            }
-
-            if (maxWidth) {
-                urlParams.push('maxwidth=' + maxWidth);
-            }
-
-            if (height) {
-                urlParams.push('height=' + height);
-            }
-
-            if (width) {
-                urlParams.push('width=' + width);
-            }
-
-            if (crop) {
-                urlParams.push('crop=' + crop);
-            }
-
-            return src + '?' + urlParams.join('&');
-            
-        } else {
-            //there is no thumbnail url, set default placeholder
-            return UitPasSearchConfig.get('defaultThumbUrl');
+        if (maxHeight) {
+            urlParams.push('maxheight=' + maxHeight);
         }
+
+        if (maxWidth) {
+            urlParams.push('maxwidth=' + maxWidth);
+        }
+
+        if (height) {
+            urlParams.push('height=' + height);
+        }
+
+        if (width) {
+            urlParams.push('width=' + width);
+        }
+
+        if (crop) {
+            urlParams.push('crop=' + crop);
+        }
+
+        return src + '?' + urlParams.join('&');
     }
 
     render() {
