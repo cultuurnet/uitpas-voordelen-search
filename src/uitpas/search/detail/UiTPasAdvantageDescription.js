@@ -113,7 +113,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
 
             return (
                 <h2>
-                    <Label className="uitpassearch-detail-points-lbl">{this.props.advantage.points} <small>punten</small></Label>
+                    <Label className="uitpassearch-detail-points-lbl">{this.props.advantage.points} <small>{(this.props.advantage.points === 1 ? 'punt' : 'punten')}</small></Label>
                 </h2>
             );
         } else {

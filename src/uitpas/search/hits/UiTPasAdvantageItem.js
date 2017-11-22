@@ -10,11 +10,6 @@ let HtmlToReactParser = require('html-to-react').Parser;
 
 export default class UiTPasAdvantageItem extends SearchkitComponent {
 
-    constructor(props) {
-        super(props);
-        this.defaultThumb = '/img/default-thumb.png';
-    }
-
     render() {
 
         let title = get(this.props.result, '_source.title', 'UiTPas Voordeel');
@@ -22,7 +17,6 @@ export default class UiTPasAdvantageItem extends SearchkitComponent {
 
         //_source.pictures can be double array:
         thumbUrl = (isArray(thumbUrl) ? (isArray(first(thumbUrl)) ? first(first(thumbUrl)) : first(thumbUrl)) : thumbUrl);
-        thumbUrl = (isUndefined(thumbUrl) ? this.defaultThumb : thumbUrl);
 
         let points = get(this.props.result, '_source.points', 0);
         let counters = get(this.props.result, '_source.balies', []);

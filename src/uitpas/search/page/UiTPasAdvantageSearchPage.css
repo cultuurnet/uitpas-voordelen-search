@@ -1,15 +1,3 @@
-.filter--typesFilter {
-    display: flex;
-    flex-shrink: 1;
-    width: unset;
-    margin-top: 0.5rem;
-}
-
-.filter--typesFilter .sk-panel__header {
-    margin-top: 0.5rem;
-    margin-right: 1rem;
-}
-
 .sk-search-box {
     display: flex;
     flex-grow: 1;

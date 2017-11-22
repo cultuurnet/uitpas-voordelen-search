@@ -19,6 +19,7 @@ export default class UiTPasWelcomeAdvantageSearchPage extends UiTPasSearchPage {
                 <Layout>
                     <LayoutResults>
                         <UiTPasSearchFilters showCardSystemFilter={true}
+                                             showPointsFilter={false}
                                              showTypeFilter={false}
                                              renderCounterFilter={false}/>
                         <WelcomeAdvantageSearchHits/>
