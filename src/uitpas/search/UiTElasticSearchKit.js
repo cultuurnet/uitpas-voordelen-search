@@ -2,7 +2,9 @@ import {
     SearchkitManager,
     TermQuery,
     RangeQuery,
+    BoolMust
 } from "searchkit";
+import UiTPasSearchConfig from './UiTPasSearchConfig';
 
 export default class UiTElasticSearchKit {
 
@@ -19,12 +21,24 @@ export default class UiTElasticSearchKit {
     }
 
     initSearchkit(){
-        //only allow active advantages
-        this.searchkit.addDefaultQuery(
-            (query) => query.addQuery(
-                TermQuery("status.keyword", "ACTIVE")
-            )
-        );
+        let defaultQueries = [];
+        if(UiTPasSearchConfig.get('showActiveAdvantages')){
+            //only allow active advantages
+            defaultQueries.push(TermQuery('status.keyword', 'ACTIVE'));
+        }
+        if(UiTPasSearchConfig.get('showPublishedAdvantages')){
+            //only allow published advantages
+            defaultQueries.push(RangeQuery('publicationPeriodEnd', {
+                'gte': 'now'
+            }));
+        }
+        if(defaultQueries.length > 0) {
+            this.searchkit.addDefaultQuery(
+                (query) => query.addQuery(
+                    BoolMust(defaultQueries)
+                )
+            );
+        }
     }
 
     static createSearchkit(){
