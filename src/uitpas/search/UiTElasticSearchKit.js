@@ -6,6 +6,11 @@ import {
 } from "searchkit";
 import UiTPasSearchConfig from './UiTPasSearchConfig';
 
+/**
+ * This searchkit container class manages two types of searchit managers:
+ * - one for regular advantages
+ * - one for welcome advantages
+ */
 export default class UiTElasticSearchKit {
     ADVANTAGE_TYPE = 'pointspromotion';
     WELCOME_ADVANTAGE_TYPE = 'welcomeadvantage';
