@@ -94,8 +94,9 @@ body {
 }
 
 .sk-layout__top-bar {
-    background-color: $sk-gray-0;
-    box-shadow: none;
+  position: static;
+  background-color: $sk-gray-0;
+  box-shadow: none;
 }
 
 .sk-search-box {

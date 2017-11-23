@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+
 import {intersperse} from "../helper/UiTPasArrayUtils";
-import './UiTPasCounter.css';
 import UiTPasSearchConfig from "../UiTPasSearchConfig";
 
 export class UiTPasCounter extends Component {

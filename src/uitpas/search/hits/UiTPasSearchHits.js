@@ -14,11 +14,11 @@ import {
     PageSizeSelector,
     Select,
 } from "searchkit";
+
 import UiTPasInitialLoader from './UiTPasInitialLoader';
 import UiTPasAdvantageItem from './UiTPasAdvantageItem';
 import UiTPasHitsGrid from "./UiTPasHitsGrid";
 import UiTPasFilterItem from './UiTPasFilterItem';
-import './UiTPasSearchHits.css';
 
 export default class UiTPasSearchHits extends SearchkitComponent {
 

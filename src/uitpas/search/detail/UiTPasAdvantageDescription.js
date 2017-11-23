@@ -6,8 +6,6 @@ import { UiTImage } from "../component/UiTImage";
 import { UiTPasCounter } from "./UiTPasCounter";
 import { LastChanceLabel } from '../component/LastChanceLabel';
 
-import './UiTPasAdvantageDetail.css';
-
 export default class UiTPasAdvantageDescription extends React.Component {
 
     render() {

@@ -1,7 +1,6 @@
 import * as React from "react";
 import {get} from 'lodash';
 import {SearchkitComponent,} from "searchkit"
-import './UiTPasAdvantageDetail.css';
 import UiTPasAdvantageItem from '../hits/UiTPasAdvantageItem';
 import RelatedItemsAccessor from "./RelatedItemsAccessor";
 import {joinNicely} from "../helper/UiTPasArrayUtils";
