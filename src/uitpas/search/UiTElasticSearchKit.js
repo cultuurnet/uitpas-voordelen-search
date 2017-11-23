@@ -3,7 +3,7 @@ import {
     TermQuery,
     RangeQuery,
     BoolMust
-} from "searchkit";
+} from 'searchkit';
 import UiTPasSearchConfig from './UiTPasSearchConfig';
 
 /**

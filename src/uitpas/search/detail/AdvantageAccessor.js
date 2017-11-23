@@ -1,7 +1,7 @@
 import {
     Accessor,
     TermQuery
-} from "searchkit"
+} from 'searchkit';
 
 
 export class AdvantageAccessor extends Accessor {

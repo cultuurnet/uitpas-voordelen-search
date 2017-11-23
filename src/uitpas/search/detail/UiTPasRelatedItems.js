@@ -1,10 +1,11 @@
-import * as React from "react";
-import {get} from 'lodash';
-import {SearchkitComponent,} from "searchkit"
-import UiTPasAdvantageItem from '../hits/UiTPasAdvantageItem';
-import RelatedItemsAccessor from "./RelatedItemsAccessor";
-import {joinNicely} from "../helper/UiTPasArrayUtils";
+import * as React from 'react';
+import { get } from 'lodash';
+import { SearchkitComponent } from 'searchkit';
 import PropTypes from 'prop-types';
+
+import UiTPasAdvantageItem from '../hits/UiTPasAdvantageItem';
+import RelatedItemsAccessor from './RelatedItemsAccessor';
+import { joinNicely } from '../helper/UiTPasArrayUtils';
 
 export default class UiTPasRelatedItems extends SearchkitComponent {
 

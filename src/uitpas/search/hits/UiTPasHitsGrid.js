@@ -1,5 +1,6 @@
-import * as React from "react";
-import { map } from "lodash";
+import * as React from 'react';
+import { map } from 'lodash';
+
 import UiTPasAdvantageItem from './UiTPasAdvantageItem';
 
 const block = require('bem-cn');

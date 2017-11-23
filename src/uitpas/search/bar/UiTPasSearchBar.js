@@ -1,9 +1,9 @@
-import * as React from "react";
+import * as React from 'react';
 import {
     TopBar,
     SearchBox,
     SimpleQueryString,
-} from "searchkit";
+} from 'searchkit';
 
 export default class UiTPasSearchBar extends React.Component {
 

@@ -1,9 +1,10 @@
-import * as React from "react";
+import * as React from 'react';
 import {
     SearchkitProvider,
     Layout,
     LayoutResults,
-} from "searchkit";
+} from 'searchkit';
+
 import UiTPasSearchPage from './UiTPasSearchPage';
 import UiTPasSearchHits from '../hits/UiTPasSearchHits';
 import UiTPasSearchFilters from '../bar/UiTPasSearchFilters';

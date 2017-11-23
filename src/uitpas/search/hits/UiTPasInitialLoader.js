@@ -1,8 +1,5 @@
-import * as React from "react";
-
-import {
-    SearchkitComponent
-} from "searchkit";
+import * as React from 'react';
+import { SearchkitComponent } from 'searchkit';
 
 export default class UiTPasInitialLoader extends SearchkitComponent {
 

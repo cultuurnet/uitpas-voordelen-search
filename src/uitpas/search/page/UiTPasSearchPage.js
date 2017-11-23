@@ -1,6 +1,6 @@
 import {
     Component,
-} from "react";
+} from 'react';
 import UiTElasticSearchKit from '../UiTElasticSearchKit';
 
 export default class UiTPasSearchPage extends Component {

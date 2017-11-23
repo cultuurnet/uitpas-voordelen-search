@@ -2,8 +2,8 @@ import * as React from 'react';
 import { map } from 'lodash';
 import moment from 'moment';
 
-import { UiTImage } from "../component/UiTImage";
-import { UiTPasCounter } from "./UiTPasCounter";
+import { UiTImage } from '../component/UiTImage';
+import { UiTPasCounter } from './UiTPasCounter';
 import { LastChanceLabel } from '../component/LastChanceLabel';
 
 export default class UiTPasAdvantageDescription extends React.Component {

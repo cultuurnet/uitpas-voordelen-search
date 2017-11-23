@@ -1,7 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 import { SearchkitComponent } from 'searchkit';
 import { first, get, isArray, map } from 'lodash';
 import { Link } from 'react-router-dom';
+
 import { UiTImage } from '../component/UiTImage';
 import { LastChanceLabel } from '../component/LastChanceLabel';
 import { joinNicely } from '../helper/UiTPasArrayUtils';
