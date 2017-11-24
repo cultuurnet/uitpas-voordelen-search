@@ -1,7 +1,5 @@
-import * as React from "react";
-import {
-    FastClick
-} from "searchkit";
+import * as React from 'react';
+import { FastClick } from 'searchkit';
 
 /**
  * Adapted copy of searchkit's FilterItem to override the label so it does not include the filter title.

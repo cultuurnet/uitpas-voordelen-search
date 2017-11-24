@@ -1453,6 +1453,7 @@ body {
     border-bottom-color: #fff; }
 
 .sk-layout__top-bar {
+  position: static;
   background-color: #f8f8f8;
   box-shadow: none; }
 

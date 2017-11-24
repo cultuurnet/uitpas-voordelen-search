@@ -1,8 +1,9 @@
-import * as React from "react";
+import * as React from 'react';
 import {
     SearchkitProvider,
     Layout,
-} from "searchkit";
+} from 'searchkit';
+
 import UiTPasSearchPage from './UiTPasSearchPage';
 import UiTPasSearchBar from '../bar/UiTPasSearchBar';
 import UiTPasAdvantageDetail from '../detail/UiTPasAdvantageDetail';

@@ -4,7 +4,7 @@ import {
     BoolShould,
     ImmutableQuery,
     BoolMustNot,
-} from "searchkit"
+} from 'searchkit';
 
 /**
  * Queries for other advantage items of the given owning card system.

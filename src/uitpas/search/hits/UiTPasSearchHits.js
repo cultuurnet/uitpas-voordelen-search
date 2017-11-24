@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import {
     SearchkitComponent,
     Hits,
@@ -13,12 +13,12 @@ import {
     SortingSelector,
     PageSizeSelector,
     Select,
-} from "searchkit";
+} from 'searchkit';
+
 import UiTPasInitialLoader from './UiTPasInitialLoader';
 import UiTPasAdvantageItem from './UiTPasAdvantageItem';
-import UiTPasHitsGrid from "./UiTPasHitsGrid";
+import UiTPasHitsGrid from './UiTPasHitsGrid';
 import UiTPasFilterItem from './UiTPasFilterItem';
-import './UiTPasSearchHits.css';
 
 export default class UiTPasSearchHits extends SearchkitComponent {
 
