@@ -63,7 +63,7 @@ export default class UiTElasticSearchKit {
     }
 
     static createSearchkit() {
-        let es_url = 'http://acc.uitid.be:9200/promotions/';
+        let es_url = UiTPasSearchConfig.get('elasticSearchUrl');
 
         return new SearchkitManager(es_url);
     }

@@ -4,8 +4,8 @@ import { SearchkitComponent } from 'searchkit';
 import PropTypes from 'prop-types';
 
 import UiTPasAdvantageItem from '../hits/UiTPasAdvantageItem';
-import RelatedItemsAccessor from './RelatedItemsAccessor';
 import { joinNicely } from '../helper/UiTPasArrayUtils';
+import UiTPasSearchConfig from "../UiTPasSearchConfig";
 
 export default class UiTPasRelatedItems extends SearchkitComponent {
 
@@ -14,47 +14,35 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
         counters: PropTypes.array.isRequired,
     };
 
-    items;
-    counterIds = [];
     counterNames = [];
 
-    defineAccessor() {
-        return new RelatedItemsAccessor();
+    constructor(props){
+        super(props);
+        this.state = {
+            items: null,
+        };
     }
 
-    initAccessor() {
-
-        if (this.counterIds.length === 0) {
-
-            this.counterIds = this.props.counters.map((system) => {
-                return system.actorId;
+    componentWillMount(){
+        let url = UiTPasSearchConfig.get('elasticSearchUrl') + '_search';
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Accept', 'application/json');
+        let request = new Request(url, {
+            method: 'POST',
+            body: JSON.stringify(this.getQuery(this.props.advantage, this.props.counters)),
+            headers: headers
+        });
+        fetch(request)
+            .then((response) => {
+                return response.json()
+            })
+            .then((data) => {
+                console.log(data);
+                this.setState({
+                    items: get(data, 'hits.hits', []),
+                });
             });
-        }
-
-        this.accessor.setCounterIds(this.counterIds);
-        this.accessor.setAdvantage(this.props.advantage);
-    }
-
-    initItems() {
-
-        if (!this.items) {
-
-            this.searchkit.search();
-            let results = this.getResults();
-
-            if (this.hasHits()) {
-
-                let hits = get(results, 'hits.hits', null);
-
-                //check if it is not the detail advantage...
-                //this is returned first before the new query is executed.
-                if (hits.length > 0 && parseInt(hits[0]._source.id, 10) !== this.props.advantage){
-                    this.items = hits;
-                }
-            } else {
-                this.items = [];
-            }
-        }
     }
 
     render() {
@@ -62,13 +50,9 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
         if (this.props.counters) {
 
             if (this.props.counters.length > 0) {
-
                 this.counterNames = this.props.counters.map((system) => {
                     return system.name;
                 });
-
-                this.initAccessor();
-                this.initItems();
 
                 return (
                     <div className="uitpassearch-detail-relateditems">
@@ -85,13 +69,13 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
 
     renderRelatedItems() {
 
-        if (this.items) {
+        if (this.state.items) {
 
-            if (this.items.length > 0) {
+            if (this.state.items.length > 0) {
 
                 return (
                     <div className="sk-grid sk-grid--bp-sml-2-col sk-grid--bp-med-3-col">
-                        {this.items.map((item, i) => {
+                        {this.state.items.map((item, i) => {
                             return (<UiTPasAdvantageItem result={item} key={i}/>);
                         })}
                     </div>
@@ -100,13 +84,14 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
                 return (<div>Er zijn geen andere voordelen bij deze {(this.counterNames && this.counterNames.length > 1 ? 'balies' : 'balie')}...</div>);
             }
         }
-
-        return null;
+        else{
+            return (<div>Loading...</div>)
+        }
     }
 
     renderMoreRelatedItemsLink() {
 
-        if (this.items && this.items.length > 0) {
+        if (this.state.items && this.state.items.length > 0) {
 
             let urlParams = this.counterNames.map((name, i) => {
                 return 'countersFilter[' + i + ']=' + encodeURIComponent(name);
@@ -121,5 +106,29 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
                 </div>
             );
         }
+    }
+
+    getQuery(advantageId, counters){
+        let actorIdTerms = counters.map((counter) => {
+            return {
+                "term": {
+                    "balies.actorId.keyword": counter.actorId
+                }};
+        });
+        return {
+            "query": {
+                "bool": {
+                    "must_not": [
+                        {
+                            "term": {
+                                "id": advantageId
+                            }
+                        }],
+                    "should": actorIdTerms
+                }
+            },
+            "from": 0,
+            "size": 3
+        };
     }
 }

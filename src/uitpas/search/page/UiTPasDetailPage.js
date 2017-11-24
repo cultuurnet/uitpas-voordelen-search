@@ -17,7 +17,7 @@ export default class UiTPasDetailPage extends UiTPasSearchPage {
             <SearchkitProvider searchkit={this.state.searchkit.getDefaultSearchkit()}>
                 <Layout>
                     <UiTPasSearchBar searchFields={this.state.searchkit.getDefaultSearchFields()}/>
-                    <UiTPasAdvantageDetail advantageId={this.props.match.params.id}/>
+                    <UiTPasAdvantageDetail advantageId={this.props.match.params.id} key={this.props.match.params.id}/>
                 </Layout>
             </SearchkitProvider>
         );
