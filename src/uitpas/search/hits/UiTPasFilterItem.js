@@ -9,7 +9,7 @@ import {
 export default class UiTPasFilterItem extends React.Component {
 
     render(){
-        let props = this.props
+        let props = this.props;
         return (
             <div className={props.bemBlocks.option()
                 .mix(props.bemBlocks.container("item"))
