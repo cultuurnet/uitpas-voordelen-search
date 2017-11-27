@@ -2,6 +2,7 @@ import * as React from 'react';
 import { get } from 'lodash';
 import { SearchkitComponent } from 'searchkit';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import UiTPasAdvantageItem from '../hits/UiTPasAdvantageItem';
 import { joinNicely } from '../helper/UiTPasArrayUtils';
@@ -101,8 +102,8 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
             
             return (
                 <div>
-                    <a href={url}>Alle voordelen
-                        in {joinNicely(this.counterNames, ', ', ' of ')} &raquo;</a>
+                    <Link to={url}>Alle voordelen
+                        in {joinNicely(this.counterNames, ', ', ' of ')} &raquo;</Link>
                 </div>
             );
         }
