@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import UiTPasAdvantageItem from '../hits/UiTPasAdvantageItem';
 import { joinNicely } from '../helper/UiTPasArrayUtils';
-import UiTPasSearchConfig from "../UiTPasSearchConfig";
+import UiTPasSearchConfig from '../UiTPasSearchConfig';
 
 export default class UiTPasRelatedItems extends SearchkitComponent {
 
@@ -17,23 +17,27 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
 
     counterNames = [];
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             items: null,
         };
     }
 
-    componentWillMount(){
+    componentWillMount() {
+
         let url = UiTPasSearchConfig.get('elasticSearchUrl') + '_search';
         let headers = new Headers();
+
         headers.append('Content-Type', 'application/json');
         headers.append('Accept', 'application/json');
+
         let request = new Request(url, {
             method: 'POST',
             body: JSON.stringify(this.getQuery(this.props.advantage, this.props.counters)),
             headers: headers
         });
+
         fetch(request)
             .then((response) => {
                 return response.json()
@@ -116,13 +120,15 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
         }
     }
 
-    getQuery(advantageId, counters){
+    getQuery(advantageId, counters) {
+
         let actorIdTerms = counters.map((counter) => {
             return {
                 "term": {
                     "balies.actorId.keyword": counter.actorId
                 }};
         });
+
         return {
             "query": {
                 "bool": {

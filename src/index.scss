@@ -152,10 +152,8 @@ body {
   color: white;
 }
 
-.sk-panel--spaced {
-  .sk-panel + .sk-panel {
-    margin-top: 20px;
-  }
+.sk-range-input {
+  display: flex;
 }
 
 .sk-text--lrg {

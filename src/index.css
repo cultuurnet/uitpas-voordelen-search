@@ -1529,8 +1529,8 @@ body {
   background: #f3453f;
   color: white; }
 
-.sk-panel--spaced .sk-panel + .sk-panel {
-  margin-top: 20px; }
+.sk-range-input {
+  display: flex; }
 
 .sk-text--lrg {
   font-size: 18px;
