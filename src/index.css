@@ -1197,8 +1197,14 @@ body {
 .sk-grid__4 {
   width: 33.333%; }
 
+.sk-grid__5 {
+  width: 41.667%; }
+
 .sk-grid__6 {
   width: 50%; }
+
+.sk-grid__7 {
+  width: 58.333%; }
 
 .sk-grid__8 {
   width: 66.667%; }
@@ -1295,8 +1301,12 @@ body {
     width: 25%; }
   .sk-grid--bp-xxs__4 {
     width: 33.333%; }
+  .sk-grid--bp-xxs__5 {
+    width: 41.667%; }
   .sk-grid--bp-xxs__6 {
     width: 50%; }
+  .sk-grid--bp-xxs__7 {
+    width: 58.333%; }
   .sk-grid--bp-xxs__8 {
     width: 66.667%; }
   .sk-grid--bp-xxs__9 {
@@ -1307,8 +1317,12 @@ body {
     width: 25%; }
   .sk-grid--bp-xsm__4 {
     width: 33.333%; }
+  .sk-grid--bp-xsm__5 {
+    width: 41.667%; }
   .sk-grid--bp-xsm__6 {
     width: 50%; }
+  .sk-grid--bp-xsm__7 {
+    width: 58.333%; }
   .sk-grid--bp-xsm__8 {
     width: 66.667%; }
   .sk-grid--bp-xsm__9 {
@@ -1319,8 +1333,12 @@ body {
     width: 25%; }
   .sk-grid--bp-sml__4 {
     width: 33.333%; }
+  .sk-grid--bp-sml__5 {
+    width: 41.667%; }
   .sk-grid--bp-sml__6 {
     width: 50%; }
+  .sk-grid--bp-sml__7 {
+    width: 58.333%; }
   .sk-grid--bp-sml__8 {
     width: 66.667%; }
   .sk-grid--bp-sml__9 {
@@ -1331,8 +1349,12 @@ body {
     width: 25%; }
   .sk-grid--bp-med__4 {
     width: 33.333%; }
+  .sk-grid--bp-med__5 {
+    width: 41.667%; }
   .sk-grid--bp-med__6 {
     width: 50%; }
+  .sk-grid--bp-med__7 {
+    width: 58.333%; }
   .sk-grid--bp-med__8 {
     width: 66.667%; }
   .sk-grid--bp-med__9 {
@@ -1343,8 +1365,12 @@ body {
     width: 25%; }
   .sk-grid--bp-lrg__4 {
     width: 33.333%; }
+  .sk-grid--bp-lrg__5 {
+    width: 41.667%; }
   .sk-grid--bp-lrg__6 {
     width: 50%; }
+  .sk-grid--bp-lrg__7 {
+    width: 58.333%; }
   .sk-grid--bp-lrg__8 {
     width: 66.667%; }
   .sk-grid--bp-lrg__9 {
@@ -1355,8 +1381,12 @@ body {
     width: 25%; }
   .sk-grid--bp-xlr__4 {
     width: 33.333%; }
+  .sk-grid--bp-xlr__5 {
+    width: 41.667%; }
   .sk-grid--bp-xlr__6 {
     width: 50%; }
+  .sk-grid--bp-xlr__7 {
+    width: 58.333%; }
   .sk-grid--bp-xlr__8 {
     width: 66.667%; }
   .sk-grid--bp-xlr__9 {
@@ -1364,8 +1394,7 @@ body {
 
 .sk-card {
   display: block;
-  color: inherit;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+  color: inherit; }
   .sk-card__img {
     overflow: hidden;
     position: relative; }
@@ -1413,6 +1442,9 @@ a.sk-card,
     .sk-card--link:hover .sk-card__img img,
     .sk-card--link:focus .sk-card__img img {
       transform: scale(1.05); }
+
+.sk-card--shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
 
 body {
   margin: 0;
@@ -1499,3 +1531,7 @@ body {
 
 .sk-panel--spaced .sk-panel + .sk-panel {
   margin-top: 20px; }
+
+.sk-text--lrg {
+  font-size: 18px;
+  line-height: 1.6; }

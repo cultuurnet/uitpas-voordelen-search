@@ -6,6 +6,7 @@ import UiTPasAdvantageDescription from './UiTPasAdvantageDescription';
 import UiTPasSearchConfig from "../UiTPasSearchConfig";
 
 export default class UiTPasAdvantageDetail extends SearchkitComponent {
+
     advantage = null;
     loading = true;
     currentAdvantageId;
@@ -64,12 +65,11 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
     renderAdvantage() {
 
         return (
-            <div>
+            <div className="sk-layout__results">
                 <UiTPasAdvantageDescription advantage={this.advantage}/>
+                <br/>
                 <hr/>
-                <div className="sk-grid sk-grid--bp-sml-2-col sk-grid--bp-med-3-col">
-                    <UiTPasRelatedItems counters={this.advantage.balies} advantage={this.advantage.id}/>
-                </div>
+                <UiTPasRelatedItems counters={this.advantage.balies} advantage={this.advantage.id}/>
             </div>
         );
     }

@@ -56,8 +56,14 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
 
                 return (
                     <div className="uitpassearch-detail-relateditems">
-                        <h2>Andere voordelen in {joinNicely(this.counterNames, ', ', ' of ')}:</h2>
-                        {this.renderMoreRelatedItemsLink()}
+                        <div className="sk-grid">
+                            <div className="sk-grid__12 sk-grid--bp-med__8">
+                                <h2>Andere voordelen in {joinNicely(this.counterNames, ', ', ' of ')}</h2>
+                            </div>
+                            <div className="sk-grid__12 sk-grid--bp-med__4">
+                                {this.renderMoreRelatedItemsLink()}
+                            </div>
+                        </div>
                         {this.renderRelatedItems()}
                     </div>
                 );
@@ -84,7 +90,7 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
                 return (<div>Er zijn geen andere voordelen bij deze {(this.counterNames && this.counterNames.length > 1 ? 'balies' : 'balie')}...</div>);
             }
         }
-        else{
+        else {
             return (<div>Loading...</div>)
         }
     }
@@ -101,6 +107,7 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
             
             return (
                 <div>
+                    <br/>
                     <a href={url}>Alle voordelen
                         in {joinNicely(this.counterNames, ', ', ' of ')} &raquo;</a>
                 </div>

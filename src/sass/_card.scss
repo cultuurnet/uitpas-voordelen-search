@@ -1,7 +1,6 @@
 .sk-card {
   display: block;
   color: inherit;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
   &__img {
     overflow: hidden;
@@ -62,4 +61,8 @@ a.sk-card,
       transform: scale(1.05);
     }
   }
+}
+
+.sk-card--shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
