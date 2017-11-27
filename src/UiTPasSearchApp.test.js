@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import UiTPasSearchEmbeddedApp from './UiTPasSearchApp';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<UiTPasSearchApp />, div);
+  ReactDOM.render(<UiTPasSearchEmbeddedApp />, div);
 });
