@@ -24,7 +24,8 @@ export default class UiTPasAdvantageSearchPage extends UiTPasSearchPage {
                                              showCardSystemFilter={true}
                                              showTypeFilter={true}
                                              showExtraOptionFilter={true}
-                                             renderCounterFilter={true}/>
+                                             renderCounterFilter={true}
+                                             renderOwningCardSystemFilter={true}/>
                         <UiTPasSearchHits suggestField={this.state.searchkit.getDefaultSuggestField()}/>
                     </LayoutResults>
                 </Layout>

@@ -117,6 +117,30 @@ export default class UiTPasSearchFilters extends React.Component {
         }
     }
 
+    /**
+     * NOTE: This filter is added to be able to easily filter on owning card systems to allow filtering
+     * on the owner of an advantage via the configuration.
+     */
+    renderHiddenOwningCardSystemFilter() {
+
+        if (this.props.renderOwningCardSystemFilter) {
+            //do not show this filter to the user.
+            let hideFilterStyle = {
+                display: 'none',
+            };
+
+            return (
+                <div style={hideFilterStyle}>
+                    <RefinementListFilter field="owningCardSystem.name"
+                                          id="owningCardSystemFilter"
+                                          title="Voordeel eigendom van"
+                                          operator="OR"
+                                          containerComponent={<Panel collapsable={true} defaultCollapsed={false} className="uitpassearch-filters-pnl-owningcardsystem"/>}/>
+                </div>
+            );
+        }
+    }
+
     render() {
         
         return (
@@ -129,6 +153,7 @@ export default class UiTPasSearchFilters extends React.Component {
                     {this.renderCardSystemFilter()}
                     {this.renderHiddenCounterFilter()}
                 </div>
+                {this.renderHiddenOwningCardSystemFilter()}
                 <hr/>
             </div>
         );
@@ -141,4 +166,5 @@ UiTPasSearchFilters.propTypes = {
     showCardSystemFilter: PropTypes.bool,
     showExtraOptionFilter: PropTypes.bool,
     renderCounterFilter: PropTypes.bool,
+    renderOwningCardSystemFilter: PropTypes.bool,
 };
