@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { map } from 'lodash';
 import moment from 'moment';
 
@@ -12,6 +13,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
 
         return (
             <div>
+                <Link to='/voordelen'>Terug naar voordelen</Link>
                 <div className="sk-grid">
                     <div className="sk-grid__12 sk-grid--bp-med__7">
                         <h1>{this.props.advantage.title}</h1>

@@ -5,6 +5,8 @@ import {
     SimpleQueryString,
 } from 'searchkit';
 
+import UiTPasSearchConfig from '../UiTPasSearchConfig';
+
 export default class UiTPasSearchBar extends React.Component {
 
     /**
@@ -22,7 +24,7 @@ export default class UiTPasSearchBar extends React.Component {
             <TopBar>
                 <SearchBox queryFields={this.props.searchFields}
                            queryBuilder={this.getQuery}
-                           placeholder={'Naam voordeel, organisator of gemeente'}/>
+                           placeholder={UiTPasSearchConfig.get('searchPlaceholderText')}/>
             </TopBar>
         );
     }
