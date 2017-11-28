@@ -6,9 +6,6 @@ export default class UiTPasSearchConfig {
         showActiveAdvantages: true,
         showPublishedAdvantages: false,
         uitDatabankUrlPrefix: 'https://io-acc.uitdatabank.be',
-        uitIdApiUrlPrefix: 'https://acc.uitid.be',
-        oAuthConsumerKey: '1fc6b3fcde6e612ede360715045713f3',
-        oAuthConsumerSecret: 'e626845f1e95db4330a2a8803d83edf5',
         defaultThumbUrl: 'http://localhost:3000/img/voordelen-placeholder.png',
         elasticSearchUrl: 'http://acc.uitid.be:9200/promotions/'
     };
@@ -18,9 +15,6 @@ export default class UiTPasSearchConfig {
         showActiveAdvantages: 'boolean',
         showPublishedAdvantages: 'boolean',
         uitDatabankUrlPrefix: 'string',
-        uitIdApiUrlPrefix: 'string',
-        oAuthConsumerKey: 'string',
-        oAuthConsumerSecret: 'string',
         defaultThumbUrl: 'string',
         elasticSearchUrl: 'string'
     };
