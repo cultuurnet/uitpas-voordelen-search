@@ -2,21 +2,23 @@
 export default class UiTPasSearchConfig {
 
     static config = {
+        defaultThumbUrl: 'http://localhost:3000/img/voordelen-placeholder.png',
+        elasticSearchUrl: 'http://acc.uitid.be:9200/promotions/',
         lastChanceWeeks: 1000,
+        searchPlaceholderText: 'Naam voordeel, organisator of gemeente',
         showActiveAdvantages: true,
         showPublishedAdvantages: false,
-        uitDatabankUrlPrefix: 'https://io-acc.uitdatabank.be',
-        defaultThumbUrl: 'http://localhost:3000/img/voordelen-placeholder.png',
-        elasticSearchUrl: 'http://acc.uitid.be:9200/promotions/'
+        uitDatabankUrlPrefix: 'https://io-acc.uitdatabank.be'
     };
 
     static configTypes = {
+        defaultThumbUrl: 'string',
+        elasticSearchUrl: 'string',
         lastChanceWeeks: 'number',
+        searchPlaceholderText: 'string',
         showActiveAdvantages: 'boolean',
         showPublishedAdvantages: 'boolean',
-        uitDatabankUrlPrefix: 'string',
-        defaultThumbUrl: 'string',
-        elasticSearchUrl: 'string'
+        uitDatabankUrlPrefix: 'string'
     };
 
     static buildConfig() {
