@@ -4,6 +4,7 @@ import {
     RangeQuery,
     BoolMust
 } from 'searchkit';
+
 import UiTPasSearchConfig from './UiTPasSearchConfig';
 
 /**
@@ -21,23 +22,28 @@ export default class UiTElasticSearchKit {
     }
 
     getDefaultSearchkit() {
+
         if (!this.searchkit){
             this.searchkit = UiTElasticSearchKit.createSearchkit();
             this.initSearchkit(this.searchkit);
         }
+
         return this.searchkit;
     }
 
     getWelcomeSearchkit(){
+
         if (!this.welcomeSearchkit){
             this.welcomeSearchkit = UiTElasticSearchKit.createSearchkit();
             this.initSearchkit(this.welcomeSearchkit, true);
         }
+
         return this.welcomeSearchkit;
     }
 
 
-    initSearchkit(searchkit, isWelcome=false) {
+    initSearchkit(searchkit, isWelcome = false) {
+
         let defaultQueries = [];
 
         if (UiTPasSearchConfig.get('showActiveAdvantages')) {
@@ -51,7 +57,9 @@ export default class UiTElasticSearchKit {
                 'gte': 'now'
             }));
         }
+
         defaultQueries.push(TermQuery('doctype', (isWelcome ? this.WELCOME_ADVANTAGE_TYPE : this.ADVANTAGE_TYPE)));
+
         if (defaultQueries.length > 0) {
 
             searchkit.addDefaultQuery(
@@ -63,6 +71,7 @@ export default class UiTElasticSearchKit {
     }
 
     static createSearchkit() {
+
         let es_url = UiTPasSearchConfig.get('elasticSearchUrl');
 
         return new SearchkitManager(es_url);

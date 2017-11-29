@@ -2,8 +2,11 @@
 export default class UiTPasSearchConfig {
 
     static config = {
+        cardSystemsChecked: [],
+        cardSystemsVisible: true,
         defaultThumbUrl: 'http://localhost:3000/img/voordelen-placeholder.png',
         elasticSearchUrl: 'http://acc.uitid.be:9200/promotions/',
+        embedded: true,
         lastChanceWeeks: 1000,
         searchPlaceholderText: 'Naam voordeel, organisator of gemeente',
         showActiveAdvantages: true,
@@ -12,8 +15,11 @@ export default class UiTPasSearchConfig {
     };
 
     static configTypes = {
+        cardSystemsChecked: 'array', // pipe-separated string (|)
+        cardSystemsVisible: 'boolean',
         defaultThumbUrl: 'string',
         elasticSearchUrl: 'string',
+        embedded: 'boolean',
         lastChanceWeeks: 'number',
         searchPlaceholderText: 'string',
         showActiveAdvantages: 'boolean',
@@ -65,9 +71,17 @@ export default class UiTPasSearchConfig {
 
                         break;
 
+                    case 'array':
+
+                        configValue = configSetting.split('|');
+                        break;
+
+
                     case 'string':
                     default:
+
                         configValue = configData[setting];
+                        break;
                 }
 
                 if (typeof configValue !== 'undefined') {
@@ -76,7 +90,7 @@ export default class UiTPasSearchConfig {
             }
         }
 
-        console.log(UiTPasSearchConfig.config);
+        
     }
 
     static set(field, value) {
