@@ -6,17 +6,19 @@ import { FastClick } from 'searchkit';
  */
 export default class UiTPasFilterItem extends React.Component {
 
-    render(){
+    render() {
+
         let props = this.props;
+
         return (
             <div className={props.bemBlocks.option()
                 .mix(props.bemBlocks.container("item"))
-                .mix(`selected-filter--${props.filterId}`)()}>
+                .mix(`selected-filter--${props.filterId}`)}>
                 <div className={props.bemBlocks.option("name")}>{props.labelValue}</div>
                 <FastClick handler={props.removeFilter}>
                     <div className={props.bemBlocks.option("remove-action")}>x</div>
                 </FastClick>
             </div>
-        )
+        );
     }
 };
