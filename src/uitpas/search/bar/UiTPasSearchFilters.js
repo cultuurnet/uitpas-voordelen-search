@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import {
     DynamicRangeFilter,
     Panel,
@@ -8,8 +9,18 @@ import {
     TermQuery,
     RangeQuery,
 } from 'searchkit';
-import PropTypes from 'prop-types';
+
 import UiTPasSearchConfig from '../UiTPasSearchConfig';
+
+RefinementListFilter.prototype.componentDidMount = function () {
+
+    if (this.props.id !== 'cardSystemsFilter') return;
+
+    const cardSystemsChecked = UiTPasSearchConfig.get('cardSystemsChecked');
+
+    this.setFilters(cardSystemsChecked);
+
+};
 
 export default class UiTPasSearchFilters extends React.Component {
 
@@ -17,80 +28,89 @@ export default class UiTPasSearchFilters extends React.Component {
         "range.submit": "Toepassen",
     };
 
-    renderPointsFilter(){
-        if(this.props.showPointFilter){
-            return (
-                <div className="sk-grid__12 sk-grid--bp-med__3">
-                    <DynamicRangeFilter field="points"
-                                        id="pointsFilter"
-                                        title="Puntenaantal"
-                                        containerComponent={<Panel collapsable={true} defaultCollapsed={true} className="uitpassearch-filters-pnl-point"/>}
-                                        rangeComponent={<RangeInput translations={this.rangeFilterTranslation}
-                                                                    translate={(lbl) => this.rangeFilterTranslation[lbl]}/>}/>
-                </div>);
-            //Remark: the translation function of the range component is overridden because the searchkit library contains a bug.
-        }
+    renderPointsFilter() {
+
+        if (!this.props.showPointFilter) return null;
+
+        return (
+            <div className="sk-grid__12 sk-grid--bp-med__3">
+                <DynamicRangeFilter field="points"
+                                    id="pointsFilter"
+                                    title="Puntenaantal"
+                                    containerComponent={<Panel collapsable={true} defaultCollapsed={true}/>}
+                                    rangeComponent={<RangeInput translations={this.rangeFilterTranslation}
+                                                                translate={(lbl) => this.rangeFilterTranslation[lbl]}/>}/>
+            </div>
+        );
+        //Remark: the translation function of the range component is overridden because the searchkit library contains a bug.
     }
 
-    renderTypeFilter(){
-        if(this.props.showTypeFilter){
-            return (
-                <div className="sk-grid__12 sk-grid--bp-med__3">
-                    <RefinementListFilter id="typesFilter"
-                                          title="Type"
-                                          field="type"
-                                          operator="OR"
-                                          containerComponent={<Panel collapsable={true} defaultCollapsed={true} className="uitpassearch-filters-pnl-cardsystem"/>}/>
-                </div>
-            );
-        }
-    }
+    renderTypeFilter() {
 
-    renderCardSystemFilter() {
+        if (!this.props.showTypeFilter) return null;
 
-        if (this.props.showCardSystemFilter) {
-
-            return (
-                <div className="sk-grid__12 sk-grid--bp-med__3">
-                    <RefinementListFilter field="applicableCardSystems.name.keyword"
-                                          id="cardSystemsFilter"
-                                          title="Voordeel aangeboden door"
-                                          operator="OR"
-                                          containerComponent={<Panel collapsable={true} defaultCollapsed={true} className="uitpassearch-filters-pnl-cardsystem"/>}/>
-                </div>
-            );
-        }
+        return (
+            <div className="sk-grid__12 sk-grid--bp-med__3">
+                <RefinementListFilter id="typesFilter"
+                                      title="Type"
+                                      field="type"
+                                      operator="OR"
+                                      containerComponent={<Panel collapsable={true} defaultCollapsed={true}/>}/>
+            </div>
+        );
     }
 
     renderExtraOptionFilter() {
 
-        if (this.props.showExtraOptionFilter) {
+        if (!this.props.showExtraOptionFilter) return null;
 
-            return (
-                <div className="sk-grid__12 sk-grid--bp-med__3">
-                    <Panel title="Extra opties"
-                           collapsable={true}
-                           defaultCollapsed={true}
-                           className="sk-panel--spaced">
-                        <CheckboxFilter id="childrenFilter"
-                                        label="Speciaal voor kinderen"
-                                        title=""
-                                        filter={TermQuery("forKids", true)}/>
-                        <CheckboxFilter id="sportFilter"
-                                        label="Sportactiviteiten"
-                                        title=""
-                                        filter={TermQuery("sport", true)}/>
-                        <CheckboxFilter id="lastChance"
-                                        label="Laatste kans"
-                                        title=""
-                                        filter={RangeQuery("cashingPeriodEnd", {
-                                            "lt": "now+" + UiTPasSearchConfig.get('lastChanceWeeks') + "w/d",
-                                            "gte": "now/d"
-                                        })}/>
-                    </Panel>
-                </div>
-            );
+        return (
+            <div className="sk-grid__12 sk-grid--bp-med__3">
+                <Panel title="Extra opties"
+                       collapsable={true}
+                       defaultCollapsed={true}>
+                    <CheckboxFilter id="childrenFilter"
+                                    label="Speciaal voor kinderen"
+                                    title=""
+                                    filter={TermQuery("forKids", true)}/>
+                    <CheckboxFilter id="sportFilter"
+                                    label="Sportactiviteiten"
+                                    title=""
+                                    filter={TermQuery("sport", true)}/>
+                    <CheckboxFilter id="lastChance"
+                                    label="Laatste kans"
+                                    title=""
+                                    filter={RangeQuery("cashingPeriodEnd", {
+                                        "lt": "now+" + UiTPasSearchConfig.get('lastChanceWeeks') + "w/d",
+                                        "gte": "now/d"
+                                    })}/>
+                </Panel>
+            </div>
+        );
+    }
+
+    renderCardSystemFilter() {
+
+        if (!this.props.showCardSystemFilter) return null;
+
+        const cardSystemsVisible = UiTPasSearchConfig.get('cardSystemsVisible');
+
+        let filterStyle = {};
+
+        if (!cardSystemsVisible) {
+
+            filterStyle = { display: 'none' };
         }
+
+        return (
+            <div className="sk-grid__12 sk-grid--bp-med__3" style={filterStyle}>
+                <RefinementListFilter field="applicableCardSystems.name.keyword"
+                                      id="cardSystemsFilter"
+                                      title="Voordeel aangeboden door"
+                                      operator="OR"
+                                      containerComponent={<Panel collapsable={true} defaultCollapsed={true}/>}/>
+            </div>
+        );
     }
 
     /**
@@ -100,21 +120,19 @@ export default class UiTPasSearchFilters extends React.Component {
      */
     renderHiddenCounterFilter() {
 
-        if (this.props.renderCounterFilter) {
-            //do not show this filter to the user.
-            let hideFilterStyle = {
-                display: 'none',
-            };
+        if (!this.props.renderCounterFilter) return null;
 
-            return (
-                <div style={hideFilterStyle}>
-                    <RefinementListFilter field="balies.name.keyword"
-                                          id="countersFilter"
-                                          title="Balies"
-                                          operator="OR"/>
-                </div>
-            );
-        }
+        //do not show this filter to the user.
+        let filterStyle = { display: 'none' };
+
+        return (
+            <div style={filterStyle}>
+                <RefinementListFilter field="balies.name.keyword"
+                                      id="countersFilter"
+                                      title="Balies"
+                                      operator="OR"/>
+            </div>
+        );
     }
 
     /**
