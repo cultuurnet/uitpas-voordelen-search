@@ -61,8 +61,8 @@ export default class UiTPasSearchHits extends SearchkitComponent {
                                 options={[
                                     { label: 'Meest recent', field: 'creationDate', order: 'desc', key: 'mostRecent', defaultOption: true },
                                     { label: 'Meest omgeruild', field: 'unitsTaken', order: 'desc', key: 'mostBartered' },
-                                    { label: 'Puntenaantal laag - hoog', field: 'points', order: 'desc', key: 'pointsHighLow' },
-                                    { label: 'Puntenaantal hoog - laag', field: 'points', order: 'asc', key: 'pointsLowHigh' }
+                                    { label: 'Puntenaantal laag - hoog', field: 'points', order: 'asc', key: 'pointsHighLow' },
+                                    { label: 'Puntenaantal hoog - laag', field: 'points', order: 'desc', key: 'pointsLowHigh' }
                                 ]}/>
                         </div>
                     </ActionBarRow>
@@ -78,7 +78,7 @@ export default class UiTPasSearchHits extends SearchkitComponent {
                 <ActionBar>
                     <ActionBarRow>
                         <span className="sort-lbl">Resultaten per pagina</span>
-                        <PageSizeSelector options={[12,30,60]} listComponent={Select}/>
+                        <PageSizeSelector options={[12,24,36]} listComponent={Select}/>
                     </ActionBarRow>
                     <ActionBarRow>
                         <Pagination showNumbers={true}

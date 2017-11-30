@@ -14,7 +14,7 @@ import UiTPasSearchConfig from '../UiTPasSearchConfig';
 export default class UiTPasSearchFilters extends React.Component {
 
     rangeFilterTranslation = {
-        "range.submit": "filter",
+        "range.submit": "Toepassen",
     };
 
     renderPointsFilter(){
