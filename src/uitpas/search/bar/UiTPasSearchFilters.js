@@ -18,8 +18,9 @@ RefinementListFilter.prototype.componentDidMount = function () {
 
     const cardSystemsChecked = UiTPasSearchConfig.get('cardSystemsChecked');
 
-    this.setFilters(cardSystemsChecked);
-
+    if (!window.location.search.length) {
+        this.setFilters(cardSystemsChecked);
+    }
 };
 
 export default class UiTPasSearchFilters extends React.Component {
