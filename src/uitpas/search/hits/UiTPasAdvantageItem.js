@@ -42,13 +42,13 @@ export default class UiTPasAdvantageItem extends SearchkitComponent {
     }
 
     makePointsLabel(points) {
-        return (points === 0 ? 'gratis' : points + ' punt' + (points === 1 ? '' : 'en'))
+        return points + (points === 1 ? ' punt' : ' punten');
     }
 
     renderCounters(counters) {
 
         let counterComps = map(counters, (counter) => {
-            return '<span>' + counter.name + ' te ' + counter.cityName + '</span>';
+            return '<span>' + counter.name + ', ' + counter.cityName + '</span>';
         });
 
         let countersHtml = joinNicely(counterComps, ', ', ' en ');

@@ -1393,9 +1393,13 @@ body {
     width: 75%; } }
 
 .sk-card {
-  display: block;
-  color: inherit; }
+  display: flex;
+  color: inherit;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: stretch; }
   .sk-card__img {
+    flex-grow: 0;
     overflow: hidden;
     position: relative; }
     .sk-card__img img {
@@ -1419,9 +1423,15 @@ body {
     display: inline-block;
     background: #d8d8d8;
     color: #444;
-    padding: 0.5em 1em; }
+    padding: 0.5em 1em;
+    margin-top: auto; }
   .sk-card__main {
-    padding: 20px; }
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start; }
 
 a.sk-card,
 .sk-card--link {
@@ -1465,6 +1475,7 @@ body {
 .sk-tabs {
   margin: 0;
   padding-top: 20px;
+  padding-left: 16px;
   border-bottom: 1px solid #d8d8d8; }
 
 .sk-tabs-option {
@@ -1496,6 +1507,13 @@ body {
 .sk-search-box input.sk-search-box__text::placeholder {
   color: #444; }
 
+.sk-range-input__submit {
+  background: #f3453f;
+  border-color: #f3453f; }
+  .sk-range-input__submit, .sk-range-input__submit:hover, .sk-range-input__submit:focus {
+    color: white;
+    text-decoration: none; }
+
 .sk-select {
   max-height: none; }
   .sk-select select {
@@ -1505,6 +1523,9 @@ body {
 
 .sk-layout__results {
   box-shadow: none; }
+
+.sk-results-list {
+  padding: 0; }
 
 .sk-action-bar {
   margin: 0;
@@ -1535,3 +1556,6 @@ body {
 .sk-text--lrg {
   font-size: 18px;
   line-height: 1.6; }
+
+.sk-block + .sk-block {
+  margin-top: 30px; }

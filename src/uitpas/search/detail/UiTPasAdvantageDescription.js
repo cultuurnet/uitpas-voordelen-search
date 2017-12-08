@@ -14,27 +14,31 @@ export default class UiTPasAdvantageDescription extends React.Component {
         return (
             <div>
                 <Link to='/voordelen'>Terug naar voordelen</Link>
-                <div className="sk-grid">
-                    <div className="sk-grid__12 sk-grid--bp-med__7">
-                        <h1>{this.props.advantage.title}</h1>
-                    </div>
-                    <div className="sk-grid__12 sk-grid--bp-med__5">
-                        {this.renderPoints()}
+                <div className="sk-block">
+                    <div className="sk-grid">
+                        <div className="sk-grid__12 sk-grid--bp-med__7">
+                            <h1>{this.props.advantage.title}</h1>
+                        </div>
+                        <div className="sk-grid__12 sk-grid--bp-med__5">
+                            {this.renderPoints()}
+                        </div>
                     </div>
                 </div>
-                <div className="sk-grid">
-                    <div className="sk-grid__12 sk-grid--bp-med__7">
-                        {this.renderCounters()}
-                        {this.renderDescription()}
-                        {this.renderMoreInfo()}
-                        {this.renderPracticalInfo()}
-                        {this.renderAvailability()}
-                    </div>
-                    <div className="sk-grid__12 sk-grid--bp-med__5">
-                        <div className="sk-card">
-                            <div className="sk-card__img">
-                                {this.renderImage()}
-                                <LastChanceLabel endDate={this.props.advantage.cashingPeriodEnd} className="sk-card__banner"/>
+                <div className="sk-block">
+                    <div className="sk-grid">
+                        <div className="sk-grid__12 sk-grid--bp-med__7">
+                            {this.renderCounters()}
+                            {this.renderDescription()}
+                            {this.renderMoreInfo()}
+                            {this.renderPracticalInfo()}
+                            {this.renderAvailability()}
+                        </div>
+                        <div className="sk-grid__12 sk-grid--bp-med__5">
+                            <div className="sk-card">
+                                <div className="sk-card__img">
+                                    {this.renderImage()}
+                                    <LastChanceLabel endDate={this.props.advantage.cashingPeriodEnd} className="sk-card__banner"/>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -52,7 +56,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
                     <strong>Omruilen bij: </strong>
                     {map(this.props.advantage.balies, (counter, index) => {
                         return (<span
-                            key={counter.actorId}>{counter.name}{index < this.props.advantage.balies.length - 1 ? ',\u00A0' : ''}</span>);
+                            key={counter.actorId}>{counter.name} ({counter.cityName}){index < this.props.advantage.balies.length - 1 ? ',\u00A0' : ''}</span>);
                     })}
                 </div>
             );
@@ -149,7 +153,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
 
     renderAvailability() {
 
-        let availability = 'Dit voordeel is niet meer voorrading. ';
+        let availability = 'Dit voordeel is niet meer voorradig. ';
 
         if (this.props.advantage.maxAvailableUnits && this.props.advantage.maxAvailableUnits > 0) {
 
@@ -175,6 +179,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
                 <strong>Beschikbaarheid:</strong> {availability}<br/>
                 <br/>
                 {this.renderApplicableCards()}
+                <br/>
                 {this.renderOwningCardSystem()}
             </div>
         );

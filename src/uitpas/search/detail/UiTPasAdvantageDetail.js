@@ -77,7 +77,7 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
     renderNoResult() {
         
         return (
-            <div>
+            <div className="sk-layout__results">
                 <h2>Oeps! Dit voordeel bestaat niet meer...</h2>
             </div>
         );
@@ -85,7 +85,7 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
 
     renderLoading(){
         return (
-            <div>
+            <div className="sk-layout__results">
                 <h2>Loading...</h2>
             </div>
         );

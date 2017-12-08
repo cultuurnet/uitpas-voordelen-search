@@ -21,9 +21,9 @@ class UiTPasSearchAppContainer extends Component {
                     </NavLink>
                 </div>
                 <Switch>
-                    <Route exact name="voordelen" path="/voordelen" component={UiTPasAdvantageSearchPage}/>
-                    <Route exact name="welkomstvoordelen" path="/welkomstvoordelen" component={UiTPasWelcomeAdvantageSearchPage}/>
+                    <Route exact path="/voordelen" component={UiTPasAdvantageSearchPage}/>
                     <Route path="/voordeel/:id" component={UiTPasDetailPage}/>
+                    <Route exact path="/welkomstvoordelen" component={UiTPasWelcomeAdvantageSearchPage}/>
                     <Route component={UiTPasAdvantageSearchPage}/>
                 </Switch>
             </div>

@@ -1,8 +1,12 @@
 .sk-card {
-  display: block;
+  display: flex;
   color: inherit;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
 
   &__img {
+    flex-grow: 0;
     overflow: hidden;
     position: relative;
     img {
@@ -36,10 +40,16 @@
     background: $sk-gray-25;
     color: $sk-text-color;
     padding: 0.5em 1em;
+    margin-top: auto;
   }
 
   &__main {
+    flex-grow: 1;
     padding: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 }
 

@@ -7,7 +7,6 @@ import {
 import UiTPasSearchHits from '../hits/UiTPasSearchHits';
 import UiTPasSearchPage from './UiTPasSearchPage';
 import UiTPasSearchFilters from '../bar/UiTPasSearchFilters';
-import './UiTPasAdvantageSearchPage.css';
 import UiTPasSearchBar from '../bar/UiTPasSearchBar';
 
 
