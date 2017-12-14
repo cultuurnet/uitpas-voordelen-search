@@ -173,7 +173,7 @@ export default class UiTPasSearchFilters extends React.Component {
                     {this.renderHiddenCounterFilter()}
                 </div>
                 {this.renderHiddenOwningCardSystemFilter()}
-                <hr/>
+                <hr className="sk-hr"/>
             </div>
         );
     }

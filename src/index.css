@@ -1560,3 +1560,7 @@ body {
 
 .sk-block + .sk-block {
   margin-top: 30px; }
+
+.sk-hr {
+  border-top: none;
+  border-color: #d8d8d8; }
