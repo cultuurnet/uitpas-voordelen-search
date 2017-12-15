@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter, HashRouter} from 'react-router-dom';
+import { BrowserRouter, HashRouter, Router } from 'react-router-dom';
 
 import UiTPasSearchConfig from './uitpas/search/UiTPasSearchConfig';
 import UiTPasSearchAppContainer from './uitpas/UiTPasSearchAppContainer';
+import { createBrowserHistory, createHashHistory } from 'history';
 
 /**
  * This package contains containers for the router. This architecture allows to easily change the app to use
@@ -19,9 +20,9 @@ export default class UiTPasSearchApp extends Component {
     renderHashRouter() {
 
         return (
-            <HashRouter>
+            <Router history={createHashHistory()}>
                 <UiTPasSearchAppContainer/>
-            </HashRouter>
+            </Router>
         );
     }
 

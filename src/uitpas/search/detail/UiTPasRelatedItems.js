@@ -7,8 +7,10 @@ import { Link } from 'react-router-dom';
 import UiTPasAdvantageItem from '../hits/UiTPasAdvantageItem';
 import { joinNicely } from '../helper/UiTPasArrayUtils';
 import UiTPasSearchConfig from '../UiTPasSearchConfig';
+import { withRouter } from 'react-router'
+import {parse, stringify} from 'qs';
 
-export default class UiTPasRelatedItems extends SearchkitComponent {
+class UiTPasRelatedItemsContainer extends SearchkitComponent {
 
     static propTypes = {
         advantage: PropTypes.number.isRequired,
@@ -103,18 +105,32 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
     renderMoreRelatedItemsLink() {
 
         if (this.state.items && this.state.items.length > 0) {
+            let {match, location, history, searchkit} = this.props;
+            //const query = new URLSearchParams(history.location.search);
+            //query.set('foo', 'bar');
+            //let query = parse(window.location.search, { ignoreQueryPrefix: true });
+            //history.replace({...history.location, search: query.toString()})
 
-            let urlParams = this.counterNames.map((name, i) => {
-                return 'countersFilter[' + i + ']=' + encodeURIComponent(name);
+            let query = {};
+            this.counterNames.forEach((name, i) => {
+                query['q'] = name;
             });
 
-            let url = '/voordelen?' + urlParams.join('&');
+            let url = {
+                pathname: '/voordelen',
+                search: stringify(query, { addQueryPrefix: true }),
+            };
+
+            console.log(searchkit.options.getLocation());
+            //url = searchkit.options.getLocation().pathname + stringify(query, { addQueryPrefix: true });
             
             return (
                 <div>
                     <br/>
-                    <Link to={url}>Alle voordelen
-                        in {joinNicely(this.counterNames, ', ', ' of ')} &raquo;</Link>
+                    <a onClick={function(){
+                        history.push(url);
+                    }}>Alle voordelen
+                        in {joinNicely(this.counterNames, ', ', ' of ')} &raquo;</a>
                 </div>
             );
         }
@@ -146,3 +162,6 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
         };
     }
 }
+
+const UiTPasRelatedItems = withRouter(UiTPasRelatedItemsContainer);
+export default UiTPasRelatedItems;

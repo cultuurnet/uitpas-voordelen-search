@@ -6,6 +6,7 @@ import {
 } from 'searchkit';
 
 import UiTPasSearchConfig from './UiTPasSearchConfig';
+import { createBrowserHistory, createHashHistory } from 'history';
 
 /**
  * This searchkit container class manages two types of searchit managers:
@@ -74,7 +75,13 @@ export default class UiTElasticSearchKit {
 
         let es_url = UiTPasSearchConfig.get('elasticSearchUrl');
 
-        return new SearchkitManager(es_url);
+        const embedded = UiTPasSearchConfig.get('embedded');
+        const historyCreationFunction = embedded ? createHashHistory : createBrowserHistory;
+
+        return new SearchkitManager(es_url, {
+            useHistory: true,
+            createHistory: historyCreationFunction
+        });
     }
 
     getDefaultSearchFields() {

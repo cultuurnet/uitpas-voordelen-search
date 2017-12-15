@@ -19,7 +19,7 @@ RefinementListFilter.prototype.componentDidMount = function () {
     const cardSystemsChecked = UiTPasSearchConfig.get('cardSystemsChecked');
 
     if (!window.location.search.length) {
-        this.setFilters(cardSystemsChecked);
+        //this.setFilters(cardSystemsChecked);
     }
 };
 
@@ -105,7 +105,7 @@ export default class UiTPasSearchFilters extends React.Component {
 
         return (
             <div className="sk-grid__12 sk-grid--bp-med__3" style={filterStyle}>
-                <RefinementListFilter field="applicableCardSystems.name.keyword"
+                <RefinementListFilter field="owningCardSystem.name"
                                       id="cardSystemsFilter"
                                       title="Voordeel aangeboden door"
                                       operator="OR"
