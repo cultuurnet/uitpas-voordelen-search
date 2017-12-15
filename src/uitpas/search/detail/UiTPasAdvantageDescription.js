@@ -6,15 +6,19 @@ import moment from 'moment';
 import { UiTImage } from '../component/UiTImage';
 import { UiTPasCounter } from './UiTPasCounter';
 import { LastChanceLabel } from '../component/LastChanceLabel';
+import UiTElasticSearchKit from "../UiTElasticSearchKit";
 
 export default class UiTPasAdvantageDescription extends React.Component {
 
     render() {
+        console.log('doctype: ' + this.props.advantage.doctype);
+        let backLink = (this.props.advantage.doctype === 'pointspromotion' ? '/voordelen' : '/welkomstvoordelen');
+        let backName = (this.props.advantage.doctype === 'pointspromotion' ? 'voordelen' : 'welkomstvoordelen');
 
         return (
             <div>
                 <div className="sk-block">
-                    <Link to='/voordelen'>Terug naar voordelen</Link>
+                    <Link to={backLink}>Terug naar {backName}</Link>
                 </div>
                 <div className="sk-block">
                     <div className="sk-grid">

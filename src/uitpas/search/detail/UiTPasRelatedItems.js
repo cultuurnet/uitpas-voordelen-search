@@ -126,19 +126,12 @@ class UiTPasRelatedItemsContainer extends SearchkitComponent {
                 search: stringify(query, { addQueryPrefix: true }),
             };
 
-            console.log(searchkit.options.getLocation());
-            //url = searchkit.options.getLocation().pathname + stringify(query, { addQueryPrefix: true });
-            
             return (
                 <div>
                     <div>
                         <Link to={url}>Alle voordelen in {joinNicely(this.counterNames, ', ', ' of ')} &raquo;</Link>
                     </div>
                     <br/>
-                    <a onClick={function(){
-                        history.push(url);
-                    }}>Alle voordelen
-                        in {joinNicely(this.counterNames, ', ', ' of ')} &raquo;</a>
                 </div>
             );
         }
