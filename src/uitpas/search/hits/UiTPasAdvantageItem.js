@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { withRouter } from 'react-router'
 import { SearchkitComponent } from 'searchkit';
 import { first, get, isArray, map } from 'lodash';
 import { Link } from 'react-router-dom';
@@ -9,20 +10,22 @@ import { joinNicely } from '../helper/UiTPasArrayUtils';
 
 let HtmlToReactParser = require('html-to-react').Parser;
 
-export default class UiTPasAdvantageItem extends SearchkitComponent {
+class UiTPasAdvantageItem extends SearchkitComponent {
 
     render() {
 
-        let title = get(this.props.result, '_source.title', 'UiTPas Voordeel');
-        let thumbUrl = get(this.props.result, '_source.pictures', this.defaultThumb);
+        const { result, match } = this.props;
+
+        let title = get(result, '_source.title', 'UiTPas Voordeel');
+        let thumbUrl = get(result, '_source.pictures', this.defaultThumb);
 
         //_source.pictures can be double array:
         thumbUrl = (isArray(thumbUrl) ? (isArray(first(thumbUrl)) ? first(first(thumbUrl)) : first(thumbUrl)) : thumbUrl);
 
-        let points = get(this.props.result, '_source.points', 0);
-        let counters = get(this.props.result, '_source.balies', []);
-        let detailPage = '/voordeel/' + get(this.props.result, '_source.id', 0);
-        let cashingPeriodEnd = get(this.props.result, '_source.cashingPeriodEnd', null);
+        let points = get(result, '_source.points', 0);
+        let counters = get(result, '_source.balies', []);
+        let detailPage = `${match.url}/${get(result, '_source.id', 0)}`;
+        let cashingPeriodEnd = get(result, '_source.cashingPeriodEnd', null);
 
         return (
             <div className="sk-grid__item">
@@ -57,3 +60,5 @@ export default class UiTPasAdvantageItem extends SearchkitComponent {
         return parser.parse(countersHtml);
     }
 }
+
+export default withRouter(UiTPasAdvantageItem);

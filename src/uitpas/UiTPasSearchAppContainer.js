@@ -3,8 +3,6 @@ import { NavLink, Route, Redirect, Switch } from 'react-router-dom';
 
 import UiTPasAdvantageSearchPage from './search/page/UiTPasAdvantageSearchPage';
 import UiTPasWelcomeAdvantageSearchPage from './search/page/UiTPasWelcomeAdvantageSearchPage';
-import UiTPasDetailPage from './search/page/UiTPasDetailPage';
-
 
 class UiTPasSearchAppContainer extends Component {
 
@@ -21,10 +19,9 @@ class UiTPasSearchAppContainer extends Component {
                     </NavLink>
                 </div>
                 <Switch>
-                    <Route exact path="/voordelen" component={UiTPasAdvantageSearchPage}/>
-                    <Route path="/voordeel/:id" component={UiTPasDetailPage}/>
-                    <Route exact path="/welkomstvoordelen" component={UiTPasWelcomeAdvantageSearchPage}/>
-                    <Redirect to="/voordelen"/>
+                    <Route path="/voordelen" component={UiTPasAdvantageSearchPage}/>
+                    <Route path="/welkomstvoordelen" component={UiTPasWelcomeAdvantageSearchPage}/>
+                    <Redirect from="/" exact to="/voordelen"/>
                 </Switch>
             </div>
         );

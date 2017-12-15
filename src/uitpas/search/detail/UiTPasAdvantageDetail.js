@@ -11,25 +11,29 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
     loading = true;
     currentAdvantageId;
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             advantage: null,
-            loading: true,
+            loading: true
         };
     }
 
-    componentWillMount(){
-        let id = this.props.advantageId;
+    componentWillMount() {
+
+        let id = this.props.match.params.id;
         let url = UiTPasSearchConfig.get('elasticSearchUrl') + '_search';
         let headers = new Headers();
+
         headers.append('Content-Type', 'application/json');
         headers.append('Accept', 'application/json');
+
         let request = new Request(url, {
             method: 'POST',
             body: JSON.stringify(this.getQuery(id)),
             headers: headers
         });
+
         fetch(request)
             .then((response) => {
                 return response.json()
@@ -45,12 +49,9 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
 
     render() {
 
-        this.currentAdvantageId = this.props.advantageId;
-
+        this.currentAdvantageId = this.props.match.params.id;
         this.advantage = this.state.advantage;
         this.loading = this.state.loading;
-
-        console.log(this.advantage);
 
         if (this.loading) {
             return this.renderLoading();
@@ -83,7 +84,7 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
         );
     }
 
-    renderLoading(){
+    renderLoading() {
         return (
             <div className="sk-layout__results">
                 <h2>Loading...</h2>
@@ -92,7 +93,8 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
     }
 
 
-    getQuery(id){
+    getQuery(id) {
+        
         return {
             "query": {
                 "bool": {
