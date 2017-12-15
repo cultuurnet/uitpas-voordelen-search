@@ -38,6 +38,7 @@ export default class UiTPasSearchFilters extends React.Component {
                 <DynamicRangeFilter field="points"
                                     id="pointsFilter"
                                     title="Puntenaantal"
+                                    min={0}
                                     containerComponent={<Panel collapsable={true} defaultCollapsed={true}/>}
                                     rangeComponent={<RangeInput translations={this.rangeFilterTranslation}
                                                                 translate={(lbl) => this.rangeFilterTranslation[lbl]}/>}/>
