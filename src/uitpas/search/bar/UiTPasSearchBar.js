@@ -15,7 +15,7 @@ export default class UiTPasSearchBar extends React.Component {
      * @returns {{simple_query_string: ({query: any} & SimpleQueryStringOptions)}}
      */
     getQuery(queryString){
-        return SimpleQueryString((queryString ? queryString.trim() + '*' : queryString));
+        return SimpleQueryString((queryString && UiTPasSearchConfig.get('fuzzySearch') ? queryString.trim() + '*' : queryString));
     }
 
     render() {

@@ -59,6 +59,10 @@ export default class UiTElasticSearchKit {
             }));
         }
 
+        if(UiTPasSearchConfig.get('showPermanentCardSystemAdvantages')){
+            defaultQueries.push(TermQuery('owningCardSystem.permanent', true));
+        }
+
         defaultQueries.push(TermQuery('doctype', (isWelcome ? this.WELCOME_ADVANTAGE_TYPE : this.ADVANTAGE_TYPE)));
 
         if (defaultQueries.length > 0) {

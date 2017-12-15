@@ -7,6 +7,7 @@ import { UiTImage } from '../component/UiTImage';
 import { UiTPasCounter } from './UiTPasCounter';
 import { LastChanceLabel } from '../component/LastChanceLabel';
 import UiTElasticSearchKit from "../UiTElasticSearchKit";
+import { joinNicely } from '../helper/UiTPasArrayUtils';
 
 export default class UiTPasAdvantageDescription extends React.Component {
 
@@ -184,6 +185,8 @@ export default class UiTPasAdvantageDescription extends React.Component {
                 <br/>
                 {this.renderApplicableCards()}
                 <br/>
+                {this.renderAvailableCities()}
+                <br/>
                 {this.renderOwningCardSystem()}
             </div>
         );
@@ -248,5 +251,17 @@ export default class UiTPasAdvantageDescription extends React.Component {
         } else {
             return null;
         }
+    }
+
+    renderAvailableCities(){
+        if(this.props.advantage.validForCities && this.props.advantage.validForCities.length > 0){
+            let cities = this.props.advantage.validForCities.map((city) => {
+                return city.name;
+            });
+            return (
+                <div>Dit voordeel is beschikbaar voor pashouders uit de gemeenten: {joinNicely(cities, ', ', ' en ')}. </div>
+            );
+        }
+        else return null;
     }
 }
