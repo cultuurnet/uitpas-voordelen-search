@@ -36,8 +36,8 @@ export default class UiTPasSearchHits extends SearchkitComponent {
     };
 
     paginationTranslation = {
-        "pagination.previous": "Vorige",
-        "pagination.next": "Volgende",
+        "pagination.previous": "‹",
+        "pagination.next": "›",
     };
 
     resetFiltersTranslations = {

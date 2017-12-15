@@ -1476,7 +1476,8 @@ body {
   margin: 0;
   padding-top: 20px;
   padding-left: 16px;
-  border-bottom: 1px solid #d8d8d8; }
+  border-bottom: 1px solid #d8d8d8;
+  box-sizing: border-box; }
 
 .sk-tabs-option {
   letter-spacing: 0.05em;
@@ -1559,3 +1560,13 @@ body {
 
 .sk-block + .sk-block {
   margin-top: 30px; }
+
+.sk-hr {
+  border-top: none;
+  border-color: #d8d8d8; }
+
+.sk-heading:first-child {
+  margin-top: 0; }
+
+.sk-heading:last-child {
+  margin-bottom: 0; }
