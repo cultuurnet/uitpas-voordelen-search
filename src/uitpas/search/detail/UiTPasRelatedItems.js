@@ -61,15 +61,20 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
 
                 return (
                     <div className="uitpassearch-detail-relateditems">
-                        <div className="sk-grid">
-                            <div className="sk-grid__12 sk-grid--bp-med__8">
-                                <h2>Andere voordelen in {joinNicely(this.counterNames, ', ', ' of ')}</h2>
-                            </div>
-                            <div className="sk-grid__12 sk-grid--bp-med__4">
-                                {this.renderMoreRelatedItemsLink()}
+                        <div className="sk-block"/>
+                        <div className="sk-block">
+                            <div className="sk-grid">
+                                <div className="sk-grid__12 sk-grid--bp-med__8">
+                                    <h2 className="sk-heading">Andere voordelen in {joinNicely(this.counterNames, ', ', ' of ')}</h2>
+                                </div>
+                                <div className="sk-grid__12 sk-grid--bp-med__4">
+                                    {this.renderMoreRelatedItemsLink()}
+                                </div>
                             </div>
                         </div>
-                        {this.renderRelatedItems()}
+                        <div className="sk-block">
+                            {this.renderRelatedItems()}
+                        </div>
                     </div>
                 );
             }
@@ -112,9 +117,10 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
             
             return (
                 <div>
+                    <div>
+                        <Link to={url}>Alle voordelen in {joinNicely(this.counterNames, ', ', ' of ')} &raquo;</Link>
+                    </div>
                     <br/>
-                    <Link to={url}>Alle voordelen
-                        in {joinNicely(this.counterNames, ', ', ' of ')} &raquo;</Link>
                 </div>
             );
         }

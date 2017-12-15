@@ -13,11 +13,13 @@ export default class UiTPasAdvantageDescription extends React.Component {
 
         return (
             <div>
-                <Link to='/voordelen'>Terug naar voordelen</Link>
+                <div className="sk-block">
+                    <Link to='/voordelen'>Terug naar voordelen</Link>
+                </div>
                 <div className="sk-block">
                     <div className="sk-grid">
                         <div className="sk-grid__12 sk-grid--bp-med__7">
-                            <h1>{this.props.advantage.title}</h1>
+                            <h1 className="sk-heading">{this.props.advantage.title}</h1>
                         </div>
                         <div className="sk-grid__12 sk-grid--bp-med__5">
                             {this.renderPoints()}
@@ -127,9 +129,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
         if (this.props.advantage.points) {
 
             return (
-                <h2>
-                    <div className="sk-label">{this.props.advantage.points} <small>{(this.props.advantage.points === 1 ? 'punt' : 'punten')}</small></div>
-                </h2>
+                <div className="sk-label">{this.props.advantage.points} <small>{(this.props.advantage.points === 1 ? 'punt' : 'punten')}</small></div>
             );
         } else {
             return null;

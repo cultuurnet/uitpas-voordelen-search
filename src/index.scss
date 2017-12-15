@@ -188,3 +188,12 @@ body {
   border-top: none;
   border-color: #d8d8d8;
 }
+
+.sk-heading {
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
