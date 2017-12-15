@@ -2,11 +2,13 @@ import * as React from 'react';
 import { get } from 'lodash';
 import { SearchkitComponent } from 'searchkit';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 import UiTPasAdvantageItem from '../hits/UiTPasAdvantageItem';
 import { joinNicely } from '../helper/UiTPasArrayUtils';
 import UiTPasSearchConfig from '../UiTPasSearchConfig';
+
+import {stringify} from 'qs';
 
 class UiTPasRelatedItemsContainer extends SearchkitComponent {
 
