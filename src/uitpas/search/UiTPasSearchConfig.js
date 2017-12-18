@@ -7,12 +7,12 @@ export default class UiTPasSearchConfig {
         defaultThumbUrl: 'http://localhost:3000/img/default-thumb.png',
         elasticSearchUrl: 'http://acc.uitid.be:9200/promotions/',
         embedded: true,
-        fuzzySearch: false,
+        fuzzySearch: true,
         lastChanceWeeks: 1000,
         searchPlaceholderText: 'Naam voordeel, organisator of gemeente',
         showActiveAdvantages: true,
         showPublishedAdvantages: false,
-        uitDatabankUrlPrefix: 'https://io-acc.uitdatabank.be'
+        showPermanentCardSystemAdvantages: true,
     };
 
     static configTypes = {
@@ -26,7 +26,7 @@ export default class UiTPasSearchConfig {
         searchPlaceholderText: 'string',
         showActiveAdvantages: 'boolean',
         showPublishedAdvantages: 'boolean',
-        uitDatabankUrlPrefix: 'string'
+        showPermanentCardSystemAdvantages: 'boolean',
     };
 
     static buildConfig() {

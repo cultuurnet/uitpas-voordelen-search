@@ -59,7 +59,11 @@ export default class UiTPasSearchHits extends SearchkitComponent {
                             <span>Sorteer op</span>
                             <SortingSelector
                                 options={[
-                                    { label: 'Meest recent', field: 'creationDate', order: 'desc', key: 'mostRecent', defaultOption: true },
+                                    /*{ label: 'Meest recent', field: 'creationDate', order: 'desc', key: 'mostRecent', defaultOption: true },*/
+                                    { label: 'Meest recent', key: 'mostRecent', defaultOption: true, fields: [
+                                        {field:"inSpotlight", options: {order:"desc"}},
+                                        {field:"creationDate", options: {order:"desc"}}
+                                    ]},
                                     { label: 'Meest omgeruild', field: 'unitsTaken', order: 'desc', key: 'mostBartered' },
                                     { label: 'Puntenaantal laag - hoog', field: 'points', order: 'asc', key: 'pointsHighLow' },
                                     { label: 'Puntenaantal hoog - laag', field: 'points', order: 'desc', key: 'pointsLowHigh' }

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import { UiTImage } from '../component/UiTImage';
 import { LastChanceLabel } from '../component/LastChanceLabel';
+import { SpotlightLabel } from '../component/SpotlightLabel';
 import { joinNicely } from '../helper/UiTPasArrayUtils';
 
 let HtmlToReactParser = require('html-to-react').Parser;
@@ -26,12 +27,14 @@ class UiTPasAdvantageItem extends SearchkitComponent {
         let counters = get(result, '_source.balies', []);
         let detailPage = `${match.url}/${get(result, '_source.id', 0)}`;
         let cashingPeriodEnd = get(result, '_source.cashingPeriodEnd', null);
+        let spotlight = get(result, '_source.inSpotlight', null);
 
         return (
             <div className="sk-grid__item">
                 <Link to={detailPage} className="sk-card sk-card--link sk-card--shadow">
                     <div className="sk-card__img">
                         <LastChanceLabel endDate={cashingPeriodEnd} className="sk-card__banner"/>
+                        <SpotlightLabel spotlight={spotlight} className="sk-card__banner"/>
                         <UiTImage src={thumbUrl} alt={title} width={480} height={360}/>
                     </div>
                     <div className="sk-card__main">

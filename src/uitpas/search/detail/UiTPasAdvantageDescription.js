@@ -6,15 +6,19 @@ import moment from 'moment';
 import { UiTImage } from '../component/UiTImage';
 import { UiTPasCounter } from './UiTPasCounter';
 import { LastChanceLabel } from '../component/LastChanceLabel';
+import { joinNicely } from '../helper/UiTPasArrayUtils';
 
 export default class UiTPasAdvantageDescription extends React.Component {
 
     render() {
 
+        let backLink = (this.props.advantage.doctype === 'pointspromotion' ? '/voordelen' : '/welkomstvoordelen');
+        let backName = (this.props.advantage.doctype === 'pointspromotion' ? 'voordelen' : 'welkomstvoordelen');
+
         return (
             <div>
                 <div className="sk-block">
-                    <Link to='/voordelen'>Terug naar voordelen</Link>
+                    <Link to={backLink}>Terug naar {backName}</Link>
                 </div>
                 <div className="sk-block">
                     <div className="sk-grid">
@@ -180,6 +184,8 @@ export default class UiTPasAdvantageDescription extends React.Component {
                 <br/>
                 {this.renderApplicableCards()}
                 <br/>
+                {this.renderAvailableCities()}
+                <br/>
                 {this.renderOwningCardSystem()}
             </div>
         );
@@ -244,5 +250,17 @@ export default class UiTPasAdvantageDescription extends React.Component {
         } else {
             return null;
         }
+    }
+
+    renderAvailableCities(){
+        if(this.props.advantage.validForCities && this.props.advantage.validForCities.length > 0){
+            let cities = this.props.advantage.validForCities.map((city) => {
+                return city.name;
+            });
+            return (
+                <div>Dit voordeel is beschikbaar voor pashouders uit de gemeenten: {joinNicely(cities, ', ', ' en ')}. </div>
+            );
+        }
+        else return null;
     }
 }

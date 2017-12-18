@@ -38,6 +38,7 @@ export default class UiTPasSearchFilters extends React.Component {
                 <DynamicRangeFilter field="points"
                                     id="pointsFilter"
                                     title="Puntenaantal"
+                                    min={0}
                                     containerComponent={<Panel collapsable={true} defaultCollapsed={true}/>}
                                     rangeComponent={<RangeInput translations={this.rangeFilterTranslation}
                                                                 translate={(lbl) => this.rangeFilterTranslation[lbl]}/>}/>
@@ -105,7 +106,7 @@ export default class UiTPasSearchFilters extends React.Component {
 
         return (
             <div className="sk-grid__12 sk-grid--bp-med__3" style={filterStyle}>
-                <RefinementListFilter field="applicableCardSystems.name.keyword"
+                <RefinementListFilter field="owningCardSystem.name"
                                       id="cardSystemsFilter"
                                       title="Voordeel aangeboden door"
                                       operator="OR"
