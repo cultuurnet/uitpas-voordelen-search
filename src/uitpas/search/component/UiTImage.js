@@ -18,7 +18,7 @@ export class UiTImage extends React.Component {
         src: UitPasSearchConfig.get('defaultThumbUrl')
     };
 
-    static getUiTImageUrl(src, maxHeight, maxWidth, height, width, crop=false) {
+    static getUiTImageUrl(src, maxHeight, maxWidth, height, width, crop = false) {
 
         let urlParams = [];
 

@@ -1408,11 +1408,15 @@ body {
       max-width: 100%;
       height: auto;
       margin: 0 auto; }
+  .sk-card__img-bg {
+    background-color: #e8e8e8; }
   .sk-card__banner {
     position: absolute;
     top: 20px;
     left: 0;
     z-index: 1; }
+    .sk-card__banner + .sk-card__banner {
+      top: 60px; }
   .sk-card__title {
     margin-top: 0;
     font-size: 1.5em;

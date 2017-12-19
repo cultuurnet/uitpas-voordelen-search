@@ -25,12 +25,6 @@ export class LastChanceLabel extends React.Component {
         
         if (this.props.endDate) {
 
-            /*if (this.isDeprecated()) {
-
-                return (
-                    <div className={'sk-label ' + this.props.className}>Te laat...</div>
-                );
-            } else*/
             if (this.isLastChance()) {
 
                 return (
