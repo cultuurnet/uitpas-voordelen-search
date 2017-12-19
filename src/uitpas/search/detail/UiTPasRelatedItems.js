@@ -110,15 +110,9 @@ class UiTPasRelatedItemsContainer extends SearchkitComponent {
     renderMoreRelatedItemsLink() {
 
         if (this.state.items && this.state.items.length > 0) {
-            let {match, location, history, searchkit} = this.props;
-            //const query = new URLSearchParams(history.location.search);
-            //query.set('foo', 'bar');
-            //let query = parse(window.location.search, { ignoreQueryPrefix: true });
-            //history.replace({...history.location, search: query.toString()})
 
-            let query = {};
-            this.counterNames.forEach((name, i) => {
-                query['q'] = name;
+            let urlParams = this.counterNames.map((name, i) => {
+                return 'countersFilter[' + i + ']=' + encodeURIComponent(name);
             });
 
             const url = `?${urlParams.join('&')}#/voordelen`;
