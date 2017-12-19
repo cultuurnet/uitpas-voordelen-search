@@ -9,7 +9,6 @@
     flex-grow: 0;
     overflow: hidden;
     position: relative;
-    background-color: #e8e8e8;
     img {
       transition: transform 0.2s;
       display: block;
@@ -17,6 +16,10 @@
       height: auto;
       margin: 0 auto;
     }
+  }
+
+  &__img-bg {
+    background-color: #e8e8e8;
   }
 
   &__banner {

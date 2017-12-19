@@ -32,7 +32,7 @@ class UiTPasAdvantageItem extends SearchkitComponent {
         return (
             <div className="sk-grid__item">
                 <Link to={detailPage} className="sk-card sk-card--link sk-card--shadow">
-                    <div className="sk-card__img">
+                    <div className={`sk-card__img${thumbUrl ? '' : ' sk-card__img-bg'}`}>
                         <LastChanceLabel endDate={cashingPeriodEnd} className="sk-card__banner"/>
                         <SpotlightLabel spotlight={spotlight} className="sk-card__banner"/>
                         <UiTImage src={thumbUrl} alt={title} width={480} height={360}/>

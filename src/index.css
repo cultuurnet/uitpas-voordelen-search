@@ -1401,14 +1401,15 @@ body {
   .sk-card__img {
     flex-grow: 0;
     overflow: hidden;
-    position: relative;
-    background-color: #e8e8e8; }
+    position: relative; }
     .sk-card__img img {
       transition: transform 0.2s;
       display: block;
       max-width: 100%;
       height: auto;
       margin: 0 auto; }
+  .sk-card__img-bg {
+    background-color: #e8e8e8; }
   .sk-card__banner {
     position: absolute;
     top: 20px;
