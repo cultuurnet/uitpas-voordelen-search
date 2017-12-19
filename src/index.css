@@ -1401,7 +1401,8 @@ body {
   .sk-card__img {
     flex-grow: 0;
     overflow: hidden;
-    position: relative; }
+    position: relative;
+    background-color: #e8e8e8; }
     .sk-card__img img {
       transition: transform 0.2s;
       display: block;
@@ -1413,6 +1414,8 @@ body {
     top: 20px;
     left: 0;
     z-index: 1; }
+    .sk-card__banner + .sk-card__banner {
+      top: 60px; }
   .sk-card__title {
     margin-top: 0;
     font-size: 1.5em;

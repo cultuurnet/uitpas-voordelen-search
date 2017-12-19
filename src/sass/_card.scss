@@ -9,6 +9,7 @@
     flex-grow: 0;
     overflow: hidden;
     position: relative;
+    background-color: #e8e8e8;
     img {
       transition: transform 0.2s;
       display: block;
@@ -23,6 +24,9 @@
     top: 20px;
     left: 0;
     z-index: 1;
+    + .sk-card__banner {
+      top: 60px;
+    }
   }
 
   &__title {

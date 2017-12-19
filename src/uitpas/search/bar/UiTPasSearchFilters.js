@@ -18,7 +18,7 @@ RefinementListFilter.prototype.componentDidMount = function () {
 
     const cardSystemsChecked = UiTPasSearchConfig.get('cardSystemsChecked');
 
-    if (!window.location.search.length) {
+    if (!window.location.search.length && cardSystemsChecked.length) {
         this.setFilters(cardSystemsChecked);
     }
 };
