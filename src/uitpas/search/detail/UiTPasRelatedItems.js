@@ -113,12 +113,12 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
                 return 'countersFilter[' + i + ']=' + encodeURIComponent(name);
             });
 
-            let url = '/voordelen?' + urlParams.join('&');
+            const url = `?${urlParams.join('&')}#/voordelen`;
             
             return (
                 <div>
                     <div>
-                        <Link to={url}>Alle voordelen in {joinNicely(this.counterNames, ', ', ' of ')} &raquo;</Link>
+                        <a href={url}>Alle voordelen in {joinNicely(this.counterNames, ', ', ' of ')} &raquo;</a>
                     </div>
                     <br/>
                 </div>
