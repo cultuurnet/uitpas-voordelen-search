@@ -8,7 +8,7 @@ export default class UiTPasSearchConfig {
         elasticSearchUrl: 'http://acc.uitid.be:9200/promotions/',
         embedded: true,
         fuzzySearch: true,
-        lastChanceWeeks: 1000,
+        lastChanceWeeks: 2,
         searchPlaceholderText: 'Naam voordeel, organisator of gemeente',
         showActiveAdvantages: true,
         showPublishedAdvantages: false,

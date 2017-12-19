@@ -11,7 +11,7 @@ import { joinNicely } from '../helper/UiTPasArrayUtils';
 export default class UiTPasAdvantageDescription extends React.Component {
 
     render() {
-        console.log('doctype: ' + this.props.advantage.doctype);
+
         let backLink = (this.props.advantage.doctype === 'pointspromotion' ? '/voordelen' : '/welkomstvoordelen');
         let backName = (this.props.advantage.doctype === 'pointspromotion' ? 'voordelen' : 'welkomstvoordelen');
 

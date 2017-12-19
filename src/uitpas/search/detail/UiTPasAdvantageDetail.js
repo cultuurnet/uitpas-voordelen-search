@@ -70,7 +70,7 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
                 <UiTPasAdvantageDescription advantage={this.advantage}/>
                 <br/>
                 <hr className="sk-hr"/>
-                <UiTPasRelatedItems counters={this.advantage.balies} advantage={this.advantage.id} searchkit={this.props.searchkit}/>
+                <UiTPasRelatedItems counters={this.advantage.balies} advantage={this.advantage.id}/>
             </div>
         );
     }
@@ -94,7 +94,7 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
 
 
     getQuery(id) {
-
+        
         return {
             "query": {
                 "bool": {

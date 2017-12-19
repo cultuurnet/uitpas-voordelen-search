@@ -13,7 +13,8 @@ export class LastChanceLabel extends React.Component {
     isLastChance() {
         let endDate = Date.parse(this.props.endDate);
         let weeks = UiTPasSearchConfig.get('lastChanceWeeks');
-        return (endDate <= (new Date().getTime()) + weeks * 24 * 60 * 60 * 1000);
+        let now = (new Date().getTime());
+        return ((endDate - weeks * 7 * 24 * 60 * 60 * 1000 <= now) && (now <= endDate));
     }
 
     isDeprecated() {

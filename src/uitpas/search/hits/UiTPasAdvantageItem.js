@@ -15,7 +15,7 @@ class UiTPasAdvantageItem extends SearchkitComponent {
 
     render() {
 
-        const { result, match } = this.props;
+        const { result } = this.props;
 
         let title = get(result, '_source.title', 'UiTPas Voordeel');
         let thumbUrl = get(result, '_source.pictures', this.defaultThumb);
@@ -25,7 +25,7 @@ class UiTPasAdvantageItem extends SearchkitComponent {
 
         let points = get(result, '_source.points', 0);
         let counters = get(result, '_source.balies', []);
-        let detailPage = `${match.url}/${get(result, '_source.id', 0)}`;
+        let detailPage = this.getDetailUrl();
         let cashingPeriodEnd = get(result, '_source.cashingPeriodEnd', null);
         let spotlight = get(result, '_source.inSpotlight', null);
 
@@ -61,6 +61,20 @@ class UiTPasAdvantageItem extends SearchkitComponent {
         let parser = new HtmlToReactParser();
         
         return parser.parse(countersHtml);
+    }
+
+    getDetailUrl(){
+        const { result, match } = this.props;
+
+        //check if we are already on the detail page or not:
+        if(match.path.includes(':id')){
+            //detail page
+            return match.path.replace(':id', get(result, '_source.id', 0));
+        }
+        else{
+            //grid
+            return `${match.url}/${get(result, '_source.id', 0)}`;
+        }
     }
 }
 

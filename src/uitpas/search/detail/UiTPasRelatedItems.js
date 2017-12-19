@@ -2,15 +2,12 @@ import * as React from 'react';
 import { get } from 'lodash';
 import { SearchkitComponent } from 'searchkit';
 import PropTypes from 'prop-types';
-import {Link, withRouter} from 'react-router-dom';
 
 import UiTPasAdvantageItem from '../hits/UiTPasAdvantageItem';
 import { joinNicely } from '../helper/UiTPasArrayUtils';
 import UiTPasSearchConfig from '../UiTPasSearchConfig';
 
-import {stringify} from 'qs';
-
-class UiTPasRelatedItemsContainer extends SearchkitComponent {
+export default class UiTPasRelatedItems extends SearchkitComponent {
 
     static propTypes = {
         advantage: PropTypes.number.isRequired,
@@ -27,7 +24,9 @@ class UiTPasRelatedItemsContainer extends SearchkitComponent {
     }
 
     componentWillMount() {
-
+        //we do our own query to ElasticSearch here because Searchkit was confused by having two searchkitManagers on one page.
+        //the searchkitManager keeps the state of the query which makes it very difficult to switch between two completely
+        //different queries. Therefore, we force a REST request to ElasticSearch here.
         let url = UiTPasSearchConfig.get('elasticSearchUrl') + '_search';
         let headers = new Headers();
 
@@ -116,7 +115,7 @@ class UiTPasRelatedItemsContainer extends SearchkitComponent {
             });
 
             const url = `?${urlParams.join('&')}#/voordelen`;
-
+            
             return (
                 <div>
                     <div>
@@ -129,6 +128,35 @@ class UiTPasRelatedItemsContainer extends SearchkitComponent {
     }
 
     getQuery(advantageId, counters) {
+
+        let defaultQueries = [];
+        if (UiTPasSearchConfig.get('showActiveAdvantages')) {
+            //only allow active advantages
+            defaultQueries.push({
+                "term": {
+                    "status.keyword": "ACTIVE"
+                }
+            });
+        }
+
+        if (UiTPasSearchConfig.get('showPublishedAdvantages')) {
+            //only allow published advantages
+            defaultQueries.push({
+                "range": {
+                    "publicationPeriodEnd": {
+                        "gte": "now"
+                    }
+                }
+            });
+        }
+
+        if(UiTPasSearchConfig.get('showPermanentCardSystemAdvantages')){
+            defaultQueries.push({
+                "term": {
+                    "owningCardSystem.permanent": true
+                }
+            });
+        }
 
         let actorIdTerms = counters.map((counter) => {
             return {
@@ -146,7 +174,8 @@ class UiTPasRelatedItemsContainer extends SearchkitComponent {
                                 "id": advantageId
                             }
                         }],
-                    "should": actorIdTerms
+                    "should": actorIdTerms,
+                    "must": defaultQueries,
                 }
             },
             "from": 0,
@@ -154,6 +183,3 @@ class UiTPasRelatedItemsContainer extends SearchkitComponent {
         };
     }
 }
-
-const UiTPasRelatedItems = withRouter(UiTPasRelatedItemsContainer);
-export default UiTPasRelatedItems;
