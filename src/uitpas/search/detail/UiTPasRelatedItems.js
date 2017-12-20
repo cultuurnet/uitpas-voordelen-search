@@ -27,6 +27,11 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
         //we do our own query to ElasticSearch here because Searchkit was confused by having two searchkitManagers on one page.
         //the searchkitManager keeps the state of the query which makes it very difficult to switch between two completely
         //different queries. Therefore, we force a REST request to ElasticSearch here.
+        this.fetchData();
+    }
+
+    fetchData() {
+
         let url = UiTPasSearchConfig.get('elasticSearchUrl') + '_search';
         let headers = new Headers();
 
@@ -49,6 +54,14 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
                     items: get(data, 'hits.hits', []),
                 });
             });
+    }
+
+    componentWillReceiveProps(nextProps) {
+
+        if (this.props.advantage !== nextProps.advantage) {
+
+            setTimeout(this.fetchData.bind(this), 1);
+        }
     }
 
     render() {

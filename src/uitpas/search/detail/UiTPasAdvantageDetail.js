@@ -20,7 +20,10 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
     }
 
     componentWillMount() {
+        this.fetchData();
+    }
 
+    fetchData() {
         let id = this.props.match.params.id;
         let url = UiTPasSearchConfig.get('elasticSearchUrl') + '_search';
         let headers = new Headers();
@@ -45,6 +48,14 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
                     loading: false,
                 });
             });
+    }
+
+    componentWillReceiveProps(nextProps) {
+
+        if (this.props.match.params.id !== nextProps.match.params.id) {
+
+            setTimeout(this.fetchData.bind(this), 1);
+        }
     }
 
     render() {
