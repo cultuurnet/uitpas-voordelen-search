@@ -13,6 +13,7 @@ export default class UiTPasSearchConfig {
         showActiveAdvantages: true,
         showPublishedAdvantages: false,
         showPermanentCardSystemAdvantages: true,
+        uitDatabankUrlPrefix: 'https://io-acc.uitdatabank.be'
     };
 
     static configTypes = {
@@ -27,6 +28,7 @@ export default class UiTPasSearchConfig {
         showActiveAdvantages: 'boolean',
         showPublishedAdvantages: 'boolean',
         showPermanentCardSystemAdvantages: 'boolean',
+        uitDatabankUrlPrefix: 'string'
     };
 
     static buildConfig() {

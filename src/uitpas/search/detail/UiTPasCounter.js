@@ -36,8 +36,6 @@ export class UiTPasCounter extends Component {
                 })
                 .then(data => {
 
-                    console.log(data);
-
                     if (data && data.name) {
 
                         let counterElem = (
