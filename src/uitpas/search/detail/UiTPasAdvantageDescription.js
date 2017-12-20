@@ -18,7 +18,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
         return (
             <div>
                 <div className="sk-block">
-                    <Link to={backLink}>Terug naar {backName}</Link>
+                    <Link to={backLink}>&laquo; Terug naar {backName}</Link>
                 </div>
                 <div className="sk-block">
                     <div className="sk-grid">
