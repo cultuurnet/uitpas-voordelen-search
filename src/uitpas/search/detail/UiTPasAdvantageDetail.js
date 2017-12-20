@@ -42,7 +42,6 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
                 return response.json()
             })
             .then((data) => {
-                console.log(data);
                 this.setState({
                     advantage: get(data, 'hits.hits[0]._source', null),
                     loading: false,

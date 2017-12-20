@@ -49,7 +49,6 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
                 return response.json()
             })
             .then((data) => {
-                console.log(data);
                 this.setState({
                     items: get(data, 'hits.hits', []),
                 });
