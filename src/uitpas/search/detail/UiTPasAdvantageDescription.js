@@ -129,15 +129,10 @@ export default class UiTPasAdvantageDescription extends React.Component {
     }
 
     renderPoints() {
-
-        if (this.props.advantage.points) {
-
-            return (
-                <div className="sk-label">{this.props.advantage.points} <small>{(this.props.advantage.points === 1 ? 'punt' : 'punten')}</small></div>
-            );
-        } else {
-            return null;
-        }
+        let points = (this.props.advantage.points ? this.props.advantage.points : 0);
+        return (
+            <div className="sk-label">{points} <small>{(points === 1 ? 'punt' : 'punten')}</small></div>
+        );
     }
 
     renderImage() {

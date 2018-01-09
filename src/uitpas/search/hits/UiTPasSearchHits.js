@@ -19,6 +19,7 @@ import UiTPasInitialLoader from './UiTPasInitialLoader';
 import UiTPasAdvantageItem from './UiTPasAdvantageItem';
 import UiTPasHitsGrid from './UiTPasHitsGrid';
 import UiTPasFilterItem from './UiTPasFilterItem';
+import UiTPasSearchConfig from "../UiTPasSearchConfig";
 
 export default class UiTPasSearchHits extends SearchkitComponent {
 
@@ -60,10 +61,7 @@ export default class UiTPasSearchHits extends SearchkitComponent {
                             <SortingSelector
                                 options={[
                                     /*{ label: 'Meest recent', field: 'creationDate', order: 'desc', key: 'mostRecent', defaultOption: true },*/
-                                    { label: 'Meest recent', key: 'mostRecent', defaultOption: true, fields: [
-                                        {field:"inSpotlight", options: {order:"desc"}},
-                                        {field:"creationDate", options: {order:"desc"}}
-                                    ]},
+                                    { label: 'Meest recent', key: 'mostRecent', defaultOption: true, fields: this.getMostRecentSortingFields()},
                                     { label: 'Meest omgeruild', field: 'unitsTaken', order: 'desc', key: 'mostBartered' },
                                     { label: 'Puntenaantal laag - hoog', field: 'points', order: 'asc', key: 'pointsHighLow' },
                                     { label: 'Puntenaantal hoog - laag', field: 'points', order: 'desc', key: 'pointsLowHigh' }
@@ -91,5 +89,14 @@ export default class UiTPasSearchHits extends SearchkitComponent {
                 </ActionBar>
             </div>
         );
+    }
+
+    getMostRecentSortingFields(){
+        let fields = [];
+        if(UiTPasSearchConfig.get('inSpotlightSticky')){
+            fields.push({field:"inSpotlight", options: {order:"desc"}});
+        }
+        fields.push({field:"creationDate", options: {order:"desc"}});
+        return fields;
     }
 }

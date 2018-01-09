@@ -82,7 +82,7 @@ export default class UiTElasticSearchKit {
     }
 
     getDefaultSearchFields() {
-        return ['balies.name', 'balies.cityName', 'balies.cityZip', 'title'];
+        return ['balies.name', 'balies.cityName', 'balies.cityZip', 'owningCardSystem.name', 'title'];
     }
 
     getDefaultSuggestField() {
