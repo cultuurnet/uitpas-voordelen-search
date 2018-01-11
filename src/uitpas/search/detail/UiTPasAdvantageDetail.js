@@ -44,7 +44,9 @@ export default class UiTPasAdvantageDetail extends SearchkitComponent {
             .then((data) => {
                 this.setState({
                     advantage: get(data, 'hits.hits[0]._source', null),
-                    loading: false,
+                    loading: false
+                }, function () {
+                    window.scrollTo(0, 0);
                 });
             });
     }
