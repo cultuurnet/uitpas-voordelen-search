@@ -4,7 +4,7 @@ export default class UiTPasSearchConfig {
     static config = {
         cardSystemsChecked: [],
         cardSystemsVisible: true,
-        defaultThumbUrl: '/img/default-thumb.png',
+        defaultThumbUrl: window.location.origin + '/img/default-thumb.png',
         elasticSearchUrl: 'http://acc.uitid.be:9200/promotions/',
         embedded: true,
         fuzzySearch: true,
