@@ -137,17 +137,18 @@ export default class UiTPasAdvantageDescription extends React.Component {
 
     renderImage() {
 
+        let imageSrc = null;
+
         if (this.props.advantage.pictures && this.props.advantage.pictures.length > 0 && this.props.advantage.pictures[0].length > 0 ) {
+            imageSrc = this.props.advantage.pictures[0][0];
+        }
 
             return (
-                <UiTImage src={this.props.advantage.pictures[0][0]}
+                <UiTImage src={imageSrc}
                           maxWidth={500}
                           maxHeight={500}
                           alt={this.props.advantage.title}/>
             );
-        } else {
-            return null;
-        }
     }
 
     renderAvailability() {
