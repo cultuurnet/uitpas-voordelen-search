@@ -14,11 +14,9 @@ export class UiTImage extends React.Component {
         crop: PropTypes.bool,
     };
 
-    static defaultProps = {
-        src: UitPasSearchConfig.get('defaultThumbUrl')
-    };
-
     static getUiTImageUrl(src, maxHeight, maxWidth, height, width, crop = false) {
+
+        if (!src) return UitPasSearchConfig.get('defaultThumbUrl');
 
         let urlParams = [];
 
