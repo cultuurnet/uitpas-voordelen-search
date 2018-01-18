@@ -1,5 +1,8 @@
 import { Pagination } from 'searchkit';
 
+/**
+ * Resets the pagination when you switch between the advantage and welcome advantages tabs.
+ */
 export default class CustomPagination extends Pagination {
     componentDidUpdate() {
         if (this.getResults()) {

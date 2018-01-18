@@ -85,7 +85,7 @@ export default class UiTPasSearchHits extends SearchkitComponent {
                     </ActionBarRow>
                     <ActionBarRow>
                         <CustomPagination showNumbers={true}
-                                    translations={this.paginationTranslation}/>
+                                          translations={this.paginationTranslation}/>
                     </ActionBarRow>
                 </ActionBar>
             </div>
