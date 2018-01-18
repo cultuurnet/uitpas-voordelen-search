@@ -6,15 +6,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## How to run the app for development?
 
-The app uses React.js and all dependency libs can be installed using [npm](www.npmjs.com) or [Yarn](https://yarnpkg.com/). 
+The app uses React.js and all dependency libs can be installed using [NPM](www.npmjs.com) or [Yarn](https://yarnpkg.com/). Using Yarn ensures packages are locked to the correct version.
 
-- Install all dependencies:  `npm install`
-- Run the app using the local Node.js server:  `npm start`
+- Install all dependencies:  `yarn install`
+- Run the app using the local Node.js server:  `yarn start`
 - Go to [http://localhost:3000/](http://localhost:3000/)
 
 ## How to run the app in production?
 
-- Run the following command to create the production build: `npm run build`
+- Run the following command to create the production build: `yarn run build`
 
 ## Advanced configuration
 
