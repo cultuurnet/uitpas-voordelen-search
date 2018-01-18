@@ -4,7 +4,7 @@ import {
     Hits,
     NoHits,
     InitialLoader,
-    Pagination,
+    // Pagination,
     HitsStats,
     ActionBar,
     ActionBarRow,
@@ -15,6 +15,7 @@ import {
     Select,
 } from 'searchkit';
 
+import CustomPagination from '../component/CustomPagination';
 import UiTPasInitialLoader from './UiTPasInitialLoader';
 import UiTPasAdvantageItem from './UiTPasAdvantageItem';
 import UiTPasHitsGrid from './UiTPasHitsGrid';
@@ -83,7 +84,7 @@ export default class UiTPasSearchHits extends SearchkitComponent {
                         <PageSizeSelector options={[12,24,36]} listComponent={Select}/>
                     </ActionBarRow>
                     <ActionBarRow>
-                        <Pagination showNumbers={true}
+                        <CustomPagination showNumbers={true}
                                     translations={this.paginationTranslation}/>
                     </ActionBarRow>
                 </ActionBar>
