@@ -32,11 +32,6 @@ same as in ElasticSearch. The names need to be separated with a pipe, i.e. '|'.
 
 When set to true the owning card systems filter is visible. When set to false the filter is invisible.
 
-### data-default-thumb-url:
-*type*: string, *default*: ```window.location.origin + '/img/default-thumb.png'``` 
-
-Sets the url to the default thumbnail that is used when the advantage does not have a thumbnail.
-
 ### data-elastic-search-url:
 *type*: string, *default*: 'http://acc.uitid.be:9200/promotions/'
  
