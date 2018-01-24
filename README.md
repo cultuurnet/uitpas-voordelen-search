@@ -69,7 +69,8 @@ Sets the placeholder string used in the search box.
 *type*: boolean, *default*: true
 
 If set to true, only advantages that are labelled as active will be shown in the search results. 
-This appends each query with a search filter.
+This appends each query with a search filter. The query checks whether the status.keyword field 
+equals ACTIVE.
 
 ### data-show-published-advantages: 
 *type*: boolean, *default*: false
