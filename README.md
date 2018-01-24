@@ -93,3 +93,8 @@ Sets the url to the UiTDatabank API.
 *type*: boolean, *default*: true
 
 If true the default ordering puts advantages that have a flag inSpotlight set to true higher.
+
+### data-default-thumb-url:
+*type*: string, *default*: ```window.location.origin + '/img/default-thumb.png'``` 
+
+Sets the url to the default thumbnail that is used when the advantage does not have a thumbnail.
