@@ -108,7 +108,7 @@ export default class UiTPasSearchFilters extends React.Component {
             <div className="sk-grid__12 sk-grid--bp-med__3" style={filterStyle}>
                 <RefinementListFilter field="owningCardSystem.name"
                                       id="cardSystemsFilter"
-                                      title="Voordeel aangeboden door"
+                                      title="Aangeboden door"
                                       operator="OR"
                                       containerComponent={<Panel collapsable={true} defaultCollapsed={true}/>}/>
             </div>
