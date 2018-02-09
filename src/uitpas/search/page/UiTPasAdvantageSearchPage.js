@@ -11,6 +11,7 @@ import UiTPasSearchPage from './UiTPasSearchPage';
 import UiTPasSearchFilters from '../bar/UiTPasSearchFilters';
 import UiTPasSearchBar from '../bar/UiTPasSearchBar';
 import UiTPasAdvantageDetail from '../detail/UiTPasAdvantageDetail';
+import UiTResultsLayout from '../component/UiTResultsLayout';
 
 
 export default class UiTPasAdvantageSearchPage extends UiTPasSearchPage {
@@ -26,7 +27,7 @@ export default class UiTPasAdvantageSearchPage extends UiTPasSearchPage {
                     <Switch>
                         <Route exact path={`${match.url}/:id`} component={UiTPasAdvantageDetail}/>
                         <Route path={match.url} render={() => (
-                            <LayoutResults>
+                            <UiTResultsLayout searchkit={this.state.searchkit.getDefaultSearchkit()}>
                                 <UiTPasSearchFilters showPointFilter={true}
                                                      showCardSystemFilter={true}
                                                      showTypeFilter={true}
@@ -34,7 +35,7 @@ export default class UiTPasAdvantageSearchPage extends UiTPasSearchPage {
                                                      renderCounterFilter={true}
                                                      renderOwningCardSystemFilter={true}/>
                                 <UiTPasSearchHits suggestField={this.state.searchkit.getDefaultSuggestField()}/>
-                            </LayoutResults>
+                            </UiTResultsLayout>
                         )}/>
                     </Switch>
                 </Layout>
