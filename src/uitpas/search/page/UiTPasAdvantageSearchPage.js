@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 import {
     SearchkitProvider,
     Layout,
-    LayoutResults,
 } from 'searchkit';
 
 import UiTPasSearchHits from '../hits/UiTPasSearchHits';

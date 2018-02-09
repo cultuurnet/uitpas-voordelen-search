@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { withRouter } from 'react-router'
 import { SearchkitComponent } from 'searchkit';
-import { first, get, isArray, map } from 'lodash';
+import { first, get, isArray } from 'lodash';
 import { Link } from 'react-router-dom';
 
 import { UiTImage } from '../component/UiTImage';
 import { LastChanceLabel } from '../component/LastChanceLabel';
 import { SpotlightLabel } from '../component/SpotlightLabel';
-import { joinNicely } from '../helper/UiTPasArrayUtils';
 
 let HtmlToReactParser = require('html-to-react').Parser;
 
