@@ -53,25 +53,31 @@ class UiTPasAdvantageItem extends SearchkitComponent {
 
     renderCounters(counters) {
 
-        let counterComps = map(counters, (counter) => {
-            return '<span>' + counter.name + ', ' + counter.cityName + '</span>';
+        let counterItems = [];
+
+        counters.forEach((counter, index) => {
+            counterItems.push(`${counter.name} (${counter.cityName})`);
+            if (index == 2) return false;
         });
 
-        let countersHtml = joinNicely(counterComps, ', ', ' en ');
-        let parser = new HtmlToReactParser();
-        
-        return parser.parse(countersHtml);
+        let countersHtml = counterItems.join(', ');
+
+        if (counters.length > 3) {
+            countersHtml += ', ...';
+        }
+
+        return countersHtml;
     }
 
-    getDetailUrl(){
+    getDetailUrl() {
+
         const { result, match } = this.props;
 
         //check if we are already on the detail page or not:
-        if(match.path.includes(':id')){
+        if (match.path.includes(':id')) {
             //detail page
             return match.path.replace(':id', get(result, '_source.id', 0));
-        }
-        else{
+        } else {
             //grid
             return `${match.url}/${get(result, '_source.id', 0)}`;
         }
