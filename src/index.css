@@ -1556,7 +1556,11 @@ body {
   color: white; }
 
 .sk-range-input {
-  display: flex; }
+  display: flex;
+  flex-wrap: wrap;
+  margin: -5px; }
+  .sk-range-input__input, .sk-range-input__to-label, .sk-range-input__submit {
+    margin: 5px; }
 
 .sk-text--lrg {
   font-size: 18px;

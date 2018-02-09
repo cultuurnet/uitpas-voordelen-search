@@ -171,6 +171,13 @@ body {
 
 .sk-range-input {
   display: flex;
+  flex-wrap: wrap;
+  margin: -5px;
+  &__input,
+  &__to-label,
+  &__submit {
+    margin: 5px;
+  }
 }
 
 .sk-text--lrg {
