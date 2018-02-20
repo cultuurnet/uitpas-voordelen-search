@@ -1,6 +1,10 @@
 
 export default class UiTPasSearchConfig {
 
+    static globalState = {
+        refreshSearchPerformed: false,
+    }
+
     static config = {
         cardSystemsChecked: [],
         cardSystemsVisible: true,
