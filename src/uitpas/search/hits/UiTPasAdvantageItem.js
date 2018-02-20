@@ -1,15 +1,12 @@
 import * as React from 'react';
 import { withRouter } from 'react-router'
 import { SearchkitComponent } from 'searchkit';
-import { first, get, isArray, map } from 'lodash';
+import { first, get, isArray } from 'lodash';
 import { Link } from 'react-router-dom';
 
 import { UiTImage } from '../component/UiTImage';
 import { LastChanceLabel } from '../component/LastChanceLabel';
 import { SpotlightLabel } from '../component/SpotlightLabel';
-import { joinNicely } from '../helper/UiTPasArrayUtils';
-
-let HtmlToReactParser = require('html-to-react').Parser;
 
 class UiTPasAdvantageItem extends SearchkitComponent {
 
@@ -53,20 +50,15 @@ class UiTPasAdvantageItem extends SearchkitComponent {
 
     renderCounters(counters) {
 
-        let counterItems = [];
 
-        counters.forEach((counter, index) => {
-            counterItems.push(`${counter.name} (${counter.cityName})`);
-            if (index == 2) return false;
-        });
-
-        let countersHtml = counterItems.join(', ');
+        let counterItems = counters.slice(0, 3).map(counter => `${counter.name} (${counter.cityName})`);
+        let counterHtml = counterItems.join(', ');
 
         if (counters.length > 3) {
-            countersHtml += ', ...';
+            counterHtml += ', ...';
         }
 
-        return countersHtml;
+        return counterHtml;
     }
 
     getDetailUrl() {

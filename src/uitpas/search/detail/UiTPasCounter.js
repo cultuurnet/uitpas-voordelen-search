@@ -76,7 +76,8 @@ export class UiTPasCounter extends Component {
 
         return (
             <address className="uitpassearch-detail-counter-address" key={address.streetAddress + address.postalCode + address.addressLocality}>
-                {address.streetAddress}<br/>
+                {address.streetAddress}
+                {address.streetAddress ? <br/> : null}
                 {address.postalCode} {address.addressLocality}<br/>
             </address>
         );
