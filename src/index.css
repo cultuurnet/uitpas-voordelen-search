@@ -935,7 +935,8 @@ body {
   border-radius: 0;
   position: relative;
   display: flex;
-  flex: 1; }
+  flex: 1;
+  background: white; }
   .sk-search-box.is-focused {
     background: white; }
   .sk-search-box.is-focused .sk-search-box__text {
@@ -1578,3 +1579,12 @@ body {
 
 .sk-heading:last-child {
   margin-bottom: 0; }
+
+.descriptions {
+  margin-top: 15px; }
+
+.practical-info {
+  margin-top: 30px; }
+
+.practical-info h2 {
+  margin-bottom: 0px; }
