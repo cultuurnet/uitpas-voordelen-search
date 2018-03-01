@@ -58,7 +58,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
         if (this.props.advantage.balies && this.props.advantage.balies.length > 0) {
 
             return (
-                <div>
+                <div className="counters">
                     <strong>Omruilen bij: </strong>
                     {map(this.props.advantage.balies, (counter, index) => {
                         return (<span
@@ -84,7 +84,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
         }
 
         return (
-            <div>
+            <div className="descriptions">
                 {descriptions}
             </div>
         );
@@ -95,7 +95,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
         if (this.props.advantage.moreInfoURL && this.props.advantage.moreInfoURL.trim() !== '') {
 
             return (
-                <div>
+                <div className="more-info">
                     <strong>Meer info:</strong> <a href={this.props.advantage.moreInfoURL}>{this.props.advantage.moreInfoURL}</a>
                 </div>
             );
@@ -109,7 +109,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
         if (this.props.advantage.balies && this.props.advantage.balies.length > 0) {
 
             return (
-                <div>
+                <div className="practical-info">
                     <h2>Praktische info</h2>
                     <div className="sk-grid sk-grid--bp-med-2-col">
                     {map(this.props.advantage.balies, function(counter){
@@ -175,7 +175,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
         }
 
         return (
-            <div>
+            <div className="availability">
                 <strong>Beschikbaarheid:</strong> {availability}<br/>
                 <br/>
                 {this.renderApplicableCards()}
@@ -241,7 +241,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
         if (this.props.advantage.owningCardSystem) {
 
             return (
-                <div>Dit voordeel wordt aangeboden door {this.props.advantage.owningCardSystem.name}.</div>
+                <div className="owning-card-system">Dit voordeel wordt aangeboden door {this.props.advantage.owningCardSystem.name}.</div>
             );
         } else {
             return null;
@@ -254,7 +254,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
                 return city.name;
             });
             return (
-                <div>Dit voordeel is beschikbaar voor pashouders uit de gemeenten: {joinNicely(cities, ', ', ' en ')}. </div>
+                <div className="available-cities">Dit voordeel is beschikbaar voor pashouders uit de gemeenten: {joinNicely(cities, ', ', ' en ')}. </div>
             );
         }
         else return null;
