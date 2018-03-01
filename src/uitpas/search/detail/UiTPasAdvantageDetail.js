@@ -5,7 +5,7 @@ import UiTPasRelatedItems from './UiTPasRelatedItems';
 import UiTPasAdvantageDescription from './UiTPasAdvantageDescription';
 import UiTPasSearchConfig from "../UiTPasSearchConfig";
 
-export default class UiTPasAdvantageDetail extends SearchkitComponent {
+export default class UiTPasAdvantageDetail extends React.Component {
 
     advantage = null;
     loading = true;

@@ -20,27 +20,27 @@ export default class UiTPasAdvantageSearchPage extends UiTPasSearchPage {
         const { match } = this.props;
         
         return (
-            <SearchkitProvider searchkit={this.state.searchkit.getDefaultSearchkit()}>
-                <Layout>
+
+
                     <Switch>
                         <Route exact path={`${match.url}/:id`} component={UiTPasAdvantageDetail}/>
                         <Route path={match.url} render={() => (
-                            <div>
-                                <UiTPasSearchBar searchFields={this.state.searchkit.getDefaultSearchFields()}/>
-                                <UiTResultsLayout searchkit={this.state.searchkit.getDefaultSearchkit()}>
-                                    <UiTPasSearchFilters showPointFilter={true}
-                                                         showCardSystemFilter={true}
-                                                         showTypeFilter={true}
-                                                         showExtraOptionFilter={true}
-                                                         renderCounterFilter={true}
-                                                         renderOwningCardSystemFilter={true}/>
-                                    <UiTPasSearchHits suggestField={this.state.searchkit.getDefaultSuggestField()}/>
-                                </UiTResultsLayout>
-                            </div>
+                            <SearchkitProvider searchkit={this.state.searchkit.getDefaultSearchkit()}>
+                                <Layout>
+                                    <UiTPasSearchBar searchFields={this.state.searchkit.getDefaultSearchFields()}/>
+                                    <UiTResultsLayout searchkit={this.state.searchkit.getDefaultSearchkit()}>
+                                        <UiTPasSearchFilters showPointFilter={true}
+                                                             showCardSystemFilter={true}
+                                                             showTypeFilter={true}
+                                                             showExtraOptionFilter={true}
+                                                             renderCounterFilter={true}
+                                                             renderOwningCardSystemFilter={true}/>
+                                        <UiTPasSearchHits suggestField={this.state.searchkit.getDefaultSuggestField()}/>
+                                    </UiTResultsLayout>
+                                </Layout>
+                            </SearchkitProvider>
                         )}/>
                     </Switch>
-                </Layout>
-            </SearchkitProvider>
         );
     }
 }
