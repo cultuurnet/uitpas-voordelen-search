@@ -176,6 +176,11 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
                     "balies.actorId.keyword": counter.actorId
                 }};
         });
+        defaultQueries.push({
+            "bool": {
+                "should": actorIdTerms
+            }
+        });
 
         return {
             "query": {
@@ -186,7 +191,6 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
                                 "id": advantageId
                             }
                         }],
-                    "should": actorIdTerms,
                     "must": defaultQueries,
                 }
             },
