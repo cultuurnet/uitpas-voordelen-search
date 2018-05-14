@@ -173,6 +173,9 @@ export default class UiTPasAdvantageDescription extends React.Component {
                 availability += ' Maximaal ' + this.props.advantage.periodConstraint.volume + ' per ' + this.renderPeriodConstraintType(this.props.advantage.periodConstraint.type) + '.';
             }
         }
+        else if(this.props.advantage.maxAvailableUnits == null){
+            availability = 'Onbeperkt voorradig. ';
+        }
 
         return (
             <div className="availability">

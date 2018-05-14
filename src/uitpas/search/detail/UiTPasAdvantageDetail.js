@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { get } from 'lodash';
-import { SearchkitComponent } from 'searchkit'
 import UiTPasRelatedItems from './UiTPasRelatedItems';
 import UiTPasAdvantageDescription from './UiTPasAdvantageDescription';
 import UiTPasSearchConfig from "../UiTPasSearchConfig";

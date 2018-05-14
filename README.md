@@ -12,6 +12,8 @@ The app uses React.js and all dependency libs can be installed using [NPM](www.n
 - Run the app using the local Node.js server:  `yarn start`
 - Go to [http://localhost:3000/](http://localhost:3000/)
 
+NB: If you want to change the CSS source code, you need to make changes to the SASS files in `src/sass` and compile them to `index.css`. This can be done by running this command: `yarn run watch-css`
+
 ## How to run the app in production?
 
 - Run the following command to create the production build: `yarn run build`

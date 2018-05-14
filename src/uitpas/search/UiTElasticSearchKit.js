@@ -2,7 +2,11 @@ import {
     SearchkitManager,
     TermQuery,
     RangeQuery,
-    BoolMust
+    BoolMust,
+    BoolMustNot,
+    BoolShould,
+    ExistsQuery,
+    MatchQuery,
 } from 'searchkit';
 
 import UiTPasSearchConfig from './UiTPasSearchConfig';
@@ -48,7 +52,7 @@ export default class UiTElasticSearchKit {
 
         if (UiTPasSearchConfig.get('showActiveAdvantages')) {
             //only allow active advantages
-            defaultQueries.push(TermQuery('status.keyword', 'ACTIVE'));
+            defaultQueries.push(MatchQuery('status.keyword', 'ACTIVE'));
         }
 
         if (UiTPasSearchConfig.get('showPublishedAdvantages')) {
@@ -59,10 +63,26 @@ export default class UiTElasticSearchKit {
         }
 
         if(UiTPasSearchConfig.get('showPermanentCardSystemAdvantages')){
-            defaultQueries.push(TermQuery('owningCardSystem.permanent', true));
+            defaultQueries.push(MatchQuery('owningCardSystem.permanent', true));
         }
 
-        defaultQueries.push(TermQuery('doctype', (isWelcome ? this.WELCOME_ADVANTAGE_TYPE : this.ADVANTAGE_TYPE)));
+        defaultQueries.push(MatchQuery('doctype', (isWelcome ? this.WELCOME_ADVANTAGE_TYPE : this.ADVANTAGE_TYPE)));
+
+        //valid period queries:
+        let beginPeriodQueries = [];
+        beginPeriodQueries.push(RangeQuery('publicationPeriodBegin', { "lte":"now" }));
+        beginPeriodQueries.push(BoolMustNot(ExistsQuery('publicationPeriodBegin')));
+        defaultQueries.push(BoolShould(beginPeriodQueries));
+
+        let endPeriodQueries = [];
+        endPeriodQueries.push(RangeQuery('publicationPeriodEnd', { "gte":"now" }));
+        endPeriodQueries.push(BoolMustNot(ExistsQuery('publicationPeriodEnd')));
+        defaultQueries.push(BoolShould(endPeriodQueries));
+
+        let cashingPeriodQueries = [];
+        cashingPeriodQueries.push(RangeQuery('cashingPeriodEnd', { "gte":"now" }));
+        cashingPeriodQueries.push(BoolMustNot(ExistsQuery('cashingPeriodEnd')));
+        defaultQueries.push(BoolShould(cashingPeriodQueries));
 
         if (defaultQueries.length > 0) {
 
