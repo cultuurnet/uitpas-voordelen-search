@@ -77,16 +77,20 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
                         <div className="sk-block"/>
                         <div className="sk-block">
                             <div className="sk-grid">
-                                <div className="sk-grid__12 sk-grid--bp-med__8">
+                                <div className="sk-grid__12">
                                     <h2 className="sk-heading">Andere voordelen in {joinNicely(this.counterNames, ', ', ' of ')}</h2>
-                                </div>
-                                <div className="sk-grid__12 sk-grid--bp-med__4">
-                                    {this.renderMoreRelatedItemsLink()}
                                 </div>
                             </div>
                         </div>
                         <div className="sk-block">
                             {this.renderRelatedItems()}
+                        </div>
+                        <div className="sk-block">
+                            <div className="sk-grid">
+                              <div className="sk-grid__12">
+                                {this.renderMoreRelatedItemsLink()}
+                              </div>
+                            </div>
                         </div>
                     </div>
                 );
