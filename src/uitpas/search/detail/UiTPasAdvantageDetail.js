@@ -81,7 +81,7 @@ export default class UiTPasAdvantageDetail extends React.Component {
                 <UiTPasAdvantageDescription advantage={this.advantage}/>
                 <br/>
                 <hr className="sk-hr"/>
-                <UiTPasRelatedItems counters={this.advantage.balies} advantage={this.advantage.id}/>
+                <UiTPasRelatedItems counters={this.advantage.balies} advantage={this.advantage.id} advantageType={this.advantage.doctype}/>
             </div>
         );
     }

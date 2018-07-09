@@ -11,6 +11,7 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
 
     static propTypes = {
         advantage: PropTypes.number.isRequired,
+        advantageType: PropTypes.string.isRequired,
         counters: PropTypes.array.isRequired,
     };
 
@@ -40,7 +41,7 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
 
         let request = new Request(url, {
             method: 'POST',
-            body: JSON.stringify(this.getQuery(this.props.advantage, this.props.counters)),
+            body: JSON.stringify(this.getQuery(this.props.advantage, this.props.advantageType, this.props.counters)),
             headers: headers
         });
 
@@ -143,7 +144,7 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
         }
     }
 
-    getQuery(advantageId, counters) {
+    getQuery(advantageId, advantageType, counters) {
 
         let defaultQueries = [];
         if (UiTPasSearchConfig.get('showActiveAdvantages')) {
@@ -157,10 +158,82 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
 
         if (UiTPasSearchConfig.get('showPublishedAdvantages')) {
             //only allow published advantages
+            //begin period
             defaultQueries.push({
-                "range": {
-                    "publicationPeriodEnd": {
-                        "gte": "now"
+                "bool":{
+                    "should":[
+                        {
+                            "range":{
+                                "publicationPeriodBegin":{
+                                    "lte":"now"
+                                }
+                            }
+                        },
+                        {
+                            "bool":{
+                                "must_not":{
+                                    "exists":{
+                                        "field":"publicationPeriodBegin"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            });
+            //end period
+            defaultQueries.push({
+                "bool":{
+                    "should":[
+                        {
+                            "range":{
+                                "publicationPeriodEnd":{
+                                    "gte":"now"
+                                }
+                            }
+                        },
+                        {
+                            "bool":{
+                                "must_not":{
+                                    "exists":{
+                                        "field":"publicationPeriodEnd"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            });
+            //take also the cashing period into account
+            defaultQueries.push({
+                "bool":{
+                    "should":[
+                        {
+                            "range":{
+                                "cashingPeriodEnd":{
+                                    "gte":"now"
+                                }
+                            }
+                        },
+                        {
+                            "bool":{
+                                "must_not":{
+                                    "exists":{
+                                        "field":"cashingPeriodEnd"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            });
+        }
+        console.log(advantageType);
+        if(advantageType){
+            defaultQueries.push({
+                "match":{
+                    "doctype":{
+                        "query": advantageType
                     }
                 }
             });

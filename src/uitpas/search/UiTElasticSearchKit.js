@@ -57,9 +57,28 @@ export default class UiTElasticSearchKit {
 
         if (UiTPasSearchConfig.get('showPublishedAdvantages')) {
             //only allow published advantages
-            defaultQueries.push(RangeQuery('publicationPeriodEnd', {
-                'gte': 'now'
-            }));
+            defaultQueries.push({
+                "bool": {
+                    "should": [
+                        {
+                            "range": {
+                                "publicationPeriodEnd": {
+                                    "gte": "now"
+                                }
+                            }
+                        },
+                        {
+                            "bool": {
+                                "must_not": {
+                                    "exists": {
+                                        "field": "publicationPeriodEnd"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            });
         }
 
         if(UiTPasSearchConfig.get('showPermanentCardSystemAdvantages')){
