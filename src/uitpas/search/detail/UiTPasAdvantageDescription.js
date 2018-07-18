@@ -177,15 +177,22 @@ export default class UiTPasAdvantageDescription extends React.Component {
             availability = 'Onbeperkt voorradig. ';
         }
 
+        if (this.renderApplicableCards()) {
+            var cards = <p>{this.renderApplicableCards()}</p>
+        }
+        if (this.renderAvailableCities()) {
+            var cities = <p>{this.renderAvailableCities()}</p>
+        }
+        if (this.renderOwningCardSystem()) {
+            var owner = <p>{this.renderOwningCardSystem()}</p>
+        }
+
         return (
             <div className="availability">
-                <strong>Beschikbaarheid:</strong> {availability}<br/>
-                <br/>
-                {this.renderApplicableCards()}
-                <br/>
-                {this.renderAvailableCities()}
-                <br/>
-                {this.renderOwningCardSystem()}
+                <strong>Beschikbaarheid:</strong><p> {availability}</p>
+                {cards}
+                {cities}
+                {owner}
             </div>
         );
     }
