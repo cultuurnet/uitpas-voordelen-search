@@ -17,6 +17,7 @@ export class UiTImage extends React.Component {
     static getUiTImageUrl(src, maxHeight, maxWidth, height, width, crop = false) {
 
         if (!src) return UitPasSearchConfig.get('defaultThumbUrl');
+        src = src.replace(/^http:\/\//i, 'https://');
 
         let urlParams = [];
 
