@@ -35,9 +35,10 @@ same as in ElasticSearch. The names need to be separated with a pipe, i.e. '|'.
 When set to true the owning card systems filter is visible. When set to false the filter is invisible.
 
 ### data-elastic-search-url:
-*type*: string, *default*: 'http://acc.uitid.be:9200/promotions/'
+*type*: string, *default*: 'https://test.uitid.be/uitid/rest/uitpas/promotions/es/'
  
-Sets the url to the ElasticSearch service.
+Sets the url to the ElasticSearch service. After this URL you should put your received API key.
+For example: 'https://test.uitid.be/uitid/rest/uitpas/promotions/es/[API key]'
 
 ### data-embedded:
 *type*: boolean, *default*: true
