@@ -166,17 +166,19 @@ export default class UiTPasSearchFilters extends React.Component {
     render() {
         
         return (
-            <div>
-                <p className="lead">Verfijn je resultaat</p>
-                <div className="sk-grid">
+            <div className="sk-filter-row">
+                <div className="sk-filters">
+                  <p className="lead">Verfijn je resultaat</p>
+                  <div className="sk-grid">
                     {this.renderPointsFilter()}
                     {this.renderTypeFilter()}
                     {this.renderExtraOptionFilter()}
                     {this.renderCardSystemFilter()}
                     {this.renderHiddenCounterFilter()}
+                  </div>
+                  {this.renderHiddenOwningCardSystemFilter()}
+                  <hr className="sk-hr"/>
                 </div>
-                {this.renderHiddenOwningCardSystemFilter()}
-                <hr className="sk-hr"/>
             </div>
         );
     }

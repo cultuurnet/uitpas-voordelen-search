@@ -935,8 +935,7 @@ body {
   border-radius: 0;
   position: relative;
   display: flex;
-  flex: 1;
-  background: white; }
+  flex: 1; }
   .sk-search-box.is-focused {
     background: white; }
   .sk-search-box.is-focused .sk-search-box__text {
@@ -1507,7 +1506,8 @@ body {
   box-shadow: none; }
 
 .sk-search-box {
-  margin-left: 0; }
+  margin-left: 0;
+  background: white; }
 
 .sk-search-box input.sk-search-box__text,
 .sk-search-box input.sk-search-box__text::placeholder {
@@ -1580,11 +1580,13 @@ body {
 .sk-heading:last-child {
   margin-bottom: 0; }
 
-.descriptions {
-  margin-top: 15px; }
+.sk-filter-row {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: -16px;
+  background-color: #f8f8f8; }
 
-.practical-info {
-  margin-top: 30px; }
-
-.practical-info h2 {
-  margin-bottom: 0px; }
+.sk-filters {
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-top: 15px; }

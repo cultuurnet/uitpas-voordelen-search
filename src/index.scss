@@ -103,6 +103,7 @@ body {
 
 .sk-search-box {
   margin-left: 0;
+  background: white;
 }
 
 .sk-search-box input.sk-search-box__text,
@@ -203,4 +204,17 @@ body {
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+.sk-filter-row {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: -16px;
+  background-color: #f8f8f8;
+}
+
+.sk-filters {
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-top: 15px;
 }
