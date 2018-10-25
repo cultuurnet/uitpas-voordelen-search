@@ -61,8 +61,11 @@ export default class UiTPasAdvantageDescription extends React.Component {
                 <div className="counters">
                     <strong>Omruilen bij: </strong>
                     {map(this.props.advantage.balies, (counter, index) => {
-                        return (<span
-                            key={counter.actorId}>{counter.name} ({counter.cityName}){index < this.props.advantage.balies.length - 1 ? ',\u00A0' : ''}</span>);
+                        return (<span key={counter.actorId}>
+                            <strong>
+                                {counter.name} ({counter.cityName}){index < this.props.advantage.balies.length - 1 ? ',\u00A0' : ''}
+                            </strong>
+                        </span>);
                     })}
                 </div>
             );
@@ -110,7 +113,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
 
             return (
                 <div className="practical-info">
-                    <h2>Praktische info</h2>
+                    <strong>Hoe omruilen?</strong>
                     <div className="sk-grid sk-grid--bp-med-2-col">
                     {map(this.props.advantage.balies, function(counter){
                         return (
