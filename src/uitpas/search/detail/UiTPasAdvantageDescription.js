@@ -98,7 +98,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
         if (this.props.advantage.moreInfoURL && this.props.advantage.moreInfoURL.trim() !== '') {
 
             return (
-                <div className="more-info">
+                <div className="more-info sk-more-info">
                     <strong>Meer info:</strong> <a href={this.props.advantage.moreInfoURL}>{this.props.advantage.moreInfoURL}</a>
                 </div>
             );
