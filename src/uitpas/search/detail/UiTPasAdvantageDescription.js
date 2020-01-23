@@ -82,10 +82,6 @@ export default class UiTPasAdvantageDescription extends React.Component {
             descriptions.push(<p className="sk-text--lrg" key="description1">{this.props.advantage.description1}</p>);
         }
 
-        if (this.props.advantage.description2 && this.props.advantage.description2.trim() !== '') {
-            descriptions.push(<p className="sk-text--lrg" key={"description2"}>{this.props.advantage.description2}</p>);
-        }
-
         return (
             <div className="descriptions">
                 {descriptions}
@@ -98,7 +94,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
         if (this.props.advantage.moreInfoURL && this.props.advantage.moreInfoURL.trim() !== '') {
 
             return (
-                <div className="more-info">
+                <div className="more-info sk-more-info">
                     <strong>Meer info:</strong> <a href={this.props.advantage.moreInfoURL}>{this.props.advantage.moreInfoURL}</a>
                 </div>
             );
@@ -109,25 +105,15 @@ export default class UiTPasAdvantageDescription extends React.Component {
 
     renderPracticalInfo() {
 
-        if (this.props.advantage.balies && this.props.advantage.balies.length > 0) {
-
-            return (
-                <div className="practical-info">
-                    <strong>Hoe omruilen?</strong>
-                    <div className="sk-grid sk-grid--bp-med-2-col">
-                    {map(this.props.advantage.balies, function(counter){
-                        return (
-                            <div className="sk-grid__item" key={counter.actorId}>
-                                <UiTPasCounter counterId={counter.actorId}/>
-                                <br/>
-                            </div>
-                        );
-                    })}
-                    </div>
-                </div>
-            );
+        if (this.props.advantage.description2 && this.props.advantage.description2.trim() !== '') {
+          return (
+            <div className="practical-info">
+                <strong>Hoe omruilen?</strong>
+                <p>{this.props.advantage.description2}</p>
+            </div>
+        );
         } else {
-            return null;
+          return null;
         }
     }
 
