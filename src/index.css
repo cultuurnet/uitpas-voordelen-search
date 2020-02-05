@@ -850,7 +850,9 @@
 body {
   margin: 0; }
 
-*, *:before, *:after {
+[data-reactroot] *, 
+[data-reactroot] *:before, 
+[data-reactroot] *:after {
   box-sizing: inherit; }
 
 .sk-layout {
