@@ -1,0 +1,19 @@
+.sk-flex {
+  display: flex;
+  align-items: center;
+
+  &__row {
+    flex-direction: row;
+  }
+
+  &__col {
+    flex-direction: column;
+  }
+
+  &__col,
+  &__row {
+    &.space-between {
+      justify-content: space-between;
+    }
+  }
+}

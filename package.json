@@ -8,14 +8,17 @@
     "jssha": "^2.3.1",
     "lodash": "^4.17.4",
     "moment": "^2.19.1",
-    "node-sass-chokidar": "^0.0.3",
     "prop-types": "^15.6.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.14",
     "searchkit": "^2.2.1-0"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2",
+    "react-scripts": "1.0.14",
+    "node-sass-chokidar": "^0.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,6 +26,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "format": "prettier --ignore-path .gitignore --write .",
+    "format:check": "prettier --ignore-path .gitignore --check ."
   }
 }
