@@ -10,7 +10,6 @@ import UiTPasSearchConfig from '../UiTPasSearchConfig';
 
 const CashInType = {
     ONLINE: 'ONLINE',
-    FYSICAL: 'FYSICAL',
 }
 
 export default class UiTPasAdvantageDescription extends React.Component {
