@@ -4,7 +4,6 @@ import {
   Hits,
   NoHits,
   InitialLoader,
-  // Pagination,
   HitsStats,
   ActionBar,
   ActionBarRow,
