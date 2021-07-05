@@ -4,7 +4,6 @@ import { map } from 'lodash';
 import moment from 'moment';
 
 import { UiTImage } from '../component/UiTImage';
-import { UiTPasCounter } from './UiTPasCounter';
 import { LastChanceLabel } from '../component/LastChanceLabel';
 import { joinNicely } from '../helper/UiTPasArrayUtils';
 
