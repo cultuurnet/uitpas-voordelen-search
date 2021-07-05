@@ -49,6 +49,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
                             {this.renderAvailability()}
                         </div>
                         <div className="sk-grid__12 sk-grid--bp-med__5">
+                            {this.renderOnlineExchangeButton()}
                             <div className="sk-card">
                                 <div className="sk-card__img">
                                     {this.renderImage()}
@@ -133,12 +134,27 @@ export default class UiTPasAdvantageDescription extends React.Component {
         );
     }
 
-    renderIsOnlineExchangable() {
+    isOnlineExchangable() {
         const cashInType = this.props.advantage.cashInType;
-        const isOnline = cashInType ? cashInType.includes(CashInType.ONLINE) : false;
+        return cashInType ? cashInType.includes(CashInType.ONLINE) : false;
+    }
 
-        if (isOnline) {
+    renderIsOnlineExchangable() {
+        if (this.isOnlineExchangable()) {
             return <div className="online-exchangable">online om te ruilen</div>
+        }
+
+        return null;
+    }
+
+    onlineExchangeUrl() {
+        console.log('env', process.env.REACT_APP_UITPAS_URL);
+        return `${process.env.REACT_APP_UITPAS_URL}/omruilen/${this.props.advantage.id}`;
+    }
+
+    renderOnlineExchangeButton() {
+        if (this.isOnlineExchangable()) {
+            return <a href={this.onlineExchangeUrl()} target="_blank" rel="noopener" className="sk-button">Nu omruilen</a>
         }
 
         return null;
