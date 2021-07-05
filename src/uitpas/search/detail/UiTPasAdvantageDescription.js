@@ -35,7 +35,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
                                 {this.renderPoints()}                                
                             </div>
                             <div>
-                                {this.renderIsOnlineExchangable()}                            
+                                {this.renderOnlineExchangeLabel()}                            
                             </div>
                         </div>                        
                     </div>
@@ -140,8 +140,8 @@ export default class UiTPasAdvantageDescription extends React.Component {
         return cashInType ? cashInType.includes(CashInType.ONLINE) : false;
     }
 
-    renderIsOnlineExchangable() {
-        if (this.isOnlineExchangable()) {
+    renderOnlineExchangeLabel() {
+        if (UiTPasSearchConfig.get('showOnlineExchangeInfo') && this.isOnlineExchangable()) {
             return <div className="online-exchangable">online om te ruilen</div>
         }
 
@@ -154,7 +154,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
     }
 
     renderOnlineExchangeButton() {
-        if (UiTPasSearchConfig.get('showOnlineExchangeButton') && this.isOnlineExchangable()) {
+        if (UiTPasSearchConfig.get('showOnlineExchangeInfo') && this.isOnlineExchangable()) {
             return <a href={this.onlineExchangeUrl()} target="_blank" rel="noopener" className="sk-button">Nu omruilen</a>
         }
 
