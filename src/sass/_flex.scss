@@ -1,6 +1,13 @@
 .sk-flex {
-  display: flex;
-  align-items: center;
+  &__col,
+  &__row {
+    display: flex;
+    align-items: center;
+
+    &.space-between {
+      justify-content: space-between;
+    }
+  }
 
   &__row {
     flex-direction: row;
@@ -8,12 +15,5 @@
 
   &__col {
     flex-direction: column;
-  }
-
-  &__col,
-  &__row {
-    &.space-between {
-      justify-content: space-between;
-    }
   }
 }
