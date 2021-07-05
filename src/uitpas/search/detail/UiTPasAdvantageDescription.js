@@ -6,6 +6,7 @@ import moment from 'moment';
 import { UiTImage } from '../component/UiTImage';
 import { LastChanceLabel } from '../component/LastChanceLabel';
 import { joinNicely } from '../helper/UiTPasArrayUtils';
+import UiTPasSearchConfig from '../UiTPasSearchConfig';
 
 const CashInType = {
     ONLINE: 'ONLINE',
@@ -153,7 +154,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
     }
 
     renderOnlineExchangeButton() {
-        if (this.isOnlineExchangable()) {
+        if (UiTPasSearchConfig.get('showOnlineExchangeButton') && this.isOnlineExchangable()) {
             return <a href={this.onlineExchangeUrl()} target="_blank" rel="noopener" className="sk-button">Nu omruilen</a>
         }
 

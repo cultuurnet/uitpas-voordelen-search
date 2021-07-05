@@ -16,6 +16,7 @@ export default class UiTPasSearchConfig {
         searchPlaceholderText: 'Naam voordeel, organisator of gemeente',
         showActiveAdvantages: true,
         showPublishedAdvantages: false,
+        showOnlineExchangeButton: false,
         showPermanentCardSystemAdvantages: true,
         uitDatabankUrlPrefix: 'https://io-acc.uitdatabank.be',
         inSpotlightSticky: true
@@ -32,6 +33,7 @@ export default class UiTPasSearchConfig {
         searchPlaceholderText: 'string',
         showActiveAdvantages: 'boolean',
         showPublishedAdvantages: 'boolean',
+        showOnlineExchangeButton: 'boolean',
         showPermanentCardSystemAdvantages: 'boolean',
         uitDatabankUrlPrefix: 'string',
         inSpotlightSticky: 'boolean'
