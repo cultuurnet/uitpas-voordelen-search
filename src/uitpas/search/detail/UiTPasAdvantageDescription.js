@@ -150,7 +150,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
     );
   }
 
-  isOnlineExchangable() {
+  isOnlineExchangeable() {
     const cashInType = this.props.advantage.cashInType;
     return cashInType ? cashInType.includes(CashInType.ONLINE) : false;
   }
@@ -158,9 +158,9 @@ export default class UiTPasAdvantageDescription extends React.Component {
   renderOnlineExchangeLabel() {
     if (
       UiTPasSearchConfig.get("showOnlineExchangeInfo") &&
-      this.isOnlineExchangable()
+      this.isOnlineExchangeable()
     ) {
-      return <div className="online-exchangable">online om te ruilen</div>;
+      return <div className="online-exchangeable">online om te ruilen</div>;
     }
 
     return null;
@@ -173,7 +173,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
   renderOnlineExchangeButton() {
     if (
       UiTPasSearchConfig.get("showOnlineExchangeInfo") &&
-      this.isOnlineExchangable()
+      this.isOnlineExchangeable()
     ) {
       return (
         <a
