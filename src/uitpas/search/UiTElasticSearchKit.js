@@ -1,6 +1,5 @@
 import {
   SearchkitManager,
-  TermQuery,
   RangeQuery,
   BoolMust,
   BoolMustNot,
