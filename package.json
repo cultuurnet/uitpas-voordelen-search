@@ -26,5 +26,8 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "format": "prettier --ignore-path .gitignore --write .",
     "format:check": "prettier --ignore-path .gitignore --check ."
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2"
   }
 }
