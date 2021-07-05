@@ -1101,9 +1101,6 @@ body {
 .sk-grid__12 {
   display: block; }
 
-.sk-grid__6 {
-  display: block; }
-
 .sk-grid--2-col > .sk-grid__item {
   width: 50%; }
   .sk-grid--2-col > .sk-grid__item > * {
@@ -1402,7 +1399,7 @@ body {
     flex-direction: row; }
   .sk-flex__col {
     flex-direction: column; }
-  .sk-flex__row.space-between, .sk-flex__col.space-between {
+  .sk-flex__col.space-between, .sk-flex__row.space-between {
     justify-content: space-between; }
 
 .sk-card {
@@ -1472,6 +1469,19 @@ a.sk-card,
 
 .sk-card--shadow {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+
+.sk-button {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  width: 100%;
+  padding: 1.5rem 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  color: white;
+  background-color: blue;
+  cursor: pointer;
+  background-color: #1aa5a8; }
 
 body {
   margin: 0;
