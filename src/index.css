@@ -1101,6 +1101,9 @@ body {
 .sk-grid__12 {
   display: block; }
 
+.sk-grid__6 {
+  display: block; }
+
 .sk-grid--2-col > .sk-grid__item {
   width: 50%; }
   .sk-grid--2-col > .sk-grid__item > * {
@@ -1391,6 +1394,16 @@ body {
     width: 66.667%; }
   .sk-grid--bp-xlr__9 {
     width: 75%; } }
+
+.sk-flex {
+  display: flex;
+  align-items: center; }
+  .sk-flex__row {
+    flex-direction: row; }
+  .sk-flex__col {
+    flex-direction: column; }
+  .sk-flex__row.space-between, .sk-flex__col.space-between {
+    justify-content: space-between; }
 
 .sk-card {
   display: flex;
