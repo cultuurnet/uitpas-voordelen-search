@@ -7,6 +7,11 @@ import { UiTImage } from '../component/UiTImage';
 import { LastChanceLabel } from '../component/LastChanceLabel';
 import { joinNicely } from '../helper/UiTPasArrayUtils';
 
+const CashInType = {
+    ONLINE: 'ONLINE',
+    FYSICAL: 'FYSICAL',
+}
+
 export default class UiTPasAdvantageDescription extends React.Component {
 
     render() {
@@ -24,9 +29,14 @@ export default class UiTPasAdvantageDescription extends React.Component {
                         <div className="sk-grid__12 sk-grid--bp-med__7">
                             <h1 className="sk-heading">{this.props.advantage.title}</h1>
                         </div>
-                        <div className="sk-grid__12 sk-grid--bp-med__5">
-                            {this.renderPoints()}
-                        </div>
+                        <div className="sk-flex__row space-between sk-grid--bp-med__7">
+                            <div>
+                                {this.renderPoints()}                                
+                            </div>
+                            <div>
+                                {this.renderIsOnlineExchangable()}                            
+                            </div>
+                        </div>                        
                     </div>
                 </div>
                 <div className="sk-block">
@@ -121,6 +131,17 @@ export default class UiTPasAdvantageDescription extends React.Component {
         return (
             <div className="sk-label">{points} <small>{(points === 1 ? 'punt' : 'punten')}</small></div>
         );
+    }
+
+    renderIsOnlineExchangable() {
+        const cashInType = this.props.advantage.cashInType;
+        const isOnline = cashInType ? cashInType.includes(CashInType.ONLINE) : false;
+
+        if (isOnline) {
+            return <div className="online-exchangable">online om te ruilen</div>
+        }
+
+        return null;
     }
 
     renderImage() {
