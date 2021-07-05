@@ -11,30 +11,34 @@
 
 // Creates a wrapper for a series of columns
 @mixin make-row($gutter: $grid-gutter-width) {
-  margin-left:  ($gutter / -2);
+  margin-left: ($gutter / -2);
   margin-right: ($gutter / -2);
   margin-top: -$grid-rhythm;
 }
 
 // Creates a single column
-@mixin make-column($index, $columns: $grid-column-count, $gutter: $grid-gutter-width) {
-  width: round(percentage($index / $columns)*1000)/1000;
+@mixin make-column(
+  $index,
+  $columns: $grid-column-count,
+  $gutter: $grid-gutter-width
+) {
+  width: round(percentage($index / $columns) * 1000) / 1000;
 }
 @mixin make-repeating-column($index, $columns: $grid-column-count) {
-  width: round(percentage(10 / $index)*1000)/10000;
+  width: round(percentage(10 / $index) * 1000) / 10000;
   > * {
     flex: 1 0 auto;
   }
 }
 
 @mixin make-column-legacy($columns) {
-  &:nth-child(#{$columns}n+#{($columns+1)}) {
+  &:nth-child(#{$columns}n + #{($columns+1)}) {
     clear: left;
   }
 }
 
 @mixin make-column-push($index, $columns: $grid-column-count) {
-  margin-left: round(percentage($index / $columns)*1000)/1000;
+  margin-left: round(percentage($index / $columns) * 1000) / 1000;
 }
 
 // Get column with in px
@@ -51,11 +55,11 @@
 // RWD Breakpoints
 @mixin breakpoint($point, $query: min-width) {
   @if $query == max-width {
-    @media ($query: $point - 1)  {
+    @media ($query: $point - 1) {
       @content;
     }
-  } @else  {
-    @media ($query: $point)  {
+  } @else {
+    @media ($query: $point) {
       @content;
     }
   }
@@ -82,7 +86,7 @@ $breakpoints: (
   sml: 660px,
   med: 820px,
   lrg: 980px,
-  xlr: 1200px
+  xlr: 1200px,
 );
 
 .sk-grid {
@@ -152,7 +156,7 @@ $breakpoints: (
 // Creates all the breakpoint grid ITEM classes
 // Example: .grid--bp-med__8
 @each $bp, $px in $breakpoints {
-  @include breakpoint($px, 'min-width') {
+  @include breakpoint($px, "min-width") {
     .sk-grid--bp-#{$bp} {
       @each $column in $grid-columns {
         &__#{$column} {

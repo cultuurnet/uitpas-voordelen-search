@@ -10,10 +10,10 @@
     flex-direction: column;
   }
 
-  &__col, &__row {
+  &__col,
+  &__row {
     &.space-between {
       justify-content: space-between;
     }
-  }  
+  }
 }
-

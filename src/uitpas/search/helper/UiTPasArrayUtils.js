@@ -1,12 +1,14 @@
 export function intersperse(arr, sep) {
-    
-    if (arr.length === 0) {
-        return [];
-    }
+  if (arr.length === 0) {
+    return [];
+  }
 
-    return arr.slice(1).reduce(function(xs, x, i) {
-        return xs.concat([sep, x]);
-    }, [arr[0]]);
+  return arr.slice(1).reduce(
+    function (xs, x, i) {
+      return xs.concat([sep, x]);
+    },
+    [arr[0]],
+  );
 }
 
 /**
@@ -18,6 +20,8 @@ export function intersperse(arr, sep) {
  * @param lastItemGlue
  * @returns {string}
  */
-export function joinNicely(list, glue, lastItemGlue){
-    return [list.slice(0, -1).join(glue), list.slice(-1)[0]].join(list.length < 2 ? '' : lastItemGlue);
+export function joinNicely(list, glue, lastItemGlue) {
+  return [list.slice(0, -1).join(glue), list.slice(-1)[0]].join(
+    list.length < 2 ? "" : lastItemGlue,
+  );
 }
