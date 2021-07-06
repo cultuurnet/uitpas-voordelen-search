@@ -167,7 +167,8 @@ export default class UiTPasAdvantageDescription extends React.Component {
   }
 
   onlineExchangeUrl() {
-    return `${process.env.REACT_APP_UITPAS_URL}/omruilen/${this.props.advantage.id}`;
+    const baseUrl = UiTPasSearchConfig.get("uitpasUrl");
+    return `${baseUrl}/omruilen/${this.props.advantage.id}`;
   }
 
   renderOnlineExchangeButton() {

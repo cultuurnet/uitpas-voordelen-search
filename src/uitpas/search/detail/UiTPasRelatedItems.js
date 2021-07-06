@@ -233,7 +233,6 @@ export default class UiTPasRelatedItems extends SearchkitComponent {
         },
       });
     }
-    console.log(advantageType);
     if (advantageType) {
       defaultQueries.push({
         match: {
