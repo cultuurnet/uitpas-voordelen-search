@@ -13,7 +13,6 @@ import {
 import UiTPasSearchConfig from "../UiTPasSearchConfig";
 
 RefinementListFilter.prototype.componentDidMount = function () {
-
   if (this.props.id !== "cardSystemsFilter") return;
 
   const cardSystemsChecked = UiTPasSearchConfig.get("cardSystemsChecked");
