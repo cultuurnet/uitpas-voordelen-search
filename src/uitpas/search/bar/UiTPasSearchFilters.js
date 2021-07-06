@@ -7,6 +7,7 @@ import {
   RangeInput,
   CheckboxFilter,
   TermQuery,
+  TermsQuery,
   RangeQuery,
 } from "searchkit";
 
@@ -99,6 +100,12 @@ export default class UiTPasSearchFilters extends React.Component {
               lt: "now+" + UiTPasSearchConfig.get("lastChanceWeeks") + "w/d",
               gte: "now/d",
             })}
+          />
+        <CheckboxFilter
+            id="onlineFilter"
+            label="Online om te ruilen"
+            title=""
+            filter={TermsQuery("cashInType", ["ONLINE"])}
           />
         </Panel>
       </div>
