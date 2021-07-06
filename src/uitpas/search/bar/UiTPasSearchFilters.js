@@ -13,8 +13,6 @@ import {
 import UiTPasSearchConfig from "../UiTPasSearchConfig";
 
 RefinementListFilter.prototype.componentDidMount = function () {
-  /*console.log('test');
-    console.log(this.searchkit.getHitsCount());*/
 
   if (this.props.id !== "cardSystemsFilter") return;
 
