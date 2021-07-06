@@ -101,7 +101,7 @@ export default class UiTPasSearchFilters extends React.Component {
               gte: "now/d",
             })}
           />
-        <CheckboxFilter
+          <CheckboxFilter
             id="onlineFilter"
             label="Online om te ruilen"
             title=""
