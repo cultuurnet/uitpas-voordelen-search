@@ -45,7 +45,9 @@ class UiTPasAdvantageItem extends SearchkitComponent {
             <h3 className="sk-card__title">{title}</h3>
             <p className="sk-card__text">{this.renderCounters(counters)}</p>
             <div className="sk-flex__row space-between sk-w-100">
-              <div className="sk-card__label">{this.makePointsLabel(points)}</div>
+              <div className="sk-card__label">
+                {this.makePointsLabel(points)}
+              </div>
               <OnlineLabel cashInType={cashInType} />
             </div>
           </div>

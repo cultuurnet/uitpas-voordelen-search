@@ -26,5 +26,4 @@ export class OnlineLabel extends React.Component {
 
     return null;
   }
-
 }
