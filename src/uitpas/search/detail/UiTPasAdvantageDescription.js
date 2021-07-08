@@ -48,9 +48,9 @@ export default class UiTPasAdvantageDescription extends React.Component {
               {this.renderMoreInfo()}
               {this.renderPracticalInfo()}
               {this.renderAvailability()}
+              {this.renderOnlineExchangeButton()}
             </div>
             <div className="sk-grid__12 sk-grid--bp-med__5">
-              {this.renderOnlineExchangeButton()}
               <div className="sk-card">
                 <div className="sk-card__img">
                   {this.renderImage()}
