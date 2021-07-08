@@ -36,7 +36,10 @@ export default class UiTPasAdvantageDescription extends React.Component {
             </div>
             <div className="sk-flex__row space-between sk-grid--bp-med__7">
               <div>{this.renderPoints()}</div>
-              <OnlineLabel cashInType={this.props.advantage.cashInType} />
+              <OnlineLabel
+                cashInType={this.props.advantage.cashInType}
+                link={this.onlineExchangeUrl()}
+              />
             </div>
           </div>
         </div>

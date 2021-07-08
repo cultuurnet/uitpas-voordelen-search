@@ -11,6 +11,10 @@ export class OnlineLabel extends React.Component {
     cashInType: PropTypes.array,
   };
 
+  static propTypes = {
+    link: PropTypes.string,
+  };
+
   isOnlineExchangeable() {
     const cashInType = this.props.cashInType;
     return cashInType ? cashInType.includes(CashInType.ONLINE) : false;
@@ -21,7 +25,15 @@ export class OnlineLabel extends React.Component {
       UiTPasSearchConfig.get("showOnlineExchangeInfo") &&
       this.isOnlineExchangeable()
     ) {
-      return <div className="online-exchangeable">online om te ruilen</div>;
+      const { link } = this.props;
+      const label = "Online om te ruilen";
+      return link ? (
+        <a href={link} className="online-exchangeable">
+          {label}
+        </a>
+      ) : (
+        <div className="online-exchangeable">{label}</div>
+      );
     }
 
     return null;
