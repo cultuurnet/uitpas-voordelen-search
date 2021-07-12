@@ -7,13 +7,6 @@ const CashInType = {
 };
 
 export class OnlineLabel extends React.Component {
-  static propTypes = {
-    cashInType: PropTypes.array,
-  };
-
-  static propTypes = {
-    link: PropTypes.string,
-  };
 
   isOnlineExchangeable() {
     const cashInType = this.props.cashInType;
@@ -39,3 +32,8 @@ export class OnlineLabel extends React.Component {
     return null;
   }
 }
+
+OnlineLabel.propTypes = {
+  cashInType: PropTypes.array,
+  link: PropTypes.string,
+};
