@@ -7,7 +7,6 @@ const CashInType = {
 };
 
 export class OnlineLabel extends React.Component {
-
   isOnlineExchangeable() {
     const cashInType = this.props.cashInType;
     return cashInType ? cashInType.includes(CashInType.ONLINE) : false;
