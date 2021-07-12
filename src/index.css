@@ -1393,6 +1393,10 @@ body {
   display: block;
 }
 
+.sk-w-100 {
+  width: 100%;
+}
+
 .sk-grid--2-col > .sk-grid__item {
   width: 50%;
 }
@@ -1926,7 +1930,6 @@ a.sk-card:focus .sk-card__img img,
   display: block;
   text-align: center;
   font-weight: 600;
-  width: 100%;
   padding: 1.5rem 1rem;
   margin-bottom: 1rem;
   border: none;

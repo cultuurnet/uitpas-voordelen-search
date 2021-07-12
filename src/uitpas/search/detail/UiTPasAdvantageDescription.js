@@ -5,6 +5,7 @@ import moment from "moment";
 
 import { UiTImage } from "../component/UiTImage";
 import { LastChanceLabel } from "../component/LastChanceLabel";
+import { OnlineLabel } from "../component/OnlineLabel";
 import { joinNicely } from "../helper/UiTPasArrayUtils";
 import UiTPasSearchConfig from "../UiTPasSearchConfig";
 
@@ -35,7 +36,10 @@ export default class UiTPasAdvantageDescription extends React.Component {
             </div>
             <div className="sk-flex__row space-between sk-grid--bp-med__7">
               <div>{this.renderPoints()}</div>
-              <div>{this.renderOnlineExchangeLabel()}</div>
+              <OnlineLabel
+                cashInType={this.props.advantage.cashInType}
+                link={this.onlineExchangeUrl()}
+              />
             </div>
           </div>
         </div>
@@ -47,9 +51,9 @@ export default class UiTPasAdvantageDescription extends React.Component {
               {this.renderMoreInfo()}
               {this.renderPracticalInfo()}
               {this.renderAvailability()}
+              {this.renderOnlineExchangeButton()}
             </div>
             <div className="sk-grid__12 sk-grid--bp-med__5">
-              {this.renderOnlineExchangeButton()}
               <div className="sk-card">
                 <div className="sk-card__img">
                   {this.renderImage()}
@@ -153,17 +157,6 @@ export default class UiTPasAdvantageDescription extends React.Component {
   isOnlineExchangeable() {
     const cashInType = this.props.advantage.cashInType;
     return cashInType ? cashInType.includes(CashInType.ONLINE) : false;
-  }
-
-  renderOnlineExchangeLabel() {
-    if (
-      UiTPasSearchConfig.get("showOnlineExchangeInfo") &&
-      this.isOnlineExchangeable()
-    ) {
-      return <div className="online-exchangeable">online om te ruilen</div>;
-    }
-
-    return null;
   }
 
   onlineExchangeUrl() {

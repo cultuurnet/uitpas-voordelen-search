@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { UiTImage } from "../component/UiTImage";
 import { LastChanceLabel } from "../component/LastChanceLabel";
 import { SpotlightLabel } from "../component/SpotlightLabel";
+import { OnlineLabel } from "../component/OnlineLabel";
 
 class UiTPasAdvantageItem extends SearchkitComponent {
   render() {
@@ -23,6 +24,7 @@ class UiTPasAdvantageItem extends SearchkitComponent {
       : thumbUrl;
 
     let points = get(result, "_source.points", 0);
+    let cashInType = get(result, "_source.cashInType", []);
     let counters = get(result, "_source.balies", []);
     let detailPage = this.getDetailUrl();
     let cashingPeriodEnd = get(result, "_source.cashingPeriodEnd", null);
@@ -42,7 +44,12 @@ class UiTPasAdvantageItem extends SearchkitComponent {
           <div className="sk-card__main">
             <h3 className="sk-card__title">{title}</h3>
             <p className="sk-card__text">{this.renderCounters(counters)}</p>
-            <div className="sk-card__label">{this.makePointsLabel(points)}</div>
+            <div className="sk-flex__row space-between sk-w-100">
+              <div className="sk-card__label">
+                {this.makePointsLabel(points)}
+              </div>
+              <OnlineLabel cashInType={cashInType} />
+            </div>
           </div>
         </Link>
       </div>
