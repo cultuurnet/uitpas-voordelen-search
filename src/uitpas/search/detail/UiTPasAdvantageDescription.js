@@ -170,7 +170,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
       this.isOnlineExchangeable()
     ) {
       return (
-        <a href={this.onlineExchangeUrl()} rel="noopener" className="sk-button">
+        <a href={this.onlineExchangeUrl()} className="sk-button">
           Nu omruilen
         </a>
       );
