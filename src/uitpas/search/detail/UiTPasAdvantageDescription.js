@@ -172,7 +172,6 @@ export default class UiTPasAdvantageDescription extends React.Component {
       return (
         <a
           href={this.onlineExchangeUrl()}
-          target="_blank"
           rel="noopener"
           className="sk-button"
         >
