@@ -271,6 +271,8 @@ export default class UiTPasAdvantageDescription extends React.Component {
         return "dag";
       case "WEEK":
         return "week";
+      case "MONTH":
+        return "maand";
       case "QUARTER":
         return "kwartaal";
       case "YEAR":
