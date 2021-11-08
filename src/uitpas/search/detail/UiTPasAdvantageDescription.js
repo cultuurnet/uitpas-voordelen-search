@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { map } from "lodash";
+import DOMPurify from "dompurify";
 import moment from "moment";
 
 import { UiTImage } from "../component/UiTImage";
@@ -95,20 +96,20 @@ export default class UiTPasAdvantageDescription extends React.Component {
   }
 
   renderDescription() {
-    let descriptions = [];
-
     if (
       this.props.advantage.description1 &&
       this.props.advantage.description1.trim() !== ""
     ) {
-      descriptions.push(
-        <p className="sk-text--lrg" key="description1">
-          {this.props.advantage.description1}
-        </p>,
+      return (
+        <div className="descriptions">
+          <p
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(this.props.advantage.description1),
+            }}
+          ></p>
+        </div>
       );
     }
-
-    return <div className="descriptions">{descriptions}</div>;
   }
 
   renderMoreInfo() {
@@ -137,7 +138,11 @@ export default class UiTPasAdvantageDescription extends React.Component {
       return (
         <div className="practical-info">
           <strong>Hoe omruilen?</strong>
-          <p>{this.props.advantage.description2}</p>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(this.props.advantage.description2),
+            }}
+          ></p>
         </div>
       );
     } else {
