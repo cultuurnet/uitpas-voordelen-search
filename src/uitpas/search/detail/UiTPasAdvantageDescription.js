@@ -101,7 +101,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
       this.props.advantage.description1.trim() !== ""
     ) {
       return (
-        <div class="descriptions">
+        <div className="descriptions">
           <p
             dangerouslySetInnerHTML={{
               __html: DOMPurify.sanitize(this.props.advantage.description1),
