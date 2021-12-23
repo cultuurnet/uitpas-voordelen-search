@@ -1839,6 +1839,10 @@ body {
   flex-direction: column;
 }
 
+.sk-flex-wrap {
+  flex-wrap: wrap;
+}
+
 .sk-card {
   display: flex;
   color: inherit;
