@@ -42,9 +42,11 @@ class UiTPasAdvantageItem extends SearchkitComponent {
             <UiTImage src={thumbUrl} alt={title} width={480} height={360} />
           </div>
           <div className="sk-card__main">
-            <h3 className="sk-card__title">{title}</h3>
-            <p className="sk-card__text">{this.renderCounters(counters)}</p>
-            <div className="sk-flex__row space-between sk-w-100">
+            <div className="sk-card__text-wrapper">
+              <h3 className="sk-card__title">{title}</h3>
+              <p className="sk-card__text">{this.renderCounters(counters)}</p>
+            </div>
+            <div className="sk-flex__row sk-card__points-wrapper sk-flex-wrap space-between sk-w-100">
               <div className="sk-card__label">
                 {this.makePointsLabel(points)}
               </div>
