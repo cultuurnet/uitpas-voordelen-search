@@ -211,8 +211,9 @@ export default class UiTPasAdvantageDescription extends React.Component {
     if (
       this.props.advantage.maxAvailableUnits &&
       this.props.advantage.maxAvailableUnits > 0
+      (this.props.advantage.maxAvailableUnits - this.props.advantage.unitsTaken) > 0
     ) {
-      availability = this.props.advantage.maxAvailableUnits + " beschikbaar";
+      availability = (this.props.advantage.maxAvailableUnits - this.props.advantage.unitsTaken) + " beschikbaar";
 
       if (this.props.advantage.cashingPeriodBegin) {
         availability +=
