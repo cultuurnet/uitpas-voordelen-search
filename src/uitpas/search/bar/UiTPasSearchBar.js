@@ -4,6 +4,12 @@ import { TopBar, SearchBox, SimpleQueryString } from "searchkit";
 import UiTPasSearchConfig from "../UiTPasSearchConfig";
 
 export default class UiTPasSearchBar extends React.Component {
+  wrapQueryInQuotes(queryString) {
+    if (queryString.startsWith(`"`) && queryString.endsWith(`"`))
+      return queryString;
+
+    return queryString.includes("-") ? `"${queryString}"` : queryString;
+  }
   /**
    * Adds a wildcard to the end of the query to enable more flexible search.
    * @param queryString
@@ -12,10 +18,12 @@ export default class UiTPasSearchBar extends React.Component {
   getQuery() {
     let fields = this.props.searchFields;
     return (queryString) => {
+      const wrappedQueryString = this.wrapQueryInQuotes(queryString);
+
       return SimpleQueryString(
-        queryString && UiTPasSearchConfig.get("fuzzySearch")
-          ? queryString.trim() + "*"
-          : queryString,
+        wrappedQueryString && UiTPasSearchConfig.get("fuzzySearch")
+          ? wrappedQueryString.trim() + "*"
+          : wrappedQueryString,
         {
           fields: fields,
         },
