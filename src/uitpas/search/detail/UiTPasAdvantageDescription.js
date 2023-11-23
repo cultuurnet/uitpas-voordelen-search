@@ -245,7 +245,7 @@ export default class UiTPasAdvantageDescription extends React.Component {
           ".";
       }
     } else if (this.props.advantage.maxAvailableUnits == null) {
-      availability = "Onbeperkt voorradig. ";
+      availability = "Zolang de voorraad strekt. ";
     }
 
     if (this.renderApplicableCards()) {
