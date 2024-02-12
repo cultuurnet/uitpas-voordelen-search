@@ -122,6 +122,7 @@ export default class UiTElasticSearchKit {
     return [
       "balies.name",
       "balies.cityName",
+      "balies.cityName.keyword",
       "balies.cityZip",
       "owningCardSystem.name",
       "title",
