@@ -7,7 +7,7 @@
     "dompurify": "^2.3.3",
     "html-to-react": "1.2.12",
     "jssha": "^2.3.1",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "moment": "^2.19.1",
     "prop-types": "^15.6.0",
     "react": "^15.0.0",
