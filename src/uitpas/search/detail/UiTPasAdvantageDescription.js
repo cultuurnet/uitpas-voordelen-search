@@ -72,7 +72,11 @@ export default class UiTPasAdvantageDescription extends React.Component {
   }
 
   renderCounters() {
-    if (this.props.advantage.balies && this.props.advantage.balies.length > 0) {
+    if (
+      this.props.advantage.balies &&
+      this.props.advantage.balies.length > 0 &&
+      !this.isOnlineExchangeable()
+    ) {
       return (
         <div className="counters">
           <strong>Omruilen bij: </strong>
